@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=Poppins:wght@600&display=swap');/* font-family: 'Signika Negative', sans-serif; */
+/* font-family: 'Anton', sans-serif;
+font-family: 'Poppins', sans-serif; */
+/* #0FF2D7
+*/
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  color:rgb(8, 8, 8);
+  /* background-image:linear-gradient(240deg,rgb(109, 109, 236),rgb(236, 119, 119)); */
+  /* background-repeat: no-repeat; */
+  /* background-color: #333333; */
+}
+.App{
+  display: flex;
+  flex-direction: column;
+}
+
+/* HOME page */
+
+.home{
+  z-index:1;
+  overflow: hidden;
+  /* background:url("./images/home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height:100vh; */
+}
+
+.home::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/home.jpg") center center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  opacity: .7;
+  /* box-shadow: inset 150px 50px 200px rgb(228, 199, 197),inset -150px -50px 200px rgb(228, 199, 197); */
+}
+
+.home .choose-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width:100%;
+}
+
+.home #first-img,#second-img{
+  width:200px;
+  padding:50% 20% 0 20%;
+  transition: transform 0.25s ease-in-out;
+}
+
+.home #first-img:hover,#second-img:hover{
+  cursor: pointer;
+  transform:scale(1.25);
+}
+
+
+/* Navbar */
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index:2;
+  width:100%;
+}
+
+.navbar #nav-img1{
+  height:100px;
+  width: 100px;
+}
+
+.navbar #nav-img2{
+  height:50px;
+  width: 50px;
+  cursor: pointer;
+}
+.navbar:first-child{
+  margin:15px 0 0 40px;
+}
+.navbar #profile-logo{
+  text-decoration: none;
+  font-size:20px;
+  margin:15px 60px 0 0;
+}
+
+/* ---------------------------------------------*/
+
+/* Contest Page */
+
+.contest{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background:url("./images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  /* height: 100vh; */
+}
+
+
+/* ContestCard */
+
+.ContestCard{
+  position:relative;
+  width:250px;
+  height:120px;
+  font-family: 'Poppins', sans-serif;
+  color:white;
+  margin:5px auto 50px auto;
+}
+
+.ContestCard img{
+  width:60px;
+  height:60px;
+}
+
+.frontCard,.backCard{
+  border-radius: 10px;
+}
+
+/* -----------------*/
+
+/* Main Headings of Contest Page */
+
+.status{
+  width:300px;
+  height:150px;
+}
+
+/* ----------------- */
+
+
+/* Front card css */
+
+.frontCard img{
+  width:50px;
+  height:50px;
+}
+
+.frontCard div{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ----------------- */
+
+
+/* for flip effect */ 
+
+.mainCard{
+  position:absolute;
+  width:100%;
+  height:100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease-in-out;
+  text-align: center;
+}
+
+.mainCard:hover{
+  transform: rotateY(180deg);
+}
+
+.frontCard{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility: hidden;
+  color:rgb(255, 255, 255);
+  overflow: hidden;
+  box-shadow: -10px 10px rgba(247, 247, 247, 0.5);
+  font-size:15px;
+  background-image: url("./images/texture.jpg");
+  background-repeat: no-repeat;
+}
+
+.backCard{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility: hidden;
+  background-color: #5c5858;
+  transform: rotateY(180deg);
+  box-shadow: -10px 10px rgba(244, 245, 245, 0.5);
+}
+
+/* ---------------------------------------*/
+
+/* Cards Columns */
+
+.ongoing,.upcoming,.previous{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  column-gap: 50px;
+  width:60%;
+}
+
+/* ----------------------- */
+
+
+/* background for Contest Page */
+
+/* .contest::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/contestBG.jpg") center center;
+  height:100%;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+} */
+
+/* ----------*/
+
+/* Profile section */
+
+.Profile{
+  text-align: center;
+}
+
+
+/* ---------------------------------- */
+
+
+/* media query */
+
+@media (max-width:900px){
+  .navbar #nav-img1{
+    height:80px;
+    width: 80px;
+  }
+  
+  .navbar #nav-img2{
+    height:30px;
+    width: 30px;
+  }
+  .home #first-img{
+    height:100px;
+    width:100px;
+  }
+  .home #second-img{
+    height:100px;
+    width:100px;
+  }
+  
+  .mainCard{
+    pointer-events: none;
+  }
+  .ContestCard{
+    width:150px;
+    height:150px;
+    font-size: 15px;
+  }
+  .backCard{
+    display: none;
+  }
+  .status{
+    width:200px;
+    height:100px;
+  }
+
+}
+@media (max-width:700px){
+
+  .home #first-img{
+    height:80px;
+    width:80px;
+  }
+  .home #second-img{
+    height:80px;
+    width:80px;
+  }
+  .ContestCard{
+    width:100px;
+    height:100px;
+    font-size: 10px;
+  }
+  .mainCard{
+    pointer-events: none;
+  }
+
+  .frontCard{
+    box-shadow: -7px 7px rgba(244, 245, 245, 0.5);
+    font-size: 10px;
+  }
+  .ongoing,.upcoming,.previous{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
