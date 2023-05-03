@@ -1,60 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=Poppins:wght@600&display=swap');/* font-family: 'Signika Negative', sans-serif; */
-/* font-family: 'Anton', sans-serif;
-font-family: 'Poppins', sans-serif; */
-/* #0FF2D7
-*/
-body{
+
+*,body{
   margin:0;
   padding:0;
   box-sizing: border-box;
-  color:rgb(8, 8, 8);
-  /* background-image:linear-gradient(240deg,rgb(109, 109, 236),rgb(236, 119, 119)); */
-  /* background-repeat: no-repeat; */
-  /* background-color: #333333; */
+  color:rgb(255, 255, 255);
+  font-family: 'Signika Negative', sans-serif;
 }
+body::-webkit-scrollbar{
+  display: none;
+}
+/* body{
+  padding-bottom:100px;
+} */
 .App{
   display: flex;
   flex-direction: column;
 }
 
-/* HOME page */
+/*====================================== HOME PAGE ===================================*/
 
 .home{
   z-index:1;
   overflow: hidden;
-  /* background:url("./images/home.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height:100vh; */
+  color: black;
 }
 
-.home::before{
+.home{
   content: "";
-  position: absolute;
-  z-index: -1;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url("./images/home.jpg") center center;
-  background-repeat: no-repeat;
+  background: url("./images/landscape.jpg") center center;
+  background-repeat:repeat;
   background-size:cover;
-  opacity: .7;
-  /* box-shadow: inset 150px 50px 200px rgb(228, 199, 197),inset -150px -50px 200px rgb(228, 199, 197); */
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+}
+.home::-webkit-scrollbar,.RegPage::-webkit-scrollbar
+,.LogPage::-webkit-scrollbar,.ProPage::-webkit-scrollbar,
+.confirm::-webkit-scrollbar,.contest::-webkit-scrollbar,
+.contestDetail::-webkit-scrollbar,.ContestPage::-webkit-scrollbar,
+.thanksPage::-webkit-scrollbar,.community::-webkit-scrollbar,
+.ProEditPage::-webkit-scrollbar,.postDetailPage::-webkit-scrollbar,
+.failedPay::-webkit-scrollbar,.successPay::-webkit-scrollbar,
+.winnersList::-webkit-scrollbar{
+  display: none;
 }
 
 .home .choose-section{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width:100%;
+  width:90%;
+  margin:50vh 0 0 10%;
+  column-gap: 100px;
 }
 
 .home #first-img,#second-img{
-  width:200px;
-  padding:50% 20% 0 20%;
+  width: 70%;
+  height: 80%;
   transition: transform 0.25s ease-in-out;
 }
 
@@ -64,19 +71,20 @@ body{
 }
 
 
-/* Navbar */
+/*=============================== Navbar ===============================*/
 
 .navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index:2;
-  width:100%;
+  width:95%;
+  margin:3% 0 0 3%;
 }
 
 .navbar #nav-img1{
   height:100px;
-  width: 100px;
+  width: 80px;
 }
 
 .navbar #nav-img2{
@@ -84,19 +92,1428 @@ body{
   width: 50px;
   cursor: pointer;
 }
-.navbar:first-child{
-  margin:15px 0 0 40px;
+
+/*========================== Register Page ===================*/
+
+.RegPage,.LogPage{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/blueBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
 }
-.navbar #profile-logo{
-  text-decoration: none;
+
+.Register,.Login{
+  text-align: center;
+  margin:auto;
+  /* margin-top:3vh; */
+  width:40%;
+  padding:2%;
+  background:        
+    linear-gradient(
+      rgba(131, 51, 51, 0.7), 
+      rgba(48, 76, 132, 0.7)
+    ),url("./images/redBG.jpg");
+    box-shadow:10px 50px 100px rgb(37, 36, 36);
+}
+
+.Register #input-section,.ProfileEdit #input-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 10px;
+}
+
+.Register #gender,#otp{
+  background-color: rgb(49, 121, 77);
+}
+
+.Register input,.Login input,.ProfileEdit input{
+  border:0;
+  height:30px;
+  border-radius: 5px;
+  background-color: rgb(108, 105, 105);
+}
+
+.Register input::placeholder,.Login input::placeholder{
+  color:rgb(249, 249, 249);
+  opacity: 0.5;
+}
+.Register #otp,#submit,select,.ProfileEdit button,select{
+  width:40%;
+  height:100%;
+  border:0; 
+  font-size: 15px;
+  font-weight:bold;
+  border-radius: 5px;
+}
+.Register #submit,.Login #submit,.ProfileEdit button{
+  margin-top: 5%;
+  height:30px;
+  background-color: rgb(13, 138, 25);
+}
+.Register .img1{
+  width:70%;
+  height:70%;
+  margin-bottom: 5%;
+}
+
+.Register .img2{
+  width:35%;
+  height:35%;
+  margin-top: 5%;
+}
+
+.Register #loginText{
+  color:rgb(56, 140, 231);
+}
+.Register button:hover{
+  box-shadow: 2px 3px rgb(26, 27, 28);
+  cursor: pointer;
+}
+
+/*========================== Login Page ===================*/
+
+.Login{
+  margin-top:10vh;
+}
+
+.Login #input-section,#forgotPassword{
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 30px;
+  row-gap: 10px;
+  width:60%;
+  margin:auto;
+}
+.Login #forgotPassword{
+  margin-top:20px;
+  text-align: center;
+}
+
+#forgotPassword #otp{
+  background-color: rgb(13, 138, 25);
+}
+.Login #submit,#forgotPassword #otp{
+  width:40%;
+  height:100%;
+  border:0; 
+  font-size: 15px;
+  font-weight:bold;
+  border-radius: 5px;
+  margin-top: 5%;
+  height:30px;
+}
+
+.Login img{
+  width:70%;
+  height:70%;
+  margin-bottom: 5%;
+}
+
+.Login button:hover{
+  box-shadow: 2px 3px rgb(26, 27, 28);
+  cursor: pointer;
+}
+
+.Login h4{
+  color:rgb(33, 136, 225);
+  margin-top:10px;
+  cursor: pointer;
+}
+
+/*================================== Profile ===================*/
+
+.ProPage,.confirm{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/clearBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+} 
+
+.confirm::before{
+  opacity:.5;
+}
+
+.profileCols{
+  display: grid;
+  grid-template-rows: 1fr;
+  margin-top:7vh;
+}
+.Profile,.confirm form{
+  background: linear-gradient(to right, rgba(190, 74, 74, 0.9),rgb(31, 57, 110));
+  width:40%;
+  margin:0 auto;
+  padding-bottom: 15px;
+  text-align: center;
+  box-shadow:10px 50px 100px rgb(37, 36, 36);
+}
+
+.confirm form{
+  margin-top:30vh;
+  width:30%;
+  height:15em;
+  font-size: 20px;
+  padding-top:100px;
+}
+
+.confirm button,.winnersList button{
+  border: 0;
+  border-radius: 5px;
+  margin-top: 5%;
+  height:30px;
+  width:50px;
+  margin:20px 30px;
+  background-color: rgb(13, 138, 25);
+}
+
+.confirm #yes,.winnersList button{
+  background-color: rgb(138, 13, 13);
+}
+
+.confirm button:hover,.winnersList button:hover{
+  box-shadow: 2px 3px rgb(26, 27, 28);
+  cursor: pointer;
+}
+
+.Profile #userImg{
+  margin:-10% 0 .5% 0;
+  width:18%;
+  border-radius: 50%;
+  box-shadow:0 0 20px 10px #496ba4;
+
+}
+.Profile #name{
+  font-size: 2rem;
+  margin:.5% 0 .8% 0;
+}
+.Profile #caption{
+  margin-top: .3%;
+}
+.Profile .detail-section{
+  margin-top:5%;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.Profile .detail-section #label{
+  font-size: 1rem;
+  color:rgb(3, 3, 3);
+  margin-bottom: 2%;
+}
+.Profile .detail-section #data{
+  font-size: 1.5rem;
+  margin-top: .2%;
+}
+.Profile .rank-section{
+  margin:5% 0 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.Profile .rank-section #label{
+  font-size: 1.5rem;
+  color:rgb(3, 3, 3);
+}
+.Profile .rank-section #data{
+  font-size: 3rem;
+  margin-top:.9%;
+}
+
+.Profile #social{
+  height:10px;
+  width:10px;
+  cursor: pointer;
+  box-shadow: 0;
+}
+
+.flipBtn{
+  text-align: center;
+}
+.flipBtn img{
+  margin:auto;
+  margin-top:10px;
+  width:50px;
+  height:50px;
+  cursor: pointer;
+}
+
+.Options{
+  background: linear-gradient(to right, rgba(190, 74, 74, 0.9),rgb(31, 57, 110));
+  width:40%;
+  margin:0 auto;
+  display: grid;
+  grid-template-columns: 1fr; 
+  padding:3%;
+  box-shadow:10px 50px 100px rgb(37, 36, 36);
+}
+.Options button{
+  width:30%;
+  height:30%;
+  border:0;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.Options img{
+  width:70px;
+  height:70px;
+  margin:30px auto 0;
+  transition: transform 0.25s ease-in-out;
+}
+
+.Options img:hover{
+  cursor: pointer;
+  transform: scale(1.25);
+}
+
+.Options h3{
+  margin:0 auto;
+}
+
+
+/*================================= Contest Page ================================*/
+
+.contest{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/contestBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.contest{
+  text-align: center;
+}
+.contest .status{
+  width:15%;
+  height:6%;
+}
+
+.contest .previous{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  column-gap: 40px;
+  width:60%;
+  margin:0 auto;
+}
+
+.contest .upcoming{
+  padding-bottom: 50px;
+}
+
+.contest .btn1,.btn2{
+  width:30px;
+  height:20px;
+  margin-top:-20px;
+  transition: transform 0.25s ease-in-out;
+}
+.contest .btn1:hover,.btn2:hover{
+  transform: scale(1.25);
+  cursor: pointer;
+}
+.contest .btn2{
+  margin-left:20px;
+}
+.contest .btn1{
+  margin-right:20px;
+}
+
+.contest #specs{
+  width:200px;
+  height:200px;
+}
+.contest input{
+  font-size: 15px;
+  width:20px;
+  color:black;
+  text-align: center;
+}
+
+/*============================================ Contest Card ============================*/
+
+.contestCard{
+  width:180px;
+  height:150px;
+  margin:50px auto;
+  text-align: center;
+  padding:2%;
+  line-height: 1.5;
+  box-shadow:10px 15px 30px rgb(37, 36, 36);
+  background:        
+  linear-gradient(
+    rgba(131, 51, 51, 0.7), 
+    rgba(48, 76, 132, 0.7)
+  ),url("./images/redBG.jpg");
+  transition: transform 0.25s ease-in-out;
+}
+.contestCard:hover{
+  transform: scale(1.15);
+  box-shadow:10px 20px 30px rgb(58, 115, 230);
+}
+
+/*================ Contest Detail =======================*/
+
+.contestDetail{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/blueBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.contestDetail #timer{
+  background-color: orange;
+  padding:5px;
+  font-size: 20px;
+}
+.contestDetail #reg{
+  color: rgb(164, 255, 174);
+  font-size: 20px;
+  width:10%;
+}
+
+.contestDetail #heading{
+  text-decoration: underline;
+  font-size: 50px;
+}
+.contestDetail .details{
+  text-align: left;
+  margin:3% 0 0 5%; 
+}
+.contestDetail .details div{
+  margin:20px 0;
+}
+.contestDetail #sub-head{
+  font-size:25px;
+  padding: 5px;
+  position: relative;
+}
+.contestDetail p,li{
   font-size:20px;
-  margin:15px 60px 0 0;
+  margin-top:5px;
 }
+
+.contestDetail #sub-head::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/redBG.jpg") center center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  opacity: .7;
+  width:90%;
+}
+
+.contestDetail button{
+  width:100px;
+  height:30px;
+  border:0; 
+  font-size: 15px;
+  font-weight:bold;
+  border-radius: 5px;
+  background-color: orange;
+}
+.contestDetail button:hover{
+  cursor: pointer;
+  box-shadow: 3px 3px 3px black;
+}
+
+/*=================================== Contest Page ===============================*/
+
+.ContestPage{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/contestBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.ContestPage{
+  margin:auto;
+}
+
+.ContestPage #timer{
+  margin-top:20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.ContestPage .question-section{
+  margin-top:25vh;
+  padding:50px 100px 100px 100px;
+  box-shadow:10px 20px 50px rgb(37, 36, 36);
+  background: 
+  linear-gradient(
+    rgba(131, 51, 51, 0.7), 
+    rgba(48, 76, 132, 0.7)
+  ),url("./images/redBG.jpg"); 
+  width:100%;
+  line-height: 1.5;
+}
+
+.ContestPage .question-section #question{
+  font-size:30px;
+  margin-bottom:20px;
+}
+.ContestPage .question-section label{
+  padding-top:10px;
+  font-size:20px
+}
+.ContestPage .saving-section{
+  text-align: center;
+}
+
+/* =================================== Thanks Page =================================*/
+
+.thanksPage{
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/contestBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+#thanks{
+  width:40%;
+  margin:100px auto;
+  text-align: center;
+}
+#thanks #certi{
+  width:100px;
+  height:100px;
+}
+
+
+/* ================================================ Community Page ============================*/
+.community{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/connectBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.community{
+  text-align: center;
+}
+
+.community .ranks-section{
+  width:80%;
+  margin:40px auto 0;
+}
+
+.community .switch-section #rankBtn,#postBtn{
+  border:0;
+  width:80px;
+  height:30px;
+  border-radius: 5px 0 0 5px;
+  box-shadow:0 0 2px 2px black ;
+  background-color: #4D77FF;
+  transition: transform 0.25s ease-in-out;
+  color:black;
+  font-size:20px;
+}
+.community .switch-section #postBtn{
+  border-radius:0 5px 5px 0; 
+  background-color: #e26737; 
+}
+
+.community .switch-section #postBtn:hover,#rankBtn:hover{
+  transform: scale(1.15);
+}
+
+.community .btnControl{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  width:10%;
+  color:black;
+}
+.community .btnControl input{
+  color:black;
+  text-align: center;
+  font-size:20px;
+  width:20px;
+}
+
+.postHeading{
+  margin-top:2rem;
+  width:10rem;
+  height:3rem;
+}
+
+.post-section .filter-section{
+  width:70%;
+  margin:20px auto 0;
+  text-align: right;
+}
+.post-section .filter-section input{
+  border:0;
+  width: 10%;
+  height:20px;
+  border-radius: 10%;
+  margin-left:10px;
+  color:black;
+}
+.filter-section button{
+  border:0;
+  width:5em;
+  height:2em;
+  background-color: rgb(13, 138, 25);;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.community .post-section .sec2{
+  display: flex;
+  justify-content: space-between;
+  width:70%;
+  margin:0 auto;
+  align-items: center;
+}
+
+.ranks-section .btnControl{
+  width:10%;
+  margin:0 auto;
+  margin-top:5%;
+}
+.post-section .btnControl img,.ranks-section .btnControl img{
+  width:30px;
+  height:30px;
+  cursor: pointer;
+}
+
+.community .lastSection{
+  width:20%;
+}
+.community .lastSection button{
+  border:0;
+  font-size: 20px;
+  width:100%;
+  border-radius: 10%;
+  background-color: rgb(13, 138, 25);
+  cursor: pointer;
+}
+.community .lastSection button:hover,.filter-section button:hover{
+  box-shadow:0 1px 2px black;
+}
+.lastSection input{
+  border:0;
+  border-radius: 10%;
+}
+/*============================= Rank Page ===================*/
+
+.rank{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+}
+
+.rank-heading{
+  width:17rem;
+  height:4rem;
+}
+.rank img{
+  width:80px;
+  height:80px;
+  border-radius: 50%;
+}
+
+.rank .rank-sec1{
+  margin-top:30px;
+}
+.rank .rank-sec1 h3{
+  font-size:25px;
+}
+
+.rank .rank-btn{
+  background: none;
+  border:0;
+  cursor: pointer;
+  font-size:20px;
+}
+
+.rank .rank-btn:hover{
+  color:rgb(216, 63, 63);
+}
+
+
+/*================================== Post Page ==========================*/
+
+
+
+.post{
+  display: grid;
+  grid-template-columns:1fr;
+  width:70%;
+  margin:10px auto;
+}
+.postCard{
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  height: 80%;
+}
+.postCard img{
+  border-radius: 50%;
+  width:40px;
+  height:40px;
+  margin-top:5px;
+  cursor: pointer;
+}
+.postCard h3{
+  font-size: 25px;
+  padding-top:15px;
+  color:black;
+  cursor: pointer;
+}
+.postCard button{
+  border:0;
+  width:70px;
+  height: 40px;
+  font-size: 20px;
+  background: none;
+  cursor: pointer;
+  padding-top:15px;
+  color:black;
+}
+.post .postCard:nth-child(even){
+  background-color: #bacddb;
+}
+.post .postCard:nth-child(odd){
+  background-color: #808daa;
+}
+
+/*======================================= Profile Edit ====================================*/
+
+.ProEditPage{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/blueBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.ProfileEdit{
+  text-align: center;
+  background: linear-gradient(to right, rgba(190, 74, 74, 0.9),rgb(31, 57, 110));
+  width:40%;
+  margin:15vh auto 0;
+  padding:2% 5%;
+  box-shadow:10px 50px 100px rgb(37, 36, 36);
+}
+
+.ProfileEdit #input-section{
+  margin-top:50px;
+}
+
+.ProfileEdit select{
+  height:30px;
+  background-color: rgb(13, 138, 25);
+  border:0;
+}
+
+.ProfileEdit button:hover{
+  box-shadow: 2px 3px rgb(26, 27, 28);
+  cursor: pointer;
+}
+
+.ProfileEdit #file{
+  all:unset;
+  width:100px;
+}
+
+/* =========================  Create Post Form ========================*/
+
+.create-section{
+  width:50%;
+  height:80%;
+  margin:10vh auto;
+  text-align: center;
+  padding:2%;
+  line-height: 1.5;
+  box-shadow:10px 50px 80px rgb(37, 36, 36);
+  background:        
+  linear-gradient(
+    rgba(131, 51, 51, 0.7), 
+    rgba(48, 76, 132, 0.7)
+  ),url("./images/redBG.jpg");
+
+}
+
+.create-section label{
+  font-size:20px;
+  text-align: left;
+  padding-top:20px;
+}
+.create-section input{
+  width:100%;
+  height:30%;
+  background-color: rgb(226, 224, 224);
+  border:0;   
+  border-radius: 5px;
+  color:black;
+}
+.create-section textarea{
+  width:100%;
+  height:50%;
+  color:black;
+  border-radius: 5px;
+  resize: none;
+}
+.create-section #post{
+  height:300px;
+}
+.create-section input::placeholder,textarea::placeholder{
+  color:black;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.create-section #submit{
+  width:100px;
+  height:30px;
+  margin-top:30px;
+  border:0;
+  border-radius:10px;
+  background-color: rgb(13, 138, 25);
+  font-size:20px;
+}
+.create-section #submit:hover{
+  cursor: pointer;
+  box-shadow: 2px 3px rgb(26, 27, 28);
+}
+
+.create-section #exit{
+  width:30px;
+  height:30px;
+  background: none;
+  font-size:22px;
+  color:yellow;
+  cursor: pointer;
+  transition: transform 0.25 ease-in-out;
+  border-radius: 50%;
+}
+.create-section #exit:hover{
+  transform: scale(1.25);
+}
+
+/* ======================== Post Detail Page ===========================*/
+
+.postDetailPage{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/blueBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.postDetailPage .post{
+  width:80%;
+  padding:50px 0 100px 0;
+  text-align: left;
+}
+.postDetailPage .header{
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+.postDetailPage #user{
+  padding:10px 0 0 10px;
+}
+.postDetailPage .header h2{
+  font-size:30px;
+}
+.postDetailPage .header div{
+  display: flex;
+}
+.postDetailPage #userImg{
+  border-radius: 50%;
+  margin-top:-20px;
+  box-shadow:0 0 20px 10px #3876e1;
+  width:80px;
+  height:80px;
+}
+
+.postDetailPage .body{
+  margin-top:2%;
+  background: url("./images/redBG.png") center center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:40vh;
+  padding:2%;
+  font-size:20px;
+}
+
+.postDetailPage #userImg:hover,button:hover{
+  cursor: pointer;
+}
+
+.postDetailPage .post #likeBtn{
+  border:0;
+  background:none;
+  width:50px;
+  font-size:18px;
+}
+.commentSection .comment{
+  background-color: #8d9ea9;
+}
+.commentSection .commment-heading{
+  margin-top:30px;
+}
+.commentSection .userImg{
+  border-radius: 50%;
+  box-shadow:0 0 10px 2px #e13838;
+  width:40px;
+  height:40px;
+}
+.commentSection .userImg:hover{
+  cursor: pointer;
+}
+.comment .replyBox{
+  background-color: #647088;
+}
+.comment .userDetail{
+  display: flex;
+  gap:20px;
+}
+.comment p{
+  font-size:18px;
+  padding: 5px 0 0 10px;
+}
+.comment,.replyBox{
+  padding:2%;
+}
+.replyBox{
+  margin-top:20px;
+}
+.comment .commentOptions{
+  padding:5px auto;
+}
+.commentForm{
+  margin-top:20px;
+}
+.post .delete{
+  border:0;
+  background-color: rgb(138, 38, 13);
+  width:50px;
+  height:25px;
+  border-radius: 10px;
+}
+.comment .replyBtn{
+  background: none;
+  border:0;
+  padding-left:20px;
+  color:rgb(33, 87, 204); 
+}
+.commentSection textarea{
+  resize: none;
+  color:black;
+  width:50%;
+  height:70px;
+  border:0;
+}
+.commentForm button{
+  width:80px;
+  height:25px;
+  border:0;
+  border-radius:10px;
+  background-color: rgb(13, 138, 25);
+  font-size:15px;
+}
+.commentForm button:hover{
+  box-shadow: 0 2px 2px black;
+}
+.postDetailPage .post #replyBtn{
+  color:black;
+  border:0;
+  background:none;
+  font-size:30px;
+  width:70px;
+}
+
+/* ============================ Payment =====================*/
+
+.failedPay,.successPay,.winnersList{
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("./images/blueBG.jpg") center center;
+  background-repeat:repeat;
+  background-size:cover;
+  box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+  text-align: center;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+.failedPay #info,.successPay #info{
+  width:40%;
+  height:4rem;
+  margin:0 auto;
+}
+.failedPay img,.successPay img{
+  height:100px;
+  width:100px;
+}
+
+/* ======================== Winners Card ===================*/
+.winnersList .winnerHeading{
+  width:150px;height:40px;
+  margin-top:10px;
+}
+.winnersList #userImg{
+  width:80px;
+  height:80px;
+  border-radius: 50%;
+}
+
+.winnersCard{
+  display: grid;
+  grid-template-columns: repeat(8,1fr);
+  margin-top:20px;
+  gap:20px;
+  width:80%;
+  margin:20px auto 0;
+}
+.winnersCard div{
+  padding-top:10px;
+}
+.winnersList .btnControl{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  width:10%;
+  color:black;
+  margin:30px auto;
+}
+.winnersList .btnControl input{
+  color:black;
+  font-size:20px;
+  width:20px;
+  text-align: center;
+  border:0;
+}
+.winnersList .btnControl input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.winnersList .btnControl img{
+  width:30px;
+  height:30px;
+  cursor: pointer;
+}
+.winnersList button{
+  margin:0 auto;
+}
+.winnersCard h2:hover{
+  cursor: pointer;
+  color:rgb(216, 63, 63);
+}
+
+/*=====================================================================*/
+/*======================= Media query ==================================*/
+/*=====================================================================*/
+@media (max-width:900px){
+  
+  /*========================== home ======================*/
+
+  .home{
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("./images/potrait.jpg") center center;
+    background-repeat:repeat;
+    background-size:cover;
+    box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+    text-align: center;
+    overflow-y: scroll;
+    padding-bottom: 100px;
+  }
+
+  .home .choose-section{
+    margin:20vh 0 0 5%;
+  }
+  .home #first-img,#second-img{
+    width: 100%;
+    height: 100%;
+  }
+
+  /*======================== Navbar ====================*/
+  .navbar #nav-img1{
+    height:80px;
+    width: 60px;
+  }
+  
+  .navbar #nav-img2{
+    height:35px;
+    width: 35px;
+    cursor: pointer;
+  }
+
+  /*====================== Register =====================*/
+  .Register,.Login,.ProfileEdit{
+    width:60%;
+    padding:5%;
+    margin-top:2vh;
+  }
+
+  .Register #input-section,.ProfileEdit #input-section{
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  .Register .img1{
+    width:90%;
+    height:90%;
+    margin-bottom: 5%;
+  }
+  
+  .Register .img2{
+    width:50%;
+    height:50%;
+    margin-top: 5%;
+  }
+
+  /*================= Profile =======================*/
+  .Profile{
+    width:70%;
+  }
+  .profileCols{
+    margin-top:10vh;
+  }
+  .Profile img{
+    margin-top:-15%;
+    width:30%;
+  }
+  .Profile #name{
+    font-size: 1.5rem;
+  }
+  .Profile #caption{
+    font-size: 1rem;
+  }
+  .Profile .detail-section #label{
+    font-size: .8rem;
+  }
+  .Profile .detail-section #data{
+    font-size: 1rem;
+  }
+  .Profile .rank-section #label{
+    font-size: .8rem;
+  }
+  .Profile .rank-section #data{
+    font-size: 2rem;
+  }
+
+  .flipBtn{
+    margin-top:20px;
+  }
+
+  .flipBtn img{ 
+    width:40px;
+    height:40px;
+  }
+  .confirm form{
+    width:50%;
+  }
+
+  /*========================== Contest Page ==============*/
+
+  .contest{
+    font-size:12px;
+  }
+  .contest .status{
+    width:50%;
+    height:4%;
+    margin-bottom:15px;
+  }
+  .contest .previous{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  /* ======================= Contest Card ===================*/
+  .contestCard{
+    width:100px;
+    height:100px;
+    margin-top:5px;
+  }
+
+  /*========================= Contest page ================*/
+  .ContestPage #timer{
+    margin-top:20px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .ContestPage .question-section{
+    width:80%;
+    line-height: 1.5;
+    margin:30vh auto 0 auto;
+    padding:40px
+  }
+  
+  .ContestPage .question-section #question{
+    font-size:20px;
+    margin-bottom:10px;
+  }
+  .ContestPage .question-section label{
+    padding-top:5px;
+    font-size:15px
+  }
+
+  /*=================== Profile Edit Page ========================*/  
+  .ProfileEdit {
+    margin-top:10vh !important;
+  }
+
+  /* ====================== Community Page =========================*/
+  .community .switch-section{
+    margin-top:6vh;
+  }
+
+  .community .switch-section #postBtn{
+    border:0;
+  }
+  /* ================= Rank Card =======================*/
+  
+  .rankPage .rank-heading{
+    margin-top:4vh;
+    width: 150px;
+    height:40px;
+  }
+  .rank img{
+    width:40px;
+    height:40px;
+  }
+  .rank{
+    grid-template-columns: repeat(4,1fr);
+  }
+  .rank .rank-btn{
+    font-size:15px;
+  } 
+  .rank-heading{
+    width:12rem;
+    height:3rem;
+  }
+
+  /*=========================== Community Page =====================*/
+  
+  .post-section .filter-section{
+    width:70%;
+    margin:30px auto 30px;
+  }
+
+  .post-section .btnControl img,.ranks-section .btnControl img{
+    width:20px;
+    height:20px;
+    padding:3px;
+  }
+  .post-section .btnControl h2{
+    font-size:15px;
+  }
+  .post-section .sec2{
+    padding-top:2vh;
+  }
+
+  .postCard h3{
+    font-size:15px;
+  }
+  .postCard button{
+    font-size:15px;
+  }
+  .postHeading{
+    width:80px;
+    height:30px;
+    margin-top:6vh;
+  }
+
+  .community .lastSection button{
+    font-size: 15px;
+    padding:10%; 
+  }
+  .community .lastSection button:hover{
+    box-shadow:0 1px 2px black;
+  }
+  .lastSection input{
+    width:20px;
+    border:0;
+    border-radius: 10%;
+  }
+  .community .btnControl input{
+    font-size:15px;
+    height: 20px;
+  }
+  .community .btnControl input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /*========================== Create Form ====================*/
+  .create-section{
+    width:70%;
+    height:70%;
+  }
+
+  /* =============================== Post Detail Page ============*/
+  .postDetailPage .header h2{
+    font-size:25px;
+    margin-left:20px;
+  }
+
+  /* =========================== Winners Card =================*/
+  .winnersCard{
+    grid-template-columns: repeat(4,1fr);
+  }
+  .winnersList #userImg{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+  }
+  .winnersCard h2{
+    font-size:20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---------------------------------------------*/
 
 /* Contest Page */
-
+/* 
 .contest{
   display: flex;
   justify-content: center;
@@ -107,73 +1524,73 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
-  /* height: 100vh; */
-}
+  height: 100vh;
+} */
 
 
 /* ContestCard */
 
-.ContestCard{
+/* .ContestCard{
   position:relative;
   width:250px;
   height:120px;
   font-family: 'Poppins', sans-serif;
   color:white;
   margin:5px auto 50px auto;
-}
+} */
 
-.ContestCard img{
+/* .ContestCard img{
   width:60px;
   height:60px;
-}
+} */
 
-.frontCard,.backCard{
+/* .frontCard,.backCard{
   border-radius: 10px;
-}
+} */
 
 /* -----------------*/
 
 /* Main Headings of Contest Page */
 
-.status{
+/* .status{
   width:300px;
   height:150px;
-}
+} */
 
 /* ----------------- */
 
 
 /* Front card css */
-
+/* 
 .frontCard img{
   width:50px;
   height:50px;
-}
+} */
 
-.frontCard div{
+/* .frontCard div{
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
+} */
 
 /* ----------------- */
 
 
 /* for flip effect */ 
 
-.mainCard{
+/* .mainCard{
   position:absolute;
   width:100%;
   height:100%;
   transform-style: preserve-3d;
   transition: transform 0.4s ease-in-out;
   text-align: center;
-}
+} */
 
-.mainCard:hover{
+/* .mainCard:hover{
   transform: rotateY(180deg);
-}
+} */
 
-.frontCard{
+/* .frontCard{
   position:absolute;
   width:100%;
   height:100%;
@@ -184,9 +1601,9 @@ body{
   font-size:15px;
   background-image: url("./images/texture.jpg");
   background-repeat: no-repeat;
-}
+} */
 
-.backCard{
+/* .backCard{
   position:absolute;
   width:100%;
   height:100%;
@@ -194,25 +1611,25 @@ body{
   background-color: #5c5858;
   transform: rotateY(180deg);
   box-shadow: -10px 10px rgba(244, 245, 245, 0.5);
-}
+} */
 
 /* ---------------------------------------*/
 
 /* Cards Columns */
 
-.ongoing,.upcoming,.previous{
+/* .ongoing,.upcoming,.previous{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   column-gap: 50px;
   width:60%;
-}
+} */
 
 /* ----------------------- */
 
 
 /* background for Contest Page */
-
-/* .contest::before{
+/* 
+.contest::before{
   content: "";
   position: absolute;
   z-index: -1;
@@ -231,16 +1648,16 @@ body{
 
 /* Profile section */
 
-.Profile{
+/* .Profile{
   text-align: center;
-}
+} */
 
 
 /* ---------------------------------- */
 
 
 /* media query */
-
+/* 
 @media (max-width:900px){
   .navbar #nav-img1{
     height:80px;
@@ -303,4 +1720,4 @@ body{
   .ongoing,.upcoming,.previous{
     grid-template-columns: repeat(2,1fr);
   }
-}
+} */

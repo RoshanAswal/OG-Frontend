@@ -3,7 +3,11 @@ import { useLocation,useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
+import { WinnerCard } from "../components/WinnerCard";
 import moment from "moment";
+import right from "../images/right-chevron.png";
+import left from "../images/left-chevron.png";
+import winner from "../images/winners.png";
 
 export const ContestDetail=(props)=>{
 
@@ -11,7 +15,8 @@ export const ContestDetail=(props)=>{
     const navigate=useNavigate();
     const data=location.state;
 
-    const limit=59;
+    const limit=10;
+    const capacity=24;
 
     const [btn,setbtn]=useState("Register");
     const [cookies,_]=useCookies(["access_token"]);
@@ -19,20 +24,26 @@ export const ContestDetail=(props)=>{
     const [contestDetail,setContestDetail]=useState();
     const [usersRegistered,setUsersRegistered]=useState([]);
     const [timer,setTimer]=useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    const [winners,setWinners]=useState([]);
+    const [showWinners,setShowWinners]=useState(false);
+    const [page,setPage]=useState(0);
+    const [totalPage,setTotalPage]=useState(0);
+
 
     const userId=window.localStorage.getItem("userId");
 
     useEffect(()=>{
         const fetchContestDetail=async ()=>{
             try{
-                const response=(data.type==="done")?(await axios.get(`http://localhost:3000/contest/${data.contest_id}`)):
-                (await axios.get(`http://localhost:3000/contest/upcoming/${data.contest_id}`));
+                const response=(data.type==="done")?(await axios.get(`http://localhost:3001/contest/${data.contest_id}`)):
+                (await axios.get(`http://localhost:3001/contest/upcoming/${data.contest_id}`));
                 if(response.data.type==="done" || response.data.usersRegistered.includes(userId)){
                     setbtn("Enter");
                 }else{
                     setbtn("Register");
                 }
                 setContestDetail(response.data);
+ 
                 if(data.type!=="done"){
                     setUsersRegistered(response.data.usersRegistered);
                 }
@@ -45,21 +56,38 @@ export const ContestDetail=(props)=>{
     },[]);
 
     useEffect(()=>{
+        if(contestDetail)
+            setTotalPage(Math.ceil(contestDetail.winners?.length/capacity));
+    },[contestDetail]);
+
+    useEffect(()=>{
         if(loading===false && contestDetail.type==="upcoming"){
             setTimeout(()=>{
                 setTimer(moment().format('ddd hh:mm:ss aa'));
             },1000);
         }
     });
+    // useEffect(()=>{
+    //     const fun=async ()=>{
+    //         let day=timer.substring(0,3);
+    //         let hour=timer.substring(4,6);
+    //         let period=timer.substring(13,15);
+    //         let min=timer.substring(7,9);
+    
+    //         if(loading===false && contestDetail.type==="upcoming"
+    //             && day==="Wed" && hour==="05" && period==="pm"){ // Contest starting time
+    //                 await axios.put(`http://localhost:3001/${contestDetail.contest_no}/SetRanking`);
+    //         }
+    //     }
+    //     fun();
+    // });
+
 
     const handleClick=async (req,res)=>{
         if(userId){
             if(contestDetail.type==="upcoming" && btn==="Register"){
                 try{
-                    const response=await axios.put(`http://localhost:3000/contest/${data.contest_id}`
-                    ,{userId:userId}
-                    ,{headers:{authorization:cookies.access_token}}); 
-                    setbtn("Enter");
+                    trial();
                 }catch(err){
                     navigate("/register");
                 }
@@ -89,7 +117,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Fri" && hour==="07" && period==="pm"){
+            && day==="Wed" && hour==="04" && period==="pm"){ // Contest starting time
             return true;
         }else return false;
     }
@@ -105,6 +133,40 @@ export const ContestDetail=(props)=>{
             }
         }
         return true;
+    }               
+
+    const trial=async ()=>{
+        try{
+            const key=await axios.get("http://localhost:3001/getPayKey");
+
+            const response=await axios.put("http://localhost:3001/payments",{amt:500,headers:cookies.access_token});
+            
+            const options = {
+                key: key.data, // Enter the Key ID generated from the Dashboard
+                amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                currency: "INR",
+                name: "OnlyGeeks", //your business name
+                description: "Test Transaction",
+                image: "https://drive.google.com/file/d/1h1OTFsll9iMsPYjLWdXFSUjxzneOo-Ae/view?usp=sharing",
+                order_id: response.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                callback_url: `http://localhost:3001/payments/verification?contest_id=${data.contest_id}&user_id=${userId}`,
+                prefill: {
+                    name: "Gaurav Kumar", //your customer's name
+                    email: "gaurav.kumar@example.com",
+                    contact: "9000090000"
+                },
+                notes: {
+                    "address": "Razorpay Corporate Office"
+                },
+                theme: {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new window.Razorpay(options);
+            rzp1.open();
+        }catch(err){
+            console.log(err);
+        }
     }
 
     if(loading){
@@ -112,27 +174,67 @@ export const ContestDetail=(props)=>{
             <p>Loading...</p>
         )
     }
+    if(showWinners){
+        return (
+            <div className="winnersList">
+                <Navbar />
+                <img className="winnerHeading" src={winner}></img>
+                <div>
+                    {
+                        contestDetail.type!=="done" || contestDetail.winners.length==0
+                        ?<h1>Not available</h1>
+                        :<WinnerCard ind={page*capacity} users={contestDetail.winners.slice(page*capacity,(page*capacity)+capacity)} />
+                    }
+                </div>
+                <div className="btnControl">
+                    <div>
+                        <img onClick={()=>setPage(page>0?page-1:page)} 
+                        src={left}
+                        />
+                    </div>
+                    
+                    <div>
+                        <input type="number" name="pageNo" value={page} onChange={(e)=>{setPage(e.target.value)}}/>
+                    </div>
+
+                    <div>
+                        <img                       
+                            onClick={()=>setPage(page<totalPage-1?page+1:page)}
+                            src={right}
+                        />                    
+                    </div>
+                </div>
+                <button onClick={()=>setShowWinners(false)}>Back</button>
+            </div>
+
+        )
+    }
     return (
         <div className="contestDetail">
             <Navbar />
-            <strong>{
-                showTimer()?timer.substring(7,12):"" 
-                // timer
-            }</strong>
-            <div>
-                <h1>Contest {contestDetail.contest_no}</h1>
+            {
+                contestDetail.type==="done"?"":
+                <strong id="timer">{
+                    showTimer()?timer.substring(7,12):
+                    contestDetail.type==="done"?"ended":"Starts soon" 
+                    // timer
+                }</strong>
+            }
+
+            <div >
+                <h1 id="heading">Contest {contestDetail.contest_no}</h1>
             </div>
-            <div>
+            <div className="details">
                 <div>
-                    <h2>Schedule</h2>
+                    <h2 id="sub-head">Schedule</h2>
                     <p>{contestDetail.schedule}</p>
                 </div>
                 <div>
-                    <h2>Sponser</h2>
+                    <h2 id="sub-head">Sponser</h2>
                     <p>{contestDetail.sponser}</p>
                 </div>
                 <div>
-                    <h2>Prizes</h2>
+                    <h2 id="sub-head">Prizes</h2>
                     <ul>
                         {
                         (contestDetail.prize).map((item,i)=>(
@@ -141,25 +243,51 @@ export const ContestDetail=(props)=>{
                         }
                     </ul>
                 </div>
-                <div>
-                    <h2>Rules :</h2>
-                    <ol>
+                {
+                    contestDetail.type==="done"?"":
+                    <div>
+                        <h2 id="sub-head">Rules :</h2>
+                        <ol>
+                            {
+                                (contestDetail.rules).map((item,i)=>(
+                                    <li key={i}>{item}</li>
+                                ))
+                            }
+                        </ol>
+                    </div>
+
+                }
+                {
+                    contestDetail.type==="done"
+                    ?<div>
+                        <h2 id="sub-head">Winners : </h2>
                         {
-                            (contestDetail.rules).map((item,i)=>(
-                                <li key={i}>{item}</li>
-                            ))
+                            contestDetail.type!=="done" || contestDetail.winners.length==0
+                            ?<h3>Not available yet</h3>
+                            :<div>
+                                {/* {contestDetail.winners.splice(0,2).map((item,index)=>{
+                                    <WinnerCard position={index} arr={item}/>
+                                })} */}
+                                
+                                <button onClick={()=>setShowWinners(true)}>See full list</button>
+                            </div>
+
                         }
-                    </ol>
-                </div>
+
+                    </div>
+                    :""
+                }
+
                 <div>
                     {
                         showButton()?(
                             <button onClick={handleClick}>
                                 {btn}
                             </button>
-                        ):"Registered"
+                        ):<h3 id="reg">Registered</h3>
                     }
                 </div>
+                {/* <button onClick={()=>trial()}>trial Register</button> */}
             </div>
         </div>
     )

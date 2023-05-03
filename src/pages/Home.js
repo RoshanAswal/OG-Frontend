@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
-import logo from "../images/logo.png";
+import connect from '../images/connect.png';
+import compete from '../images/compete.png';
 
 export const Home=()=>{
     const navigate=useNavigate();       
@@ -19,8 +20,8 @@ export const Home=()=>{
         <div className="home">
             <Navbar />
             <div className='choose-section'>
-                <img id="second-img" src={logo} alt="" onClick={(event)=>handleClick(event,"img2")}/>
-                <img id="first-img" src={logo} alt="" onClick={(event)=>handleClick(event,"img1")}/>
+                <img id="second-img" src={connect} alt="" onClick={(event)=>handleClick(event,"img2")}/>
+                <img id="first-img" src={compete} alt="" onClick={(event)=>handleClick(event,"img1")}/>
             </div>
         </div>
     )

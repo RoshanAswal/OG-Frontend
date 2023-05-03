@@ -3,6 +3,7 @@ import { useLocation, useNavigate,Prompt } from 'react-router-dom';
 import { Question } from '../components/Question';
 import axios from 'axios';
 import moment from 'moment';
+import {useCookies} from 'react-cookie';
 
 export const ContestPage=()=>{
     const location=useLocation();
@@ -11,24 +12,30 @@ export const ContestPage=()=>{
     const userId=window.localStorage.getItem("userId");
 
     let selected=null;
+    const [cookies,_]=useCookies(["access_token"]);
     const [questions,setQuestions]=useState([]);
     const [ind,setInd]=useState(0);
     const [time,setTime]=useState(moment().format('ddd hh:mm:ss aa'));
+    const [saving,setSaving]=useState(false);
 
     const data=location.state;
     useEffect(()=>{
         const fetchQuestions=async ()=>{
-            const response= await axios.get(`http://localhost:3000/questionForUsers/${data.contest_no}`);
-            setQuestions(response.data.questions);
-            
-            let storedInd=window.localStorage.getItem("a11d2g3");
-            if(storedInd===null){
-                storedInd=(((ind*32)+36)-8)*2;
-                window.localStorage.setItem("a11d2g3",storedInd);
+            try{
+                const response= await axios.get(`http://localhost:3001/questionForUsers/${data.contest_no}`);
+                setQuestions(response.data.questions);
+                
+                let storedInd=window.localStorage.getItem("a11d2g3");
+                if(storedInd===null){
+                    storedInd=(((ind*32)+36)-8)*2;
+                    window.localStorage.setItem("a11d2g3",storedInd);
+                }
+                // storedInd=window.localStorage.getItem("a11d2g3");
+                storedInd=(((storedInd/2)+8)-36)/32;
+                setInd(storedInd);
+            }catch(err){
+                console.log(err);
             }
-            storedInd=window.localStorage.getItem("a11d2g3");
-            storedInd=(((storedInd/2)+8)-36)/32;
-            setInd(storedInd);
         }
         fetchQuestions();
 
@@ -38,7 +45,7 @@ export const ContestPage=()=>{
         setTimeout(()=>{
             setTime(moment().format('ddd hh:mm:ss aa'));
         },1000);
-        if(time.substring(7,9)==="10"){
+        if(time.substring(7,9)==="40"){
             GotoThanksPage();
         }
     });
@@ -47,25 +54,37 @@ export const ContestPage=()=>{
         const min=time.substring(7,9);
         const sec=time.substring(10,12);
         const totalTime=(parseInt(min)*60)+parseInt(sec);
-        await axios.put(`http://localhost:3000/${data.contest_no}/setTime`,
-        {userId:userId,totalTime:totalTime}); 
-        window.localStorage.removeItem("a11d2g3"); 
-        navigate("/ThanksPage");
+        try{
+            await axios.put(`http://localhost:3001/${data.contest_no}/setTime`,
+            {userId:userId,totalTime:totalTime,headers:cookies.access_token}); 
+            window.localStorage.removeItem("a11d2g3"); 
+            navigate("/ThanksPage");
+        }catch(err){
+            console.log(err);
+        }
     }
 
     const handleClick=async (e)=>{
         e.preventDefault();
-
-        if(e.target.value===questions[ind].answer){
-            await axios.put(`http://localhost:3000/contest/${data.contest_no}/submission`,
-            {userId:userId});  
-        }
-        if(ind<(questions.length-1)){
-            const num=((((ind+1)*32)+36)-8)*2;
-            window.localStorage.setItem("a11d2g3",num);
-            setInd(ind+1);
-        }else{
-            GotoThanksPage();
+        setSaving(true);
+        const min=time.substring(7,9);
+        const sec=time.substring(10,12);
+        const totalTime=(parseInt(min)*60)+parseInt(sec);
+        try{
+            let correct=false;
+            if(e.target.value===questions[ind].answer)correct=true;
+            await axios.put(`http://localhost:3001/contest/${data.contest_no}/submission`,
+            {userId:userId,index:ind,totalTime,correct,headers:cookies.access_token});   
+            if(ind<(questions.length-1)){
+                const num=((((ind+1)*32)+36)-8)*2;
+                window.localStorage.setItem("a11d2g3",num);
+                setInd(ind+1);
+                setSaving(false);
+            }else{
+                GotoThanksPage();
+            }
+        }catch(err){
+            console.log(err);
         }
     }
 
@@ -77,35 +96,26 @@ export const ContestPage=()=>{
 
     return(
         <div className="ContestPage">
-            {/* <Prompt 
-                when={isPrompt}
-                message={()=>"Want to end it Geek?"}
-            /> */}
-            <div>
-                {time.substring(7,12)}
+            <div id='timer'>
+                <h2>{time.substring(7,12)}</h2>
             </div>
             <div className="question-section">
-                {/* <Question
-                    key={ind}
-                    question={questions[ind].question}
-                    options={questions[ind].options}
-                    answer={questions[ind].answer}
-                /> */}
-                <form>
-                    <label>{questions[ind].question}</label><br/>
-                    <input type="radio" id="q1a" name="q1" value="a" checked={selected==='a'} onChange={handleClick}></input>
-                    <label htmlFor="q1a">a. {questions[ind].options[0]}</label><br/>
-                    <input type="radio" id="q1b" name="q1" value="b" checked={selected==='b'} onChange={handleClick}></input>
-                    <label htmlFor="q1b">b. {questions[ind].options[1]}</label><br/>
-                    <input type="radio" id="q1c" name="q1" value="c" checked={selected==='c'} onChange={handleClick}></input>
-                    <label htmlFor="q1c">c. {questions[ind].options[2]}</label><br/>
-                    <input type="radio" id="q1d" name="q1" value="d" checked={selected==='d'} onChange={handleClick}></input>
-                    <label htmlFor="q1d">d. {questions[ind].options[3]}</label><br/>
-                </form>
+                    <form>
+                        <label id='question'>{questions[ind].question}</label><br/>
+                        <input type="radio" id="q1a" name="q1" value="a" checked={selected==='a'} onChange={handleClick}></input>
+                        <label htmlFor="q1a">a. {questions[ind].options[0]}</label><br/>
+                        <input type="radio" id="q1b" name="q1" value="b" checked={selected==='b'} onChange={handleClick}></input>
+                        <label htmlFor="q1b">b. {questions[ind].options[1]}</label><br/>
+                        <input type="radio" id="q1c" name="q1" value="c" checked={selected==='c'} onChange={handleClick}></input>
+                        <label htmlFor="q1c">c. {questions[ind].options[2]}</label><br/>
+                        <input type="radio" id="q1d" name="q1" value="d" checked={selected==='d'} onChange={handleClick}></input>
+                        <label htmlFor="q1d">d. {questions[ind].options[3]}</label><br/>
+                    </form>
             </div>
-            {/* <div className="submit-section">
-                <button onClick={GotoThanksPage}>Submit</button>
-            </div> */}
+
+            <div className="saving-section">
+                {saving?<h1>saving...</h1>:""}
+            </div>
         </div>
     )
 };
