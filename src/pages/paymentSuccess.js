@@ -13,4 +13,4 @@ export const Paymentsuccess=()=>{
             </div>
         </div>
     )
-}
+};

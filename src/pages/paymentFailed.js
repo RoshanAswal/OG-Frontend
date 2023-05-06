@@ -13,4 +13,4 @@ export const Paymentfailed=()=>{
             </div>
         </div>
     )
-}
+};
