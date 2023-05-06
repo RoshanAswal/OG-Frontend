@@ -12,7 +12,6 @@ import { ThanksPage } from './pages/ThanksPage';
 import { ProfileEdit } from './pages/ProfileEdit';
 // import { PaymentSuccess } from './pages/PaymentSuccess';
 import { PaymentFailed } from './pages/PaymentFailed';
-import {PaymentFailed} from './pages/PaymentFailed';
 import { Post } from './pages/Post';
 
 function App() {
