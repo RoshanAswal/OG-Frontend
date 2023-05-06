@@ -10,10 +10,9 @@ import {ContestDetail} from './pages/ContestDetail';
 import { ContestPage } from './pages/ContestPage';
 import { ThanksPage } from './pages/ThanksPage';
 import { ProfileEdit } from './pages/ProfileEdit';
-import {PaymentSuccess} from './pages/PaymentSuccess';
-import {PaymentFailed} from './pages/PaymentFailed';
 // import { PaymentSuccess } from './pages/PaymentSuccess';
-// import {PaymentFailed} from './pages/PaymentFailed';
+import { PaymentFailed } from './pages/PaymentFailed';
+import {PaymentFailed} from './pages/PaymentFailed';
 import { Post } from './pages/Post';
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
           <Route path='/profile/:userId' element={<Profile />}></Route>
           <Route path='/profile/edit' element={<ProfileEdit />}></Route>
           <Route path='/contest/:contest_no/Questions' element={<ContestPage />}></Route>
-          <Route path='/PaymentSuccess' element={<PaymentSuccess />}></Route>
+          {/* <Route path='/PaymentSuccess' element={<PaymentSuccess />}></Route> */}
           <Route path='/PaymentFailed' element={<PaymentFailed />}></Route>
           <Route path='/ThanksPage' element={<ThanksPage/>}></Route>
           <Route path='/post/:postId' target="_blank" element={<Post />}></Route>
