@@ -58,7 +58,7 @@ export const Register=()=>{
 
     const checkPassword=(e)=>{
         setpassword(e.target.value);
-        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if(regex.test(password))showInvalid(false);
         else showInvalid(true);
     }
