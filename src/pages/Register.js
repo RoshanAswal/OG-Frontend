@@ -37,7 +37,7 @@ export const Register=()=>{
             }else{
                 setShowError(false);
             }
-            const response=await axios.post("http://localhost:3001/auth/register",
+            const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
             {username,password,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;
             if(msg==="email"){
@@ -67,7 +67,7 @@ export const Register=()=>{
         e.preventDefault();
         // setOTP(1000+Math.floor(Math.random()*9999));
         try{
-            await axios.post("http://localhost:3001/auth/getOtp",{email,OTP,username});
+            await axios.post(`${process.env.REACT_APP_CONNECTION}auth/getOtp`,{email,OTP,username});
         }catch(err){
             console.log(err);
         }

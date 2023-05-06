@@ -21,8 +21,8 @@ export const Contest=()=>{
     
     useEffect(()=>{
         const fetchContest=async ()=>{
-            const response1=await axios.get("http://localhost:3001/contest");
-            const response2=await axios.get("http://localhost:3001/upcomingcontest");
+            const response1=await axios.get(`${process.env.REACT_APP_CONNECTION}contest`);
+            const response2=await axios.get(`${process.env.REACT_APP_CONNECTION}upcomingcontest`);
             
             setContest(response1.data);
             setUpContest(response2.data);

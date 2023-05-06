@@ -31,7 +31,7 @@ export const Profile=(props)=>{
         const fetch=async (req,res)=>{
             try{
                 if(data){
-                    const response=await axios.get(`http://localhost:3001/profile/${data?.userId}`,{headers:cookies.access_token});
+                    const response=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${data?.userId}`,{headers:cookies.access_token});
                     setUser(response.data);
                 }
             }catch(e){
@@ -54,7 +54,7 @@ export const Profile=(props)=>{
     const deleteAccount=async (e)=>{
         e.preventDefault();
         try{
-            await axios.put(`http://localhost:3001/profile/${data?.userId}/delete`,{headers:cookies.access_token});
+            await axios.put(`${process.env.REACT_APP_CONNECTION}profile/${data?.userId}/delete`,{headers:cookies.access_token});
             setDeleting(true);
             handleClick();
         }catch(err){

@@ -24,7 +24,7 @@ export const ProfileEdit=()=>{
     useEffect(()=>{
         const fetch=async (req,res)=>{
             try{
-                const response=await axios.get(`http://localhost:3001/profile/${userId}`,{headers:cookies.access_token});
+                const response=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`,{headers:cookies.access_token});
                 setcaption(response.data.caption);
                 setgender(response.data.gender);
                 setcountry(response.data.country);
@@ -44,7 +44,7 @@ export const ProfileEdit=()=>{
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try{
-            await axios.post(`http://localhost:3001/profile/${userId}/edit`,
+            await axios.post(`${process.env.REACT_APP_CONNECTION}profile/${userId}/edit`,
             {caption:caption,gender:gender,country:country,socialURL:socialURL,favAnime:favAnime,
                 favGame:favGame,favCharacter:favCharacter,img:img?img:null,headers:cookies.access_token}
             );

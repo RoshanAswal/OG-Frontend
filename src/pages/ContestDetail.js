@@ -26,7 +26,7 @@ export const ContestDetail=(props)=>{
     const [loading,setLoading]=useState(true);
     const [contestDetail,setContestDetail]=useState();
     const [usersRegistered,setUsersRegistered]=useState([]);
-    const [timer,setTimer]=useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    const [timer,setTimer]=useState('');
     const [winners,setWinners]=useState([]);
     const [showWinners,setShowWinners]=useState(false);
     const [page,setPage]=useState(0);
@@ -34,11 +34,24 @@ export const ContestDetail=(props)=>{
 
     const userId=window.localStorage.getItem("userId");
 
+    useEffect(() => {
+        const getCurrentTime=async ()=>{
+          const response = await axios.get(`${process.env.REACT_APP_CONNECTION}api/currentTime`);
+          setTimer(response.data);
+        }
+        if(loading===false && contestDetail.type==="upcoming"){
+            setTimeout(()=>{
+                getCurrentTime();
+            },1000);
+        }
+    });
+
+
     useEffect(()=>{
         const fetchContestDetail=async ()=>{
             try{
-                const response=(data.type==="done")?(await axios.get(`http://localhost:3001/contest/${data.contest_id}`)):
-                (await axios.get(`http://localhost:3001/contest/upcoming/${data.contest_id}`));
+                const response=(data.type==="done")?(await axios.get(`${process.env.REACT_APP_CONNECTION}contest/${data.contest_id}`)):
+                (await axios.get(`${process.env.REACT_APP_CONNECTION}contest/upcoming/${data.contest_id}`));
                 if(response.data.type==="done" || response.data.usersRegistered.includes(userId)){
                     setbtn("Enter");
                 }else{
@@ -62,13 +75,13 @@ export const ContestDetail=(props)=>{
             setTotalPage(Math.ceil(contestDetail.winners?.length/capacity));
     },[contestDetail]);
 
-    useEffect(()=>{
-        if(loading===false && contestDetail.type==="upcoming"){
-            setTimeout(()=>{
-                setTimer(moment().format('ddd hh:mm:ss aa'));
-            },1000);
-        }
-    });
+    // useEffect(()=>{
+        // if(loading===false && contestDetail.type==="upcoming"){
+        //     setTimeout(()=>{
+        //         setTimer(moment().format('ddd hh:mm:ss aa'));
+        //     },1000);
+        // }
+    // });
     // useEffect(()=>{
     //     const fun=async ()=>{
     //         let day=timer.substring(0,3);
@@ -89,7 +102,7 @@ export const ContestDetail=(props)=>{
         if(userId){
             if(contestDetail.type==="upcoming" && btn==="Register"){
                 try{
-                    const response=await axios.post(`http://localhost:3001/payments/verification`,
+                    const response=await axios.post(`${process.env.REACT_APP_CONNECTION}payments/verification`,
                     {contest_id:data.contest_id,user_id:userId,headers:cookies.access_token});
                     if(response.data==="success"){
                         navigate("/PaymentSuccess");
@@ -127,7 +140,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Sat" && hour==="12" && period==="pm"){ // Contest starting time
+            && day==="Sat" && hour==="01" && period==="pm"){ // Contest starting time
             return true;
         }else return false;
     }

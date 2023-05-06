@@ -55,7 +55,7 @@ export const Community = () => {
   useEffect(() => {
     const fetch = async (req, res) => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/ranking");
+        const response = await axios.get(`${process.env.REACT_APP_CONNECTION}auth/ranking`);
         setUsers(response.data);
         // if(users)
         //   setPage();
@@ -74,7 +74,7 @@ export const Community = () => {
   useEffect(() => {
     const fetch = async (req, res) => {
       try {
-        const response = await axios.get("http://localhost:3001/posts");
+        const response = await axios.get(`${process.env.REACT_APP_CONNECTION}posts`);
         if(filterAuthor==="" && filterTitle===""){
           setPosts(response.data.reverse());
           if(posts)setPostPage();
@@ -89,14 +89,14 @@ export const Community = () => {
   const filterPost=async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:3001/posts/filtered/${filterAuthor}+/${filterTitle}+`);
+      const response = await axios.get(`${process.env.REACT_APP_CONNECTION}posts/filtered/${filterAuthor}+/${filterTitle}+`);
       
       if(response.data!==null){
         setPosts(response.data);
         setTotalPostPages(Math.ceil(response.data.length / postCapacity));
       }else{       
         alert("no posts");
-        const response = await axios.get("http://localhost:3001/posts");
+        const response = await axios.get(`${process.env.REACT_APP_CONNECTION}posts`);
         setPosts(response.data);
         setPostPage();
       }
@@ -119,10 +119,8 @@ export const Community = () => {
     if(!userId)navigate("/register");
     else{
         try{
-          console.log(cookies);
-            await axios.post("http://localhost:3001/posts/newPost",
+            await axios.post(`${process.env.REACT_APP_CONNECTION}posts/newPost`,
             {userId,postData,title,headers:cookies.access_token});
-            console.log("posted");
             setShowForm(false);
         }catch(err){
             console.log(err);

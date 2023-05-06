@@ -20,7 +20,7 @@ export const Post=()=>{
 
     const fetchComments=async ()=>{
         try{
-            const response=await axios.get(`http://localhost:3001/posts/${postId}`);
+            const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
             setPost(response.data);
         }catch(err){
             console.log(err);
@@ -43,7 +43,7 @@ export const Post=()=>{
     const deletePost=async (e)=>{
         if(!user)navigate("/register");
         try{
-            await axios.put("http://localhost:3001/posts/deletePost",{postId,headers:cookies.access_token});
+            await axios.put(`${process.env.REACT_APP_CONNECTION}posts/deletePost`,{postId,headers:cookies.access_token});
             navigate("/community");
         }catch(err){
             console.log(err);
@@ -54,7 +54,7 @@ export const Post=()=>{
         e.preventDefault();
         if(!user)navigate("/register");
         try{
-            const response=await axios.put("http://localhost:3001/posts/deleteReply",{postId,ind1,ind2,headers:cookies.access_token});
+            const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/deleteReply`,{postId,ind1,ind2,headers:cookies.access_token});
             setPost(response.data);
         }catch(err){
             console.log(err);
@@ -64,7 +64,7 @@ export const Post=()=>{
         e.preventDefault();
         if(!user)navigate("/register");
         try{
-            const response=await axios.put("http://localhost:3001/posts/deleteComment",{postId,ind,headers:cookies.access_token});
+            const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/deleteComment`,{postId,ind,headers:cookies.access_token});
             setPost(response.data);
         }catch(err){
             console.log(err);
@@ -74,9 +74,8 @@ export const Post=()=>{
     const addComment=async (e)=>{
         e.preventDefault();
         if(!user)navigate("/register");
-        console.log((cookies.access_token));
         try{
-            const response=await axios.put("http://localhost:3001/posts/addComment",
+            const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/addComment`,
             {postId,userId:user,comment,headers:cookies.access_token});
             setPost(response.data);
             setComment("");
@@ -89,7 +88,7 @@ export const Post=()=>{
         e.preventDefault();
         if(!user)navigate("/register");
         try{
-            const response=await axios.put("http://localhost:3001/posts/addReply",
+            const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/addReply`,
             {postId,userId:user,reply,ind,headers:cookies.access_token});
             setPost(response.data);
             setReply("");
@@ -101,7 +100,7 @@ export const Post=()=>{
     const addLike=async (e,type,ind1,ind2)=>{{
         e.preventDefault();
         try{
-            const response=await axios.put("http://localhost:3001/posts/addLike",
+            const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/addLike`,
             {postId,ind1,ind2,type,userId:user,headers:cookies.access_token});
             setPost(response.data);
         }catch(err){

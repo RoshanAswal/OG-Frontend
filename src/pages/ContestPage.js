@@ -15,14 +15,25 @@ export const ContestPage=()=>{
     const [cookies,_]=useCookies(["access_token"]);
     const [questions,setQuestions]=useState([]);
     const [ind,setInd]=useState(0);
-    const [time,setTime]=useState(moment().format('ddd hh:mm:ss aa'));
+    const [time,setTime]=useState('');
     const [saving,setSaving]=useState(false);
 
     const data=location.state;
+    
+    useEffect(() => {
+        const getCurrentTime=async ()=>{
+          const response = await axios.get(`${process.env.REACT_APP_CONNECTION}api/currentTime`);
+          setTime(response.data);
+        }
+        setTimeout(()=>{
+            getCurrentTime();
+        },1000);
+    });
+
     useEffect(()=>{
         const fetchQuestions=async ()=>{
             try{
-                const response= await axios.get(`http://localhost:3001/questionForUsers/${data.contest_no}`);
+                const response= await axios.get(`${process.env.REACT_APP_CONNECTION}questionForUsers/${data.contest_no}`);
                 setQuestions(response.data.questions);
                 
                 let storedInd=window.localStorage.getItem("a11d2g3");
@@ -42,9 +53,6 @@ export const ContestPage=()=>{
     },[]);
 
     useEffect(()=>{
-        setTimeout(()=>{
-            setTime(moment().format('ddd hh:mm:ss aa'));
-        },1000);
         if(time.substring(7,9)==="10"){
             GotoThanksPage();
         }
@@ -55,7 +63,7 @@ export const ContestPage=()=>{
         const sec=time.substring(10,12);
         const totalTime=(parseInt(min)*60)+parseInt(sec);
         try{
-            await axios.put(`http://localhost:3001/${data.contest_no}/setTime`,
+            await axios.put(`${process.env.REACT_APP_CONNECTION}${data.contest_no}/setTime`,
             {userId:userId,totalTime:totalTime,headers:cookies.access_token}); 
             window.localStorage.removeItem("a11d2g3"); 
             navigate("/ThanksPage");
@@ -73,7 +81,7 @@ export const ContestPage=()=>{
         try{
             let correct=false;
             if(e.target.value===questions[ind].answer)correct=true;
-            await axios.put(`http://localhost:3001/contest/${data.contest_no}/submission`,
+            await axios.put(`${process.env.REACT_APP_CONNECTION}contest/${data.contest_no}/submission`,
             {userId:userId,index:ind,totalTime,correct,headers:cookies.access_token});   
             if(ind<(questions.length-1)){
                 const num=((((ind+1)*32)+36)-8)*2;

@@ -28,7 +28,7 @@ export const Login=()=>{
     const submission=async (e)=>{
         e.preventDefault();
         try{
-            const response=await axios.post("http://localhost:3001/auth/login",
+            const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
             {username,password});;
 
             if(response.data.userId){
@@ -49,13 +49,13 @@ export const Login=()=>{
     const getOtp=async (e)=>{
         e.preventDefault();
         try{
-            const res=await axios.post("http://localhost:3001/auth/forgotPassword",{email});
+            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/forgotPassword`,{email});
             console.log(res.data);
             if(res.data==="none"){
                 setFound(false);return;
             }
             setFound(true);
-            await axios.post("http://localhost:3001/auth/getOtp",{email,OTP,username});
+            await axios.post(`${process.env.REACT_APP_CONNECTION}auth/getOtp`,{email,OTP,username});
         }catch(err){
             console.log(err);
         }
@@ -71,7 +71,7 @@ export const Login=()=>{
             showInvalid(true);
             return;
         }else{
-            const res=await axios.post("http://localhost:3001/auth/setNewPassword",{password,email});
+            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password,email});
             console.log("here");
             setForgot(false);
             setValid(true);
