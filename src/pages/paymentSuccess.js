@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar"
 import success from "../images/success.png";
 
-export const PaymentSuccess=()=>{
+export const Paymentsuccess=()=>{
     return (
         <div className="successPay">
             <Navbar />

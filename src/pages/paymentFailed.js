@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar"
 import failed from "../images/failed.png";
 
-export const PaymentFailed=()=>{
+export const Paymentfailed=()=>{
     return (
         <div className="failedPay">
             <Navbar />

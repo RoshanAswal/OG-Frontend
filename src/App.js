@@ -10,8 +10,8 @@ import {ContestDetail} from './pages/ContestDetail';
 import { ContestPage } from './pages/ContestPage';
 import { ThanksPage } from './pages/ThanksPage';
 import { ProfileEdit } from './pages/ProfileEdit';
-import { PaymentSuccess } from './pages/PaymentSuccess';
-import { PaymentFailed } from './pages/PaymentFailed';
+import { PaymentSuccess } from './pages/Paymentsuccess';
+import { PaymentFailed } from './pages/Paymentfailed';
 import { Post } from './pages/Post';
 
 function App() {
