@@ -8,6 +8,9 @@ import moment from "moment";
 import right from "../images/right-chevron.png";
 import left from "../images/left-chevron.png";
 import winner from "../images/winners.png";
+// import getStripe from "../components/stripe";
+// import StripeCheckout from "react-stripe-checkout";
+// import {PayPalScriptProvider,PayPalButtons} from '@paypal/react-paypal-js';
 
 export const ContestDetail=(props)=>{
 
@@ -28,7 +31,6 @@ export const ContestDetail=(props)=>{
     const [showWinners,setShowWinners]=useState(false);
     const [page,setPage]=useState(0);
     const [totalPage,setTotalPage]=useState(0);
-
 
     const userId=window.localStorage.getItem("userId");
 
@@ -87,7 +89,15 @@ export const ContestDetail=(props)=>{
         if(userId){
             if(contestDetail.type==="upcoming" && btn==="Register"){
                 try{
-                    trial();
+                    const response=await axios.post(`http://localhost:3001/payments/verification`,
+                    {contest_id:data.contest_id,user_id:userId,headers:cookies.access_token});
+                    if(response.data==="success"){
+                        navigate("/PaymentSuccess");
+                    }else{
+                        navigate("/PaymentFailed");
+                    }
+                    // trial();
+                    // handleCheckout();
                 }catch(err){
                     navigate("/register");
                 }
@@ -117,7 +127,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Wed" && hour==="04" && period==="pm"){ // Contest starting time
+            && day==="Sat" && hour==="12" && period==="pm"){ // Contest starting time
             return true;
         }else return false;
     }
@@ -134,40 +144,73 @@ export const ContestDetail=(props)=>{
         }
         return true;
     }               
+    // async function handleCheckout() {
+    //     const stripe = await getStripe();
+    //     const { error } = await stripe.redirectToCheckout({
+    //       lineItems: [
+    //         {
+    //           price: process.env.REACT_APP_PRICE_ID,
+    //           quantity: 1,
+    //         },
+    //       ],
+    //       mode: 'payment',
+    //       successUrl:`http://localhost:3000/PaymentSuccess`,
+    //       cancelUrl: `http://localhost:3000/PaymentFailed`,
+    //       customerEmail: 'customer@email.com',
+    //     });
+    //     console.warn(error.message);
+    // }
+    // const trial=async ()=>{
+    //     try{
+    //         const key=await axios.get("http://localhost:3001/getPayKey");
 
-    const trial=async ()=>{
-        try{
-            const key=await axios.get("http://localhost:3001/getPayKey");
-
-            const response=await axios.put("http://localhost:3001/payments",{amt:500,headers:cookies.access_token});
+    //         const response=await axios.put("http://localhost:3001/payments",{amt:500,headers:cookies.access_token});
             
-            const options = {
-                key: key.data, // Enter the Key ID generated from the Dashboard
-                amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                currency: "INR",
-                name: "OnlyGeeks", //your business name
-                description: "Test Transaction",
-                image: "https://drive.google.com/file/d/1h1OTFsll9iMsPYjLWdXFSUjxzneOo-Ae/view?usp=sharing",
-                order_id: response.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                callback_url: `http://localhost:3001/payments/verification?contest_id=${data.contest_id}&user_id=${userId}`,
-                prefill: {
-                    name: "Gaurav Kumar", //your customer's name
-                    email: "gaurav.kumar@example.com",
-                    contact: "9000090000"
-                },
-                notes: {
-                    "address": "Razorpay Corporate Office"
-                },
-                theme: {
-                    "color": "#3399cc"
-                }
-            };
-            var rzp1 = new window.Razorpay(options);
-            rzp1.open();
-        }catch(err){
-            console.log(err);
-        }
-    }
+    //         const options = {
+    //             key: key.data, // Enter the Key ID generated from the Dashboard
+    //             amount: response.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    //             currency: "INR",
+    //             name: "OnlyGeeks", //your business name
+    //             description: "Test Transaction",
+    //             image: "https://drive.google.com/file/d/1h1OTFsll9iMsPYjLWdXFSUjxzneOo-Ae/view?usp=sharing",
+    //             order_id: response.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    //             callback_url: `http://localhost:3001/payments/verification?contest_id=${data.contest_id}&user_id=${userId}`,
+    //             prefill: {
+    //                 name: "Gaurav Kumar", //your customer's name
+    //                 email: "gaurav.kumar@example.com",
+    //                 contact: "9000090000"
+    //             },
+    //             notes: {
+    //                 "address": "Razorpay Corporate Office"
+    //             },
+    //             theme: {
+    //                 "color": "#3399cc"
+    //             }
+    //         };
+    //         var rzp1 = new window.Razorpay(options);
+    //         rzp1.open();
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
+
+    // const payNow=async token =>{
+    //     try{
+    //         const response=await axios({
+    //             url:'http://localhost:3001/payment',
+    //             method:'post',
+    //             data:{
+    //                 amount:5000,
+    //                 token,
+    //             }
+    //         })
+    //         if(response.status===200){
+    //             console.log("Success");
+    //         }
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
 
     if(loading){
         return(

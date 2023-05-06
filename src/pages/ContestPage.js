@@ -45,7 +45,7 @@ export const ContestPage=()=>{
         setTimeout(()=>{
             setTime(moment().format('ddd hh:mm:ss aa'));
         },1000);
-        if(time.substring(7,9)==="40"){
+        if(time.substring(7,9)==="10"){
             GotoThanksPage();
         }
     });

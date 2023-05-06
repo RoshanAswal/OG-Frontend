@@ -8,7 +8,7 @@ export const PaymentSuccess=()=>{
             <Navbar />
             <div>
                 <img src={success} alt="success" />
-                <h1>Congratulations your payment was Successful</h1>
+                <h1>Congratulations your registration was Successful</h1>
                 <h2>Please <Link to="/contest">Go back</Link>  and refresh contest page</h2>
             </div>
         </div>

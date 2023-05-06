@@ -89,7 +89,8 @@ export const ProfileEdit=()=>{
                         <input type="url" placeholder='Social URL' name="socialURL" value={socialURL} onChange={(e)=>setsocialURL(e.target.value)}/>
                         <input type="text" placeholder='Fav Anime' name="favAnime" value={favAnime} onChange={(e)=>setfavAnime(e.target.value)}/>
                         <input type="text" placeholder='Fav Game' name="favGame" value={favGame} onChange={(e)=>setfavGame(e.target.value)}/>
-                        
+                        <input type="text" placeholder='Fav Character' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/>
+
                         <input id="file" type="file" 
                             onChange={(e)=>setFileToBase(e)}
                         />

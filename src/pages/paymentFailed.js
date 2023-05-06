@@ -8,7 +8,7 @@ export const PaymentFailed=()=>{
             <Navbar />
             <div id="info">
                 <img src={failed} alt="failed" />
-                <h1>Unfortunately your payment was failed</h1>
+                <h1>Unfortunately your registration was failed</h1>
                 <h2>Please <Link to="/contest">Go back</Link>  and try again</h2>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import user from '../images/user.png';
+import user from '../images/userDp.png';
 import rankHeading from "../images/ranking.png"
 
 export const Rank=(props)=>{

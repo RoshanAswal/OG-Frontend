@@ -1,5 +1,5 @@
 // import logo from "../images/logo.png"
-import naruto from "../images/naruto.ico"
+import naruto from "../images/contestImg.png"
 import { useNavigate } from 'react-router-dom';
 
 export const ContestCard=(props)=>{

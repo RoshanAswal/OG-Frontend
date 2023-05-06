@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { Navbar } from '../components/Navbar';
 import reply from "../images/reply.png";
-import userDP from "../images/userDp.png";
+import userDP from "../images/user.png";
 
 export const Post=()=>{
     const navigate=useNavigate();

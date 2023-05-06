@@ -5,7 +5,7 @@ import { Navbar } from '../components/Navbar';
 import { useCookies } from 'react-cookie';
 import flip from "../images/btn.png";
 import socialURL from "../images/socialLink.png";
-import userDP from "../images/userDp.png";
+import userDP from "../images/user.png";
 import edit from "../images/edit.png";
 import logout from "../images/logout.png";
 import del from "../images/delete.png";
@@ -132,8 +132,8 @@ export const Profile=(props)=>{
                                 <h3 id='data'>{user.favGame}</h3>
                             </div>
                             <div>
-                                <h3 id='label'>BestRank</h3>
-                                <h3 id='data'>{user.bestRank}</h3>
+                                <h3 id='label'>Favourite Character</h3>
+                                <h3 id='data'>{user.favCharacter}</h3>
                             </div>
                         </div>
                         <div className='rank-section'>
@@ -146,8 +146,8 @@ export const Profile=(props)=>{
                                 <h3 id='data'>{user.contestWon}</h3>
                             </div>
                             <div>
-                                <h3 id='label'>BestTime</h3>
-                                <h3 id='data'>{user.bestTime}</h3>
+                                <h3 id='label'>Top Score</h3>
+                                <h3 id='data'>{user.bestRank}</h3>
                             </div>
                         </div>
                     </div>
