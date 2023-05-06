@@ -1,6 +1,6 @@
 import {ContestCard} from '../components/ContestCard';
 import {useState,useEffect} from 'react';
-import upcoming from "../images/upcoming.png";
+import upcoming from "../images/Upcoming.png";
 import previous from "../images/previous.png";
 import right from "../images/right-chevron.png";
 import left from "../images/left-chevron.png";
