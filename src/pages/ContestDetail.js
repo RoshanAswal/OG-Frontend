@@ -8,9 +8,6 @@ import moment from "moment";
 import right from "../images/right-chevron.png";
 import left from "../images/left-chevron.png";
 import winner from "../images/winners.png";
-// import getStripe from "../components/stripe";
-// import StripeCheckout from "react-stripe-checkout";
-// import {PayPalScriptProvider,PayPalButtons} from '@paypal/react-paypal-js';
 
 export const ContestDetail=(props)=>{
 
