@@ -66,7 +66,6 @@ export const ContestPage=()=>{
             await axios.put(`${process.env.REACT_APP_CONNECTION}${data.contest_no}/setTime`,
             {userId:userId,totalTime:totalTime,headers:cookies.access_token}); 
             window.localStorage.removeItem("a11d2g3"); 
-            console.log("contset incrementd");
             navigate("/ThanksPage");
         }catch(err){
             console.log(err);
