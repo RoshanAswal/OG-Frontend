@@ -1307,10 +1307,12 @@ input::-webkit-inner-spin-button {
   .contest{
     font-size:12px;
   }
+  .contest .contestZone{
+    margin-top:20%;
+  }
   .contest .status{
-    width:50%;
+    width:35%;
     height:4%;
-    margin-bottom:15px;
   }
   .contest .previous{
     grid-template-columns: repeat(2,1fr);
@@ -1318,15 +1320,36 @@ input::-webkit-inner-spin-button {
 
   /* ======================= Contest Card ===================*/
   .contestCard{
-    width:100px;
-    height:100px;
-    margin-top:5px;
+    width:120px;
+    height:120px;
+  }
+
+  /* ======================= Contest Detail ============================*/
+
+  .contestDetail .details{
+    width:80%;
+    margin:0 auto;
+  }
+  .contestDetail #timer{
+    font-size: 15px;
+    background-color: orange;
+  }
+  .contestDetail #heading{
+    font-size:30px;
+    margin-top:5%;
+  }
+  .contestDetail #sub-head{
+    font-size:20px;
+  }
+  .contestDetail p,li{
+    font-size:15px;
+    color:#28282a
   }
 
   /*========================= Contest page ================*/
   .ContestPage #timer{
-    margin-top:20px;
-    font-size: 20px;
+    margin-top:15px;
+    font-size: 15px;
     text-align: center;
   }
   
@@ -1363,8 +1386,8 @@ input::-webkit-inner-spin-button {
   
   .rankPage .rank-heading{
     margin-top:4vh;
-    width: 150px;
-    height:40px;
+    width: 100px;
+    height:25px;
   }
   .rank img{
     width:40px;
@@ -1386,6 +1409,11 @@ input::-webkit-inner-spin-button {
   .post-section .filter-section{
     width:70%;
     margin:30px auto 30px;
+  }
+
+  .filter-section #filters{
+    width: 25%;
+    margin-right:10px;
   }
 
   .post-section .btnControl img,.ranks-section .btnControl img{
@@ -1437,7 +1465,7 @@ input::-webkit-inner-spin-button {
   /*========================== Create Form ====================*/
   .create-section{
     width:70%;
-    height:70%;
+    height:80%;
   }
 
   /* =============================== Post Detail Page ============*/

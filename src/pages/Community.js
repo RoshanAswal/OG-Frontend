@@ -186,26 +186,31 @@ export const Community = () => {
                     index={rankCapacity * pageno}
                   />
                 </div>
-                <div className="btnControl">
-                  <div>
-                    <img onClick={() => {setPageNo(pageno > 0 ? pageno - 1 : pageno)}} 
-                      src={left}
-                    />
-                  </div>
-                  <div>
-                    <input type="number" name="pageNo" value={pageno} onChange={(e)=>{setPageNo(e.target.value)}}/>
-                  </div>
+                {
+                  users.length>=rankCapacity
+                  ?
+                  <div className="btnControl">
+                    <div>
+                      <img onClick={() => {setPageNo(pageno > 0 ? pageno - 1 : pageno)}} 
+                        src={left}
+                      />
+                    </div>
+                    <div>
+                      <input type="number" name="pageNo" value={pageno} onChange={(e)=>{setPageNo(e.target.value)}}/>
+                    </div>
 
-                  <div>
-                    <img                       
-                        onClick={() =>
-                        {  setPageNo(pageno < totalPages - 1 ? pageno + 1 : pageno)}
-                        }
-                        src={right}
-                    />                    
+                    <div>
+                      <img                       
+                          onClick={() =>
+                          {  setPageNo(pageno < totalPages - 1 ? pageno + 1 : pageno)}
+                          }
+                          src={right}
+                      />                    
+                    </div>
                   </div>
+                  :<div></div>
+                }
 
-                </div>
               </div>
 
             ) : (
@@ -226,29 +231,35 @@ export const Community = () => {
                   />
                 </div>
                 <div className="sec2">
-                  <div className="btnControl">
-                    <div>
-                      <img src={left} 
-                        onClick={() =>
-                          {setPostPageNo(postPageNo > 0 ? postPageNo - 1 : postPageNo)}
-                        }
-                      />
+                  {
+                    posts.length>=postCapacity
+                    ?
+                    <div className="btnControl">
+                      <div>
+                        <img src={left} 
+                          onClick={() =>
+                            {setPostPageNo(postPageNo > 0 ? postPageNo - 1 : postPageNo)}
+                          }
+                        />
+                      </div>
+                      <div>
+                        <input type="number" name="postPageNo" value={postPageNo} onChange={(e)=>{setPostPageNo(e.target.value)}}/>                    
+                      </div>
+                      <div>
+                        <img src={right}
+                          onClick={() =>
+                            {setPostPageNo(
+                              postPageNo < totalPostPages - 1
+                                ? postPageNo + 1
+                                : postPageNo
+                            )}
+                          }
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <input type="number" name="postPageNo" value={postPageNo} onChange={(e)=>{setPostPageNo(e.target.value)}}/>                    
-                    </div>
-                    <div>
-                      <img src={right}
-                        onClick={() =>
-                          {setPostPageNo(
-                            postPageNo < totalPostPages - 1
-                              ? postPageNo + 1
-                              : postPageNo
-                          )}
-                        }
-                      />
-                    </div>
-                  </div>
+                    :<div></div>
+                  }
+
                   <div className="lastSection">
                     <button onClick={()=>setShowForm(true)}>Create</button>
                   </div>

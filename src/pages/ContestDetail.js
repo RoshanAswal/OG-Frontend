@@ -274,7 +274,7 @@ export const ContestDetail=(props)=>{
                 }</strong>
             }
 
-            <div >
+            <div>
                 <h1 id="heading">Contest {contestDetail.contest_no}</h1>
             </div>
             <div className="details">
