@@ -33,7 +33,7 @@ export const ContestPage=()=>{
     useEffect(()=>{
         const fetchQuestions=async ()=>{
             try{
-                const response= await axios.get(`${process.env.REACT_APP_CONNECTION}questionForUsers/${data.contest_no}`);
+                const response= await axios.get(`${process.env.REACT_APP_CONNECTION}questionForUsers/${data.contest_no,headers}`);
                 setQuestions(response.data.questions);
                 
                 let storedInd=window.localStorage.getItem("a11d2g3");
@@ -82,7 +82,8 @@ export const ContestPage=()=>{
             let correct=false;
             if(e.target.value===questions[ind].answer)correct=true;
             await axios.put(`${process.env.REACT_APP_CONNECTION}contest/${data.contest_no}/submission`,
-            {userId:userId,index:ind,totalTime,correct,headers:cookies.access_token});   
+            {userId:userId,index:ind,totalTime,correct,headers:cookies.access_token});  
+            console.log("submitted"); 
             if(ind<(questions.length-1)){
                 const num=((((ind+1)*32)+36)-8)*2;
                 window.localStorage.setItem("a11d2g3",num);
