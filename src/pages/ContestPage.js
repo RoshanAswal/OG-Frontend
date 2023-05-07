@@ -33,7 +33,7 @@ export const ContestPage=()=>{
     useEffect(()=>{
         const fetchQuestions=async ()=>{
             try{
-                const response= await axios.get(`${process.env.REACT_APP_CONNECTION}questionForUsers/${data.contest_no,headers}`);
+                const response= await axios.get(`${process.env.REACT_APP_CONNECTION}questionForUsers/${data.contest_no}`);
                 setQuestions(response.data.questions);
                 
                 let storedInd=window.localStorage.getItem("a11d2g3");
