@@ -37,6 +37,9 @@ export const Register=()=>{
             }else{
                 setShowError(false);
             }
+            if(emailWarning || showError || usernameWarning || invalid){
+                return;
+            }
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
             {username,password,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;

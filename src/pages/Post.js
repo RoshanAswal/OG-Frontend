@@ -14,6 +14,7 @@ export const Post=()=>{
     const [reply,setReply]=useState("");
     const [showReplyBox,setShowReplyBox]=useState(false);
     const [cookies,_]=useCookies(["access_token"]);
+    const [postToReply,setPostToReply]=useState('');
 
     const user=window.localStorage.getItem("userId");
     const postId=window.localStorage.getItem("postId");
@@ -108,6 +109,11 @@ export const Post=()=>{
         }
     }};
 
+    const showReply=(e,ind)=>{
+        setShowReplyBox(!showReplyBox);
+        setPostToReply(ind);
+    }
+
     return post && (
         <div className="postDetailPage">
             <Navbar />
@@ -140,10 +146,10 @@ export const Post=()=>{
                                     {
                                         (user && user===item.user)?<button className="delete" onClick={(e)=>deleteComment(e,index)}>delete</button>:""
                                     }
-                                    <button className="replyBtn"onClick={(e)=>setShowReplyBox(!showReplyBox)}>Reply [{item.replies.length}]</button>
+                                    <button className="replyBtn" onClick={(e)=>showReply(e,index)}>Reply [{item.replies.length}]</button>
                                 </div>
                                 {
-                                    showReplyBox
+                                    showReplyBox && postToReply===index
                                     ?<div className="replyBox">
                                     
                                         {item.replies.map((rep,ind)=>(
@@ -164,7 +170,7 @@ export const Post=()=>{
 
                                         <form className="commentForm" onSubmit={(e)=>addReply(e,reply,index)}>
                                             <textarea value={reply} onChange={(e)=>setReply(e.target.value)} placeholder="Add a Reply" />
-                                            <button type="submit">comment</button>
+                                            <br/><button type="submit">comment</button>
                                         </form>
                                     </div>
                                     :""
@@ -174,7 +180,7 @@ export const Post=()=>{
                     }
                     <form className="commentForm" onSubmit={(e)=>addComment(e)}>
                         <textarea value={comment} onChange={(e)=>setComment(e.target.value)} placeholder="Add a comment"/>
-                        <button type="submit">Comment</button>
+                        <br/><button type="submit">Comment</button>
                     </form>
                 </div>
             </div>

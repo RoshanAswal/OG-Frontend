@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
-import connect from '../images/connect.png';
-import compete from '../images/compete.png';
+import connect from '../images/connect1.png';
+import compete from '../images/compete1.png';
 import { useEffect } from 'react';
 
 export const Home=()=>{

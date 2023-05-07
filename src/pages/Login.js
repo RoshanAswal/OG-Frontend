@@ -28,6 +28,7 @@ export const Login=()=>{
     const submission=async (e)=>{
         e.preventDefault();
         try{
+            if(invalid || !otpCheck)return;
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
             {username,password});;
 

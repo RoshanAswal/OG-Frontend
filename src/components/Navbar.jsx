@@ -44,6 +44,7 @@ export const Navbar=()=>{
             </Link>
             <div id="profile-logo">
                 <img id="nav-img2" src={islog?user:login} alt="logo" onClick={islog?goToProile:toRegister}/>     
+                {islog?"":<h3>Sign In</h3>}
             </div>
         </div>
     )

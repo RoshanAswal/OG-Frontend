@@ -23,7 +23,9 @@ export const Rank=(props)=>{
                 {props.users.map((item,key)=>(
                     <div key={item._id}>
                         <div className="rank-sec1">
-                            <h3>{(key+1)+props.index}</h3>
+                            <div>
+                                <h3>{(key+1)+props.index}</h3>
+                            </div>
                             <img src={item.img?item.img.url:user}></img>
                         </div>
                         <button className="rank-btn" value={item._id} onClick={GoToProfile}>

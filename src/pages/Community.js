@@ -218,8 +218,8 @@ export const Community = () => {
                 <div className="sec1">
                   <img className="postHeading" src={postHeading} alt="post"/>
                   <div className="filter-section">
-                    <input id="filters" placeholder="author" value={filterAuthor} onChange={(e)=>{setFilterAuthor(e.target.value)}}/>
-                    <input id="filters" placeholder="title" value={filterTitle} onChange={(e)=>{setFilterTitle(e.target.value)}}/>
+                    <input id="filter1" placeholder="author" value={filterAuthor} onChange={(e)=>{setFilterAuthor(e.target.value)}}/>
+                    <input id="filter2" placeholder="title" value={filterTitle} onChange={(e)=>{setFilterTitle(e.target.value)}}/>
                     <button onClick={(e)=>{filterPost(e)}}>Filter</button>                      
                   </div>
                   <Post
@@ -261,7 +261,7 @@ export const Community = () => {
                   }
 
                   <div className="lastSection">
-                    <button onClick={()=>setShowForm(true)}>Create</button>
+                    <button onClick={()=>setShowForm(true)}>New</button>
                   </div>
                 </div>  
               </div>
