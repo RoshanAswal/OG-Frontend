@@ -15,7 +15,7 @@ export const ContestDetail=(props)=>{
     const navigate=useNavigate();
     const data=location.state;
 
-    const limit=10;
+    const limit=55;
     const capacity=24;
 
     const [btn,setbtn]=useState("Register");
@@ -137,7 +137,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Sat" && hour==="01" && period==="pm"){ // Contest starting time
+            && day==="Sun" && hour==="01" && period==="pm"){ // Contest starting time
             return true;
         }else return false;
     }
