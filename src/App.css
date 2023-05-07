@@ -1474,6 +1474,13 @@ input::-webkit-inner-spin-button {
     margin-left:20px;
   }
 
+  .post .header div{
+    margin-left:30px;
+    padding:3%;
+  }
+  .post .header div #likeBtn{
+    padding-left:11px;
+  }
   /* =========================== Winners Card =================*/
   .winnersCard{
     grid-template-columns: repeat(4,1fr);

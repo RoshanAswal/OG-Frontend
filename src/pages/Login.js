@@ -110,7 +110,7 @@ export const Login=()=>{
                     {forgot?
                         <div>
                             {otpCheck?"":<div>Otp not correct</div>}
-                            {invalid?<div>Password not Strong</div>:""}
+                            {invalid && password.length?<div>Password not Strong</div>:""}
                         </div>
                         :
                         <div>

@@ -140,7 +140,7 @@ export const Post=()=>{
                                     {
                                         (user && user===item.user)?<button className="delete" onClick={(e)=>deleteComment(e,index)}>delete</button>:""
                                     }
-                                    <button className="replyBtn"onClick={(e)=>setShowReplyBox(!showReplyBox)}>Reply</button>
+                                    <button className="replyBtn"onClick={(e)=>setShowReplyBox(!showReplyBox)}>Reply [{item.replies.length}]</button>
                                 </div>
                                 {
                                     showReplyBox
