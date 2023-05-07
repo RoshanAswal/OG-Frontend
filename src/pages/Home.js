@@ -2,6 +2,7 @@ import {useNavigate} from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import connect from '../images/connect.png';
 import compete from '../images/compete.png';
+import { useEffect } from 'react';
 
 export const Home=()=>{
     const navigate=useNavigate();       
