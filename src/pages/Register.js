@@ -109,7 +109,8 @@ export const Register=()=>{
                         usernameWarning?<h4>Username already exists</h4>:""
                     }
                     {
-                        invalid?<h4>Password is not strong</h4>:""
+                        invalid?<h4>Password is not strong</h4>:
+                        "Password includes [A-Z]+[a-z]+[1-9]+special character"
                     }
                     </div>
                     <button id='submit' type="submit">Register</button>
