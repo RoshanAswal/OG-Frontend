@@ -138,7 +138,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Mon" && hour==="10" && period==="pm"){ // Contest starting time
+            && day==="Mon" && hour==="11" && period==="pm"){ // Contest starting time
             return true;
         }else return false;
     }
@@ -240,6 +240,7 @@ export const ContestDetail=(props)=>{
                         :<WinnerCard ind={page*capacity} users={contestDetail.winners.slice(page*capacity,(page*capacity)+capacity)} />
                     }
                 </div>
+                
                 <div className="btnControl">
                     <div>
                         <img onClick={()=>setPage(page>0?page-1:page)} 

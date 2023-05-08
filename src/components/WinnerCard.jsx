@@ -38,9 +38,10 @@ export const WinnerCard=(props)=>{
             {
                 user.map((item,index)=>(
                     item.data?
-                    <div>
-                        <img id='userImg' src={item.data.img?item.data.img.url:userDP} alt={userDP}/>    
-                        <h2 onClick={(e)=>{GoToProfile(e,item.data._id)}}>{(index+1)+props.ind}. {item.data.username}</h2>
+                    <div key={index}>
+                        <h3>{(index+1)+props.ind}</h3>
+                        <img onClick={(e)=>{GoToProfile(e,item.data._id)}} id='userImg' src={item.data.img?item.data.img.url:userDP} alt={userDP}/>    
+                        <h2>{item.data.username}</h2>
                     </div>
                     :""
                 ))
