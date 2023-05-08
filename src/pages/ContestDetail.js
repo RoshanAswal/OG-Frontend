@@ -41,6 +41,7 @@ export const ContestDetail=(props)=>{
                 getCurrentTime();
             },1000);
         }
+        console.log(timer);
     });
 
 
