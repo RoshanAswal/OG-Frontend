@@ -24,7 +24,7 @@ export const Register=()=>{
     const [showError,setShowError]=useState(false);
     const [usernameWarning,setUsernameWarning]=useState(false);
     const [emailWarning,setEmailWarning]=useState(false);
-    
+    const [otpSent,setOtpSent]=useState(false);
     const [invalid,showInvalid]=useState(false);
 
     const submission=async (e)=>{
@@ -61,13 +61,14 @@ export const Register=()=>{
 
     const checkPassword=(e)=>{
         setpassword(e.target.value);
-        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
         if(regex.test(password))showInvalid(false);
         else showInvalid(true);
     }
 
     const getOtp=async (e)=>{
         e.preventDefault();
+        setOtpSent(true);
         // setOTP(1000+Math.floor(Math.random()*9999));
         try{
             await axios.post(`${process.env.REACT_APP_CONNECTION}auth/getOtp`,{email,OTP,username});
@@ -95,11 +96,11 @@ export const Register=()=>{
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
                         </select>
-                        <input type="text" placeholder='Country      (optional)' name="country" value={country} onChange={(e)=>setcountry(e.target.value)}/>
-                        <input type="url" placeholder='Social URL      (optional)' name="socialURL" value={socialURL} onChange={(e)=>setsocialURL(e.target.value)}/>
-                        <input type="text" placeholder='Fav Anime      (optional)' name="favAnime" value={favAnime} onChange={(e)=>setfavAnime(e.target.value)}/>
-                        <input type="text" placeholder='Fav Game      (optional)' name="favGame" value={favGame} onChange={(e)=>setfavGame(e.target.value)}/>
-                        <input type="text" placeholder='Fav Character      (optional)' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/>
+                        <input type="text" placeholder='Country (optional)' name="country" value={country} onChange={(e)=>setcountry(e.target.value)}/>
+                        <input type="url" placeholder='Social URL (optional)' name="socialURL" value={socialURL} onChange={(e)=>setsocialURL(e.target.value)}/>
+                        <input type="text" placeholder='Fav Anime (optional)' name="favAnime" value={favAnime} onChange={(e)=>setfavAnime(e.target.value)}/>
+                        <input type="text" placeholder='Fav Game (optional)' name="favGame" value={favGame} onChange={(e)=>setfavGame(e.target.value)}/>
+                        <input type="text" placeholder='Fav Character (optional)' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/>
                     </div>
                     <div>
                     {
@@ -112,8 +113,10 @@ export const Register=()=>{
                         usernameWarning?<h4>Username already exists</h4>:""
                     }
                     {
-                        invalid?<h4>Password is not strong</h4>:
-                        "Password includes [A-Z]+[a-z]+[1-9]+special character"
+                        invalid?<h4><br/>Password must contain numbers and special characters</h4>:""
+                    }
+                    {
+                        otpSent?<h4>Otp Sent to given mail</h4>:""
                     }
                     </div>
                     <button id='submit' type="submit">Register</button>

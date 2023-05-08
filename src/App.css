@@ -138,9 +138,10 @@ body::-webkit-scrollbar{
 
 .Register input,.Login input,.ProfileEdit input{
   border:0;
-  height:30px;
+  height:35px;
   border-radius: 5px;
   background-color: rgb(108, 105, 105);
+  text-align: center;
 }
 
 .Register input::placeholder,.Login input::placeholder{
