@@ -61,8 +61,8 @@ export const Register=()=>{
 
     const checkPassword=(e)=>{
         setpassword(e.target.value);
-        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-        if(regex.test(password))showInvalid(false);
+        // const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+        if(password.length>10)showInvalid(false);
         else showInvalid(true);
     }
 
@@ -113,7 +113,7 @@ export const Register=()=>{
                         usernameWarning?<h4>Username already exists</h4>:""
                     }
                     {
-                        invalid?<h4><br/>Password must contain numbers and special characters</h4>:""
+                        invalid?<h4><br/>Password must contain more than 10 characters</h4>:""
                     }
                     {
                         otpSent?<h4>Otp Sent to given mail</h4>:""

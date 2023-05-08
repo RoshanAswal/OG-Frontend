@@ -111,6 +111,7 @@ export const Post=()=>{
 
     const showReply=(e,ind)=>{
         setShowReplyBox(!showReplyBox);
+        setReply("");
         setPostToReply(ind);
     }
 
