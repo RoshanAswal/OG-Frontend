@@ -11,7 +11,7 @@ export const WinnerCard=(props)=>{
     useEffect(()=>{
         const getUsers = async () => {
             const userPromises = props.users.map(userId =>
-              axios.get(`http://localhost:3001/profile/${userId}`)
+              axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`)
             );
             const userData = await Promise.all(userPromises);
             setUser(userData);
