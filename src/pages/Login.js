@@ -28,10 +28,9 @@ export const Login=()=>{
     const submission=async (e)=>{
         e.preventDefault();
         try{
-            if(invalid || !otpCheck)return;
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
             {username,password});;
-
+            console.log(response.data.userId);
             if(response.data.userId){
                 setCookie("access_token",response.data.token);
                 window.localStorage.setItem("userId",response.data.userId);     
@@ -49,9 +48,9 @@ export const Login=()=>{
 
     const getOtp=async (e)=>{
         e.preventDefault();
+        setValid(true);
         try{
             const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/forgotPassword`,{email});
-            console.log(res.data);
             if(res.data==="none"){
                 setFound(false);return;
             }
@@ -104,20 +103,26 @@ export const Login=()=>{
                         <div id='input-section'>
                             <input type="text" placeholder='Username' name="username" value={username} onChange={(e)=>setusername(e.target.value)}/>
                             <input type="password" placeholder='Password' name="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
+                            <div>
+                                <button id='submit' type="submit">Login</button>
+                                <h4 onClick={()=>setForgot(true)}>Forgot Password</h4> 
+                            </div>
                         </div>
                     }
-                    {found?"":<div>User not found</div>}
+
                     {!valid?<h3>invalid username or password</h3>:""}
+
+                    {found?"":<div>User not found</div>}
                     {forgot?
                         <div>
                             {otpCheck?"":<div>Otp not correct</div>}
                             {invalid && password.length?<div>Password not Strong</div>:""}
                         </div>
-                        :
-                        <div>
-                            <button id='submit' type="submit">Login</button>
-                            <h4 onClick={()=>setForgot(true)}>Forgot Password</h4> 
-                        </div>
+                        :""
+                        // <div>
+                        //     <button id='submit' type="submit">Login</button>
+                        //     <h4 onClick={()=>setForgot(true)}>Forgot Password</h4> 
+                        // </div>
                     }
                 </form>
             </div>
