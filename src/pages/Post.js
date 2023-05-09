@@ -141,8 +141,8 @@ export const Post=()=>{
                     <img id="userImg" src={post.img?post.img:userDP} onClick={(e)=>handleClick(post.author)}/>
                     <h2>{post.title}</h2>
                     {checkUserExists(post.author)
-                    ?<h3 id="user">deleted User</h3>
-                    :<h3 id="user">{post.authorName}</h3>
+                    ?<h3 id="user">{post.authorName}</h3>
+                    :<h3 id="user">deleted User</h3>
                     }
 
                     <div>
@@ -162,8 +162,8 @@ export const Post=()=>{
                                 <div className="userDetail">
                                     <img className="userImg" src={item.img?item.img:userDP} onClick={(e)=>handleClick(item.user)}/>
                                     {checkUserExists(item.user)
-                                    ?<h3>deleted User</h3>
-                                    :<h3>{item.authorName}</h3>
+                                    ?<h3>{item.authorName}</h3>
+                                    :<h3>deleted User</h3>
                                     }
 
                                 </div>
@@ -184,8 +184,8 @@ export const Post=()=>{
                                                 <div className="userDetail">
                                                     <img className="userImg" src={rep.img?rep.img:userDP} onClick={(e)=>handleClick(rep.user)}/>
                                                     {checkUserExists(rep.user)
-                                                    ?<h3>deleted User</h3>
-                                                    :<h3>{rep.authorName}</h3>
+                                                    ?<h3>{rep.authorName}</h3>
+                                                    :<h3>deleted User</h3>
                                                     }
                                                  </div>
                                                 <p>{rep.comment}</p>
