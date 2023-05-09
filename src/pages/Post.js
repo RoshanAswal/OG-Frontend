@@ -27,7 +27,7 @@ export const Post=()=>{
             for(const comment of response.data.comments){
                 const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${comment.user}`,{headers:cookies.access_token});
                 if(res.data==="not found")deletedUser.push(comment.user);
-                for(const repli of comment){
+                for(const repli of comment.replies){
                     const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${repli.user}`,{headers:cookies.access_token});
                     if(res.data==="not found")deletedUser.push(repli.user);
                 }
