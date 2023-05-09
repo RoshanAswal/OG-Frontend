@@ -76,6 +76,7 @@ export const Post=()=>{
         e.preventDefault();
         if(!user)navigate("/register");
         try{
+            if(comment.length===0)return;
             const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/addComment`,
             {postId,userId:user,comment,headers:cookies.access_token});
             setPost(response.data);
@@ -89,6 +90,7 @@ export const Post=()=>{
         e.preventDefault();
         if(!user)navigate("/register");
         try{
+            if(reply.length===0)return;
             const response=await axios.put(`${process.env.REACT_APP_CONNECTION}posts/addReply`,
             {postId,userId:user,reply,ind,headers:cookies.access_token});
             setPost(response.data);
