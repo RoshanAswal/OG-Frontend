@@ -66,6 +66,7 @@ export const ContestDetail=(props)=>{
             }
         };
         fetchContestDetail();
+        window.localStorage.removeItem("a11d2g3");
     },[]);
 
     useEffect(()=>{

@@ -1288,9 +1288,18 @@ input::-webkit-inner-spin-button {
   /*====================== Register =====================*/
   .Register,.Login,.ProfileEdit{
     width:60%;
-    padding:5%;
+    /* padding:5%; */
     margin-top:2vh;
   }
+  
+  .Login input,button{
+    width:100%;
+    height:30px;
+  }
+  /* .Login #forgetPassword,#input-section{
+    width:70%;
+    margin:0 auto;
+  } */
 
   .Register #input-section,.ProfileEdit #input-section{
     display: grid;
