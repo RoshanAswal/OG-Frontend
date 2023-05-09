@@ -139,7 +139,7 @@ export const ContestDetail=(props)=>{
         }
 
         if(loading===false && contestDetail.type==="upcoming"
-            && day==="Tue" && hour==="09" && period==="pm"){ // Contest starting time
+            && day==="Wed" && hour==="12" && period==="am"){ // Contest starting time
             return true;
         }else return false;
     }
