@@ -22,16 +22,6 @@ export const Post=()=>{
     const fetchComments=async ()=>{
         try{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
-            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${response.data.author}`,{headers:cookies.access_token});
-            if(res.data==="not found")setDeleted(true);
-            for(const comment of response.data.comments){
-                const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${comment.user}`,{headers:cookies.access_token});
-                if(res.data==="not found")deletedUser.push(comment.user);
-                for(const repli of comment.replies){
-                    const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${repli.user}`,{headers:cookies.access_token});
-                    if(res.data==="not found")deletedUser.push(repli.user);
-                }
-            }
             setPost(response.data);
         }catch(err){
             console.log(err);
@@ -41,18 +31,6 @@ export const Post=()=>{
     useEffect(()=>{
         fetchComments();
     },[]);
-
-    const checkUserExists = async (userId) => {
-        try {
-            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`,{headers:cookies.access_token});
-            if(res.data==="not found"){
-                return false;
-            }else return true;
-        } catch (error) {
-            console.log(error);
-            return false;
-        }
-      };
 
     const handleClick=(id)=>{
         navigate(`/profile/${id}`,{
@@ -150,11 +128,7 @@ export const Post=()=>{
                 <div className="header">
                     <img id="userImg" src={post.img?post.img:userDP} onClick={(e)=>handleClick(post.author)}/>
                     <h2>{post.title}</h2>
-
-                    {deleted
-                    ?<h3 id="user">deleted User</h3>
-                    :<h3 id="user">{post.authorName}</h3>
-                    }
+                    <h3 id="user">{post.authorName}</h3>
 
                     <div>
                         <h3 id="date">{post.dateOfPost}</h3>
@@ -172,11 +146,7 @@ export const Post=()=>{
                             <div className="comment" key={index}>
                                 <div className="userDetail">
                                     <img className="userImg" src={item.img?item.img:userDP} onClick={(e)=>handleClick(item.user)}/>
-                                    {deletedUser.includes(item.user)
-                                    ?<h3>deleted User</h3>
-                                    :<h3>{item.authorName}</h3>
-                                    }
-
+                                    <h3>{item.authorName}</h3>
                                 </div>
                                 <p>{item.comment}</p>
                                 <div className="commentOptions">
@@ -194,10 +164,7 @@ export const Post=()=>{
                                             <div key={ind}>
                                                 <div className="userDetail">
                                                     <img className="userImg" src={rep.img?rep.img:userDP} onClick={(e)=>handleClick(rep.user)}/>
-                                                    {deletedUser.includes(rep.user)
-                                                    ?<h3>deleted User</h3>
-                                                    :<h3>{rep.authorName}</h3>
-                                                    }
+                                                    <h3>{rep.authorName}</h3>
                                                  </div>
                                                 <p>{rep.comment}</p>
                                                 <div className="commentOptions">
