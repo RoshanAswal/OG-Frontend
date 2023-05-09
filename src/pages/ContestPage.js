@@ -65,6 +65,7 @@ export const ContestPage=()=>{
         try{
             await axios.put(`${process.env.REACT_APP_CONNECTION}${data.contest_no}/setTime`,
             {userId:userId,totalTime:totalTime,headers:cookies.access_token}); 
+            console.log("time set");
             window.localStorage.removeItem("a11d2g3"); 
             navigate("/ThanksPage");
         }catch(err){

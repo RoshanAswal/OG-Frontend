@@ -30,7 +30,7 @@ export const Login=()=>{
         try{
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
             {username,password});;
-            console.log(response.data.userId);
+
             if(response.data.userId){
                 setCookie("access_token",response.data.token);
                 window.localStorage.setItem("userId",response.data.userId);     
@@ -79,8 +79,8 @@ export const Login=()=>{
     }
     const checkPassword=(e)=>{
         setpassword(e.target.value);
-        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
-        if(regex.test(password))showInvalid(false);
+        // const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+        if(password.length>10)showInvalid(false);
         else showInvalid(true);
     }
 
@@ -96,13 +96,13 @@ export const Login=()=>{
                             <input type="email" placeholder='email' name="email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
                             <input type="text" placeholder='Otp' name="Otp" value={otp} onChange={(e)=>setOtp(e.target.value)} required/>
                             <button id='otp' onClick={(e)=>{getOtp(e)}}>Get Otp</button>
-                            <input type="password" placeholder='New Password' minLength={8} name="password" value={password} onChange={(e)=>checkPassword(e)} required/>
+                            <input type="password" placeholder='New Password' name="password" value={password} onChange={(e)=>checkPassword(e)} required/>
                             <button id='submit' type='submit' onClick={(e)=>{checkOtp(e)}}>Login</button>
                         </div>
                         :
                         <div id='input-section'>
-                            <input type="text" placeholder='Username' name="username" value={username} onChange={(e)=>setusername(e.target.value)}/>
-                            <input type="password" placeholder='Password' name="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
+                            <input type="text" placeholder='Username' name="username" value={username} onChange={(e)=>setusername(e.target.value)} required/>
+                            <input type="password" placeholder='Password' name="password" value={password} onChange={(e)=>setpassword(e.target.value)} required/>
                             <div>
                                 <button id='submit' type="submit">Login</button>
                                 <h4 onClick={()=>setForgot(true)}>Forgot Password</h4> 
@@ -116,7 +116,7 @@ export const Login=()=>{
                     {forgot?
                         <div>
                             {otpCheck?"":<div>Otp not correct</div>}
-                            {invalid && password.length?<div>Password not Strong</div>:""}
+                            {invalid && password.length?<div>Password length should be above 10</div>:""}
                         </div>
                         :""
                         // <div>
