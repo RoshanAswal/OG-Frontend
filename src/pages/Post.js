@@ -15,7 +15,9 @@ export const Post=()=>{
     const [showReplyBox,setShowReplyBox]=useState(false);
     const [cookies,_]=useCookies(["access_token"]);
     const [postToReply,setPostToReply]=useState('');
-
+    const [deleted,setDeleted]=useState(false);
+    let deletedUser=[];
+    
     const user=window.localStorage.getItem("userId");
     const postId=window.localStorage.getItem("postId");
 
@@ -23,6 +25,9 @@ export const Post=()=>{
         try{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
             setPost(response.data);
+            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${post.author}`,{headers:cookies.access_token});
+            if(res.data){}
+            else{deletedUser.push(response.author)}
         }catch(err){
             console.log(err);
         }
@@ -31,6 +36,17 @@ export const Post=()=>{
     useEffect(()=>{
         fetchComments();
     },[]);
+
+    const checkUserExists = async (userId) => {
+        try {
+            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`,{headers:cookies.access_token});
+            if(res.data)return true;
+            else return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+      };
 
     const handleClick=(id)=>{
         navigate(`/profile/${id}`,{
@@ -124,7 +140,11 @@ export const Post=()=>{
                 <div className="header">
                     <img id="userImg" src={post.img?post.img:userDP} onClick={(e)=>handleClick(post.author)}/>
                     <h2>{post.title}</h2>
-                    <h3 id="user">{post.authorName}</h3>
+                    {checkUserExists(post.author)
+                    ?<h3 id="user">deleted User</h3>
+                    :<h3 id="user">{post.authorName}</h3>
+                    }
+
                     <div>
                         <h3 id="date">{post.dateOfPost}</h3>
                         <button id="likeBtn" onClick={(e)=>addLike(e,"post",-1,-1)} >👍 {post.likes}</button>
@@ -141,7 +161,11 @@ export const Post=()=>{
                             <div className="comment" key={index}>
                                 <div className="userDetail">
                                     <img className="userImg" src={item.img?item.img:userDP} onClick={(e)=>handleClick(item.user)}/>
-                                    <h3>{item.authorName}</h3>
+                                    {checkUserExists(item.user)
+                                    ?<h3>deleted User</h3>
+                                    :<h3>{item.authorName}</h3>
+                                    }
+
                                 </div>
                                 <p>{item.comment}</p>
                                 <div className="commentOptions">
@@ -159,8 +183,11 @@ export const Post=()=>{
                                             <div key={ind}>
                                                 <div className="userDetail">
                                                     <img className="userImg" src={rep.img?rep.img:userDP} onClick={(e)=>handleClick(rep.user)}/>
-                                                    <h3>{rep.authorName}</h3>
-                                                </div>
+                                                    {checkUserExists(rep.user)
+                                                    ?<h3>deleted User</h3>
+                                                    :<h3>{rep.authorName}</h3>
+                                                    }
+                                                 </div>
                                                 <p>{rep.comment}</p>
                                                 <div className="commentOptions">
                                                     <button id="likeBtn" onClick={(e)=>addLike(e,"reply",index,ind)}>👍  {rep.likes}</button>

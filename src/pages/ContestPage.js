@@ -84,7 +84,7 @@ export const ContestPage=()=>{
             if(e.target.value===questions[ind].answer)correct=true;
             await axios.put(`${process.env.REACT_APP_CONNECTION}contest/${data.contest_no}/submission`,
             {userId:userId,index:ind,totalTime,correct,headers:cookies.access_token});  
-            console.log("submitted"); 
+             
             if(ind<(questions.length-1)){
                 const num=((((ind+1)*32)+36)-8)*2;
                 window.localStorage.setItem("a11d2g3",num);
