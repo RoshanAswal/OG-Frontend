@@ -22,9 +22,9 @@ export const Post=()=>{
     const fetchComments=async ()=>{
         try{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
-            setPost(response.data);
-            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${post.author}`,{headers:cookies.access_token});
+            const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${response.data.author}`,{headers:cookies.access_token});
             if(res.data==="not found")setDeleted(true);
+            setPost(response.data);
         }catch(err){
             console.log(err);
         }
