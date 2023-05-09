@@ -123,6 +123,7 @@ body::-webkit-scrollbar{
       rgba(48, 76, 132, 0.7)
     ),url("./images/redBG.jpg");
     box-shadow:10px 50px 100px rgb(37, 36, 36);
+  align-items: center;
 }
 
 .Register #input-section,.ProfileEdit #input-section{
@@ -190,7 +191,7 @@ body::-webkit-scrollbar{
 .Login #input-section,#forgotPassword{
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 30px;
+  /* column-gap: 30px; */
   row-gap: 10px;
   width:60%;
   margin:auto;
@@ -1294,7 +1295,7 @@ input::-webkit-inner-spin-button {
   .Register #input-section,.ProfileEdit #input-section{
     display: grid;
     grid-template-columns: 1fr;
-    column-gap: 10px;
+    /* column-gap: 10px; */
     row-gap: 10px;
   }
   .Register .img1{
