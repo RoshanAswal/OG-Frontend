@@ -18,12 +18,20 @@ export const Post=()=>{
     const [deleted,setDeleted]=useState(false);
     const user=window.localStorage.getItem("userId");
     const postId=window.localStorage.getItem("postId");
-
+    const deletedUser=[];
     const fetchComments=async ()=>{
         try{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
             const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${response.data.author}`,{headers:cookies.access_token});
             if(res.data==="not found")setDeleted(true);
+            for(const comment of response.data.comments){
+                const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${comment.user}`,{headers:cookies.access_token});
+                if(res.data==="not found")deletedUser.push(comment.user);
+                for(const repli of comment){
+                    const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${repli.user}`,{headers:cookies.access_token});
+                    if(res.data==="not found")deletedUser.push(repli.user);
+                }
+            }
             setPost(response.data);
         }catch(err){
             console.log(err);
@@ -130,7 +138,11 @@ export const Post=()=>{
         setReply("");
         setPostToReply(ind);
     }
-
+    if(!post){
+        return (
+            <div>Loading...</div>
+        )
+    }
     return post && (
         <div className="postDetailPage">
             <Navbar />
@@ -160,9 +172,9 @@ export const Post=()=>{
                             <div className="comment" key={index}>
                                 <div className="userDetail">
                                     <img className="userImg" src={item.img?item.img:userDP} onClick={(e)=>handleClick(item.user)}/>
-                                    {checkUserExists(item.user)
-                                    ?<h3>{item.authorName}</h3>
-                                    :<h3>deleted User</h3>
+                                    {deletedUser.includes(item.user)
+                                    ?<h3>deleted User</h3>
+                                    :<h3>{item.authorName}</h3>
                                     }
 
                                 </div>
@@ -182,9 +194,9 @@ export const Post=()=>{
                                             <div key={ind}>
                                                 <div className="userDetail">
                                                     <img className="userImg" src={rep.img?rep.img:userDP} onClick={(e)=>handleClick(rep.user)}/>
-                                                    {checkUserExists(rep.user)
-                                                    ?<h3>{rep.authorName}</h3>
-                                                    :<h3>deleted User</h3>
+                                                    {deletedUser.includes(rep.user)
+                                                    ?<h3>deleted User</h3>
+                                                    :<h3>{rep.authorName}</h3>
                                                     }
                                                  </div>
                                                 <p>{rep.comment}</p>
