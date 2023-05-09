@@ -15,8 +15,6 @@ export const Post=()=>{
     const [showReplyBox,setShowReplyBox]=useState(false);
     const [cookies,_]=useCookies(["access_token"]);
     const [postToReply,setPostToReply]=useState('');
-    const [deleted,setDeleted]=useState(false);
-    let deletedUser=[];
     
     const user=window.localStorage.getItem("userId");
     const postId=window.localStorage.getItem("postId");
@@ -26,8 +24,6 @@ export const Post=()=>{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
             setPost(response.data);
             const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${post.author}`,{headers:cookies.access_token});
-            if(res.data){}
-            else{deletedUser.push(response.author)}
         }catch(err){
             console.log(err);
         }
@@ -40,7 +36,7 @@ export const Post=()=>{
     const checkUserExists = async (userId) => {
         try {
             const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`,{headers:cookies.access_token});
-            if(res.data)return true;
+            if(res)return true;
             else return false;
         } catch (error) {
             console.log(error);
