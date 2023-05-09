@@ -26,6 +26,7 @@ export const Register=()=>{
     const [emailWarning,setEmailWarning]=useState(false);
     const [otpSent,setOtpSent]=useState(false);
     const [invalid,showInvalid]=useState(false);
+    const [unique,setUnique]=useState(false);
 
     const submission=async (e)=>{
         e.preventDefault();
@@ -46,10 +47,17 @@ export const Register=()=>{
             if(msg==="email"){
                 setEmailWarning(true);
                 setUsernameWarning(false);
+                setUnique(false);
             }else if(msg==="username"){
                 setUsernameWarning(true);
                 setEmailWarning(false);
-            }else if(invalid)return;
+                setUnique(false);
+            }else if(msg==="notUnique"){
+                setUnique(true);
+                setUsernameWarning(false);
+                setEmailWarning(false);
+            }
+            else if(invalid)return;
             else{
                 navigate("/login");
             }
@@ -117,6 +125,9 @@ export const Register=()=>{
                     }
                     {
                         otpSent?<h4>Otp Sent to given mail</h4>:""
+                    }
+                    {
+                        unique?<h4>UserName not available</h4>:""
                     }
                     </div>
                     <button id='submit' type="submit">Register</button>
