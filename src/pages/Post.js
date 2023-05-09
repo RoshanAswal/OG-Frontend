@@ -36,7 +36,7 @@ export const Post=()=>{
     const checkUserExists = async (userId) => {
         try {
             const res=await axios.get(`${process.env.REACT_APP_CONNECTION}profile/${userId}`,{headers:cookies.access_token});
-            console.log(res.data);
+            console.log(res);
             if(res.data==="")return false;
             else return true;
         } catch (error) {
