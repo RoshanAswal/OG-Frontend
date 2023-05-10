@@ -103,11 +103,11 @@ export const Register=()=>{
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
                         </select>
-                        <input type="text" placeholder='Country (optional)' name="country" value={country} onChange={(e)=>setcountry(e.target.value)}/>
+                        {/* <input type="text" placeholder='Country (optional)' name="country" value={country} onChange={(e)=>setcountry(e.target.value)}/>
                         <input type="url" placeholder='Social URL (optional)' name="socialURL" value={socialURL} onChange={(e)=>setsocialURL(e.target.value)}/>
                         <input type="text" placeholder='Fav Anime (optional)' name="favAnime" value={favAnime} onChange={(e)=>setfavAnime(e.target.value)}/>
                         <input type="text" placeholder='Fav Game (optional)' name="favGame" value={favGame} onChange={(e)=>setfavGame(e.target.value)}/>
-                        <input type="text" placeholder='Fav Character (optional)' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/>
+                        <input type="text" placeholder='Fav Character (optional)' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/> */}
                     </div>
                     <div>
                     {

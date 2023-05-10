@@ -33,7 +33,6 @@ function App() {
           <Route path='/PaymentFailed' element={<PaymentFailed />}></Route>
           <Route path='/ThanksPage' element={<ThanksPage/>}></Route>
           <Route path='/post/:postId' target="_blank" element={<Post />}></Route>
-          <Route path="/loaderio-7d828282d00cf6ed942324925c69f22f/" element={<WinnerList />} />
         </Routes>
       </Router>
     </div>
