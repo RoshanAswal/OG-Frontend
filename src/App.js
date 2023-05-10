@@ -11,7 +11,7 @@ import { ContestPage } from './pages/ContestPage';
 import { ThanksPage } from './pages/ThanksPage';
 import { ProfileEdit } from './pages/ProfileEdit';
 import { PaymentFailed } from './pages/PaymetFailed';
-import { PaymentSuccess } from './pages/paymentSuccess';
+import { PaymentSuccess } from './pages/PaymentSuccess';
 import { Post } from './pages/Post';
 import { WinnerList } from './pages/WinnerList';
 
