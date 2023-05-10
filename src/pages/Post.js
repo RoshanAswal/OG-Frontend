@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Navbar } from '../components/Navbar';
 import reply from "../images/reply.png";
 import userDP from "../images/user.png";
+import right from "../images/right-chevron.png";
+import left from "../images/left-chevron.png";
 
 export const Post=()=>{
     const navigate=useNavigate();
@@ -16,9 +18,13 @@ export const Post=()=>{
     const [cookies,_]=useCookies(["access_token"]);
     const [postToReply,setPostToReply]=useState('');
     const [deleted,setDeleted]=useState(false);
+    const [pageno,setPageNo]=useState(1);
+    const [totalPages,setTotalPages]=useState(0);
+    let commentCapacity=6;
     const user=window.localStorage.getItem("userId");
     const postId=window.localStorage.getItem("postId");
-    const deletedUser=[];
+
+
     const fetchComments=async ()=>{
         try{
             const response=await axios.get(`${process.env.REACT_APP_CONNECTION}posts/${postId}`);
@@ -30,6 +36,8 @@ export const Post=()=>{
 
     useEffect(()=>{
         fetchComments();
+        if(post)
+            setTotalPages(Math.ceil(post.comments.length / commentCapacity));
     },[]);
 
     const handleClick=(id)=>{
@@ -142,12 +150,15 @@ export const Post=()=>{
                 <div className="commentSection">
                     <h2 className="commment-heading">Comments - </h2>
                     {
-                        post.comments.map((item,index)=>(
+                        post.comments.slice(commentCapacity * (pageno-1),
+                            commentCapacity * (pageno-1) + commentCapacity).map((item,index)=>(
+                        
                             <div className="comment" key={index}>
                                 <div className="userDetail">
                                     <img className="userImg" src={item.img?item.img:userDP} onClick={(e)=>handleClick(item.user)}/>
                                     <h3>{item.authorName}</h3>
                                 </div>
+
                                 <p>{item.comment}</p>
                                 <div className="commentOptions">
                                     <button id="likeBtn" onClick={(e)=>addLike(e,"comment",index,-1)}>👍  {item.likes}</button>
@@ -165,7 +176,7 @@ export const Post=()=>{
                                                 <div className="userDetail">
                                                     <img className="userImg" src={rep.img?rep.img:userDP} onClick={(e)=>handleClick(rep.user)}/>
                                                     <h3>{rep.authorName}</h3>
-                                                 </div>
+                                                    </div>
                                                 <p>{rep.comment}</p>
                                                 <div className="commentOptions">
                                                     <button id="likeBtn" onClick={(e)=>addLike(e,"reply",index,ind)}>👍  {rep.likes}</button>
@@ -185,6 +196,33 @@ export const Post=()=>{
                                 }
                             </div>
                         ))
+                    }
+                    {
+                    post.comments.length>commentCapacity
+                    ?
+                        <div className="btnControl">
+                            <div>
+                            <img onClick={() => {setPageNo(pageno > 1 ? pageno - 1 : pageno)}} 
+                                src={left}
+                            />
+                            </div>
+                            <div>
+                            <input type="number" name="pageNo" value={pageno} onChange={(e)=>{setPageNo(e.target.value)}}/>
+                            </div>
+
+                            <div>
+                            <img                       
+                                onClick={() =>
+                                {  setPageNo(pageno < totalPages ? pageno + 1 : pageno)}
+                                }
+                                src={right}
+                            />                    
+                            </div>
+                        </div>
+                        :<div></div>
+                    }
+                    {
+
                     }
                     <form className="commentForm" onSubmit={(e)=>addComment(e)}>
                         <textarea value={comment} onChange={(e)=>setComment(e.target.value)} placeholder="Add a comment"/>

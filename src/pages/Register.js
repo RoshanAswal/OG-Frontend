@@ -92,7 +92,7 @@ export const Register=()=>{
                     <img className='img1' src={registerText}></img>
                     <div id='input-section'>
                         <input type="text" placeholder='Username' name="username" value={username} onChange={(e)=>setusername(e.target.value)} required/>
-                        <input type="password" placeholder='Password' name="password" minLength={8} value={password} onChange={(e)=>checkPassword(e)} required/>
+                        <input type="password" placeholder='Password' name="password" minLength={11} value={password} onChange={(e)=>checkPassword(e)} required/>
                         <input type="email" placeholder='E-mail' name="email" value={email} onChange={(e)=>setemail(e.target.value)} required/>
                         <button id='otp' onClick={getOtp}>Get Otp</button>
                         <input type="text" placeholder='OTP' name="otp" value={otp} onChange={(e)=>setOtp(e.target.value)}/>
