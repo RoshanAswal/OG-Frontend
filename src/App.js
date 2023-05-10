@@ -13,6 +13,7 @@ import { ProfileEdit } from './pages/ProfileEdit';
 import { PaymentFailed } from './pages/PaymetFailed';
 import { PaymentSuccess } from './pages/paymentSuccess';
 import { Post } from './pages/Post';
+import { WinnerList } from './pages/WinnerList';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path='/PaymentFailed' element={<PaymentFailed />}></Route>
           <Route path='/ThanksPage' element={<ThanksPage/>}></Route>
           <Route path='/post/:postId' target="_blank" element={<Post />}></Route>
-          <Route path="/loaderio-7d828282d00cf6ed942324925c69f22f/" />
+          <Route path="/loaderio-7d828282d00cf6ed942324925c69f22f/" element={<WinnerList />} />
         </Routes>
       </Router>
     </div>
