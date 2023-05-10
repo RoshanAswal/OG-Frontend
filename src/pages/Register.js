@@ -38,9 +38,9 @@ export const Register=()=>{
             }else{
                 setShowError(false);
             }
-            if(emailWarning || showError || usernameWarning || invalid){
-                return;
-            }
+            // if(emailWarning || showError || usernameWarning || invalid || unique){
+            //     return;
+            // }
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
             {username,password,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;
@@ -56,8 +56,7 @@ export const Register=()=>{
                 setUnique(true);
                 setUsernameWarning(false);
                 setEmailWarning(false);
-            }
-            else if(invalid)return;
+            }else if(invalid)return;
             else{
                 navigate("/login");
             }
