@@ -4,7 +4,6 @@ import upcoming from "../images/Upcoming.png";
 import previous from "../images/Previous.png";
 import right from "../images/right-chevron.png";
 import left from "../images/left-chevron.png";
-import specs from "../images/specsGuy.png";
 import axios from 'axios';
 
 import { Navbar } from '../components/Navbar';
