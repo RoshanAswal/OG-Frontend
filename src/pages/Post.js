@@ -40,10 +40,10 @@ export const Post=()=>{
             setTotalPages(Math.ceil(post.comments.length / commentCapacity));
     },[]);
 
-    const ChangePages=()=>{
+    useEffect(()=>{
         if(post)
             setTotalPages(Math.ceil(post.comments.length / commentCapacity));
-    }
+    })
 
     const handleClick=(id)=>{
         navigate(`/profile/${id}`,{
@@ -58,7 +58,7 @@ export const Post=()=>{
         if(!user)navigate("/register");
         try{
             await axios.put(`${process.env.REACT_APP_CONNECTION}posts/deletePost`,{postId,headers:cookies.access_token});
-            ChangePages();
+        
             navigate("/community");
         }catch(err){
             console.log(err);
@@ -74,7 +74,6 @@ export const Post=()=>{
         }catch(err){
             console.log(err);
         }
-        ChangePages();
     }
     const deleteComment=async (e,ind)=>{
         e.preventDefault();
@@ -85,7 +84,6 @@ export const Post=()=>{
         }catch(err){
             console.log(err);
         }
-        ChangePages();
     }
 
     const addComment=async (e)=>{
@@ -100,7 +98,6 @@ export const Post=()=>{
         }catch(err){
             console.log(err);
         }
-        ChangePages();
     }
 
     const addReply=async (e,reply,ind)=>{
@@ -115,7 +112,6 @@ export const Post=()=>{
         }catch(err){
             console.log(err);
         }
-        ChangePages();
     }
 
     const addLike=async (e,type,ind1,ind2)=>{{
@@ -127,7 +123,6 @@ export const Post=()=>{
         }catch(err){
             console.log(err);
         }
-        ChangePages();
     }};
 
     const showReply=(e,ind)=>{
