@@ -1248,7 +1248,8 @@ input::-webkit-inner-spin-button,
 /*=====================================================================*/
 /*======================= Media query ==================================*/
 /*=====================================================================*/
-@media (max-width:900px){
+
+@media (max-width:800px){
   
   /*========================== home ======================*/
 
@@ -1583,6 +1584,357 @@ input::-webkit-inner-spin-button,
   }
   .winnersCard h2{
     font-size:15px;
+  }
+}
+
+
+/*
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////// Media query for more smaller device /////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+*/
+@media (max-width:500px){
+  
+  /*========================== home ======================*/
+
+  .home{
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("./images/potrait.webp") center center;
+    background-repeat:repeat;
+    background-size:cover;
+    box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
+    text-align: center;
+    overflow-y: scroll;
+    padding-bottom: 100px;
+  }
+
+  .home .choose-section{
+    width:90%;
+    margin-top:20vh;
+    column-gap: 20px;
+  }
+  .home #first-img{
+    width: 100px;
+    height: 15px;
+  }
+  .home #second-img{
+    width: 100px;
+    height: 15px;
+  }
+
+  /*======================== Navbar ====================*/
+  .navbar #nav-img1{
+    height:70px;
+    width: 50px;
+  }
+  
+  .navbar #nav-img2{
+    height:25px;
+    width: 25px;
+    cursor: pointer;
+  }
+
+  /*====================== Register =====================*/
+  .Register,.Login,.ProfileEdit{
+    width:60%;
+    /* padding:5%; */
+    margin-top:2vh;
+  }
+  
+  .Login input,button{
+    width:100%;
+    height:20px;
+  }
+  /* .Login #forgetPassword,#input-section{
+    width:70%;
+    margin:0 auto;
+  } */
+
+  .Register #input-section,.ProfileEdit #input-section{
+    display: grid;
+    grid-template-columns: 1fr;
+    /* column-gap: 10px; */
+    row-gap: 8px;
+  }
+  .Register .img1{
+    width:90%;
+    height:90%;
+    margin-bottom: 5%;
+  }
+  
+  .Register .img2{
+    width:50%;
+    height:50%;
+    margin-top: 5%;
+  }
+
+  /*================= Profile =======================*/
+  .Profile{
+    width:70%;
+  }
+  .profileCols{
+    margin-top:10vh;
+  }
+  .Profile img{
+    margin-top:-15%;
+    width:30%;
+  }
+  .Profile #name{
+    font-size: 1.5rem;
+  }
+  .Profile #caption{
+    font-size: 1rem;
+  }
+  .Profile .detail-section #label{
+    font-size: .8rem;
+  }
+  .Profile .detail-section #data{
+    font-size: 1rem;
+  }
+  .Profile .rank-section #label{
+    font-size: .8rem;
+  }
+  .Profile .rank-section #data{
+    font-size: 2rem;
+  }
+
+  .flipBtn{
+    margin-top:10px;
+  }
+
+  .flipBtn img{ 
+    width:30px;
+    height:30px;
+  }
+  .confirm form{
+    width:50%;
+  }
+
+  /*========================== Contest Page ==============*/
+
+  .contest{
+    font-size:8px;
+  }
+  .contest .contestZone{
+    margin-top:20%;
+  }
+  .contest .status{
+    width:35%;
+    height:4%;
+  }
+  .contest .previous{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  /* ======================= Contest Card ===================*/
+  .contestCard{
+    width:100px;
+    height:100px;
+  }
+
+  /* ======================= Contest Detail ============================*/
+
+  .contestDetail .details{
+    width:80%;
+    margin:0 auto;
+  }
+  .contestDetail #timer{
+    font-size: 8px;
+    background-color: orange;
+  }
+  .contestDetail #heading{
+    font-size:20px;
+    margin-top:5%;
+  }
+  .contestDetail #sub-head{
+    font-size:10px;
+  }
+  .contestDetail p,li{
+    font-size:8px;
+    color:#e9e9ef
+  }
+
+  /*========================= Contest page ================*/
+  .ContestPage #timer{
+    margin-top:10px;
+    font-size: 10px;
+    text-align: center;
+  }
+  
+  .ContestPage .question-section{
+    width:80%;
+    line-height: 1.5;
+    margin:30vh auto 0 auto;
+    padding:30px
+  }
+  
+  .ContestPage .question-section #question{
+    font-size:10px;
+    margin-bottom:8px;
+  }
+  .ContestPage .question-section label{
+    padding-top:5px;
+    font-size:10px
+  }
+
+  /*=================== Profile Edit Page ========================*/  
+  .ProfileEdit {
+    margin-top:10vh !important;
+  }
+
+  /* ====================== Community Page =========================*/
+  .community .switch-section{
+    margin-top:6vh;
+  }
+
+  .community .switch-section #postBtn{
+    border:0;
+  }
+  /* ================= Rank Card =======================*/
+  
+  .rankPage .rank-heading{
+    margin-top:4vh;
+    width: 80px;
+    height:15px;
+  }
+  .rank img{
+    width:30px;
+    height:30px;
+  }
+  .rank{
+    grid-template-columns: repeat(4,1fr);
+
+  }
+  .rank .rank-btn{
+    font-size:8px;
+  } 
+  .rank-heading{
+    width:12rem;
+    height:3rem;
+  }
+
+  .rank .rank-sec1 h3{
+    font-size:8px;
+    width:10px;
+  }
+
+  /*=========================== Community Page =====================*/
+  
+  .post-section .filter-section{
+    width:70%;
+    margin:30px auto 30px;
+  }
+  .filter-section #filter1{
+    width: 22%;
+    height:10px;
+  }
+  .filter-section #filter2{
+    width: 35%;
+    height:10px;
+  }
+  .filter-section #filter1::placeholder{
+    font-size:8.5px;
+  }
+  .filter-section button{
+    width:20%;
+    height:20px;
+    font-size: 8px;
+  }
+  .community .lastSection button{
+    width:100%;
+  }
+
+  .post-section .btnControl img,
+  .ranks-section .btnControl img,
+  .commentSection .btnControl img
+  {
+    width:10px;
+    height:10px;
+    padding:2px;
+  }
+  .post-section .btnControl h2{
+    font-size:8px;
+  }
+  .post-section .sec2{
+    padding-top:2vh;
+  }
+
+  .postCard h3{
+    font-size:10px;
+  }
+  .postCard button{
+    font-size:10px;
+  }
+  .postHeading{
+    width:70px;
+    height:20px;
+    margin-top:6vh;
+  }
+
+  .community .lastSection button{
+    font-size: 10px;
+    padding:10%; 
+  }
+  .community .lastSection button:hover{
+    box-shadow:0 1px 2px black;
+  }
+  .lastSection input{
+    width:10px;
+    border:0;
+    border-radius: 10%;
+  }
+  .community .btnControl input,.commentSection .btnControl input{
+    font-size:8px;
+    height: 10px;
+  }
+  .community .btnControl input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .commentForm button{
+    width:30%;
+    font-size:13px;
+  }
+
+  /*========================== Create Form ====================*/
+  .create-section{
+    width:70%;
+    height:100%;
+  }
+
+  /* =============================== Post Detail Page ============*/
+  .postDetailPage .header h2{
+    font-size:15px;
+    margin-left:10px;
+  }
+
+  .post .header div{
+    margin-left:20px;
+    padding:3%;
+  }
+  .post .header div #likeBtn{
+    padding-left:8px;
+  }
+
+  /* =========================== Winners Card =================*/
+  .winnersCard{
+    grid-template-columns: repeat(4,1fr);
+  }
+  .winnersList #userImg{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+  }
+  .winnersCard h2{
+    font-size:10px;
   }
 }
 
