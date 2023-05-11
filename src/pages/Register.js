@@ -28,9 +28,11 @@ export const Register=()=>{
     const [invalid,showInvalid]=useState(false);
     const [unique,setUnique]=useState(false);
     const [verify,setVerify]=useState(false);
+    const [isdisable,setIsDisable]=useState(false);
 
     const submission=async (e)=>{
         e.preventDefault();
+        setIsDisable(true);
         try{
             let temp=parseInt(otp);
             if(temp!==OTP){
@@ -133,7 +135,7 @@ export const Register=()=>{
                         unique?<h4>UserName not available</h4>:""
                     }
                     </div>
-                    <button id='submit' type="submit">Register</button>
+                    <button id='submit' type="submit" disabled={isdisable}>Register</button>
                     <div>
                         <img className='img2' src={alreadyText}></img><h2><Link to="/login" id='loginText'>Login</Link></h2>
                     </div>

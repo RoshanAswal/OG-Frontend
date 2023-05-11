@@ -20,6 +20,7 @@ export const ProfileEdit=()=>{
     const [favCharacter,setfavCharacter]=useState("");
     const [img,setImg]=useState(null);
     const [editing,setEditing]=useState(false);
+    const [isdisable,setIsDisable]=useState(false);
 
     useEffect(()=>{
         const fetch=async (req,res)=>{
@@ -44,6 +45,7 @@ export const ProfileEdit=()=>{
     const handleSubmit=async (e)=>{
         e.preventDefault();
         setEditing(true);
+        setIsDisable(true);
         try{
             await axios.post(`${process.env.REACT_APP_CONNECTION}profile/${userId}/edit`,
             {caption:caption,gender:gender,country:country,socialURL:socialURL,favAnime:favAnime,
@@ -97,7 +99,7 @@ export const ProfileEdit=()=>{
                             onChange={(e)=>setFileToBase(e)}
                         />
                     </div>
-                    <button type="submit">change</button>
+                    <button type="submit" disabled={isdisable}>change</button>
                 </form>
             </div>
             {editing?<h3>Saving...</h3>:""}
