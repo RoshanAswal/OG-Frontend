@@ -32,7 +32,7 @@ export const Community = () => {
   const [posts, setPosts] = useState([]);
   const [totalPostPages, setTotalPostPages] = useState();
   const [postPageNo, setPostPageNo] = useState(0);
-
+  const [postLen,setPostLen]=useState(0);
   // useEffect(()=>{
   //   let width=window.innerWidth;
   //   if(width<1000){
@@ -84,8 +84,11 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [posts.length]);
+  }, [postLen]);
 
+  useEffect(()=>{
+    if(posts && posts.length!==postLen)setPostLen(posts.length);
+  });
   const filterPost=async (e)=>{
     e.preventDefault();
     try {
