@@ -24,9 +24,11 @@ export const Login=()=>{
     const [forgot,setForgot]=useState(false);
     const [otpCheck,setOtpCheck]=useState(true);
     const [invalid,showInvalid]=useState(true);
+    const [verify,setVerify]=useState(false);
 
     const submission=async (e)=>{
         e.preventDefault();
+        setVerify(true);
         try{
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
             {username,password});;
@@ -44,6 +46,7 @@ export const Login=()=>{
         }catch(err){
             console.log(err);
         }
+        setVerify(false);
     }
 
     const getOtp=async (e)=>{
@@ -62,6 +65,7 @@ export const Login=()=>{
     }
     const checkOtp=async (e)=>{
         e.preventDefault();
+        setVerify(true);
         if(Number(otp)!==OTP){
             setOtpCheck(false);
             return;
@@ -76,6 +80,7 @@ export const Login=()=>{
             setForgot(false);
             setValid(true);
         }
+        setVerify(false);
     }
     const checkPassword=(e)=>{
         setpassword(e.target.value);
@@ -126,6 +131,7 @@ export const Login=()=>{
                     }
                 </form>
             </div>
+            {verify? <h2>Verifying...</h2>:""}
         </div>
 
     )

@@ -27,6 +27,7 @@ export const Register=()=>{
     const [otpSent,setOtpSent]=useState(false);
     const [invalid,showInvalid]=useState(false);
     const [unique,setUnique]=useState(false);
+    const [verify,setVerify]=useState(false);
 
     const submission=async (e)=>{
         e.preventDefault();
@@ -38,12 +39,15 @@ export const Register=()=>{
             }else{
                 setShowError(false);
             }
+            setVerify(true);
+
             // if(emailWarning || showError || usernameWarning || invalid || unique){
             //     return;
             // }
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
             {username,password,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;
+            setVerify(false);
             if(msg==="email"){
                 setEmailWarning(true);
                 setUsernameWarning(false);
@@ -135,6 +139,7 @@ export const Register=()=>{
                     </div>
                 </form>
             </div>
+            {verify?<h2>Verifying...</h2>:""}
         </div>
     )
 };
