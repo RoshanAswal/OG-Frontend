@@ -63,7 +63,7 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [users]);
+  }, []);
 
   useEffect(()=>{
     if(users)setPage();

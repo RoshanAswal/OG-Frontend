@@ -29,7 +29,7 @@ export const Contest=()=>{
                 setTotalPages(Math.ceil(contest.length/capacity));
         }
         fetchContest();
-    },[contest]);
+    },[]);
     // useEffect(()=>{
     //     let width=window.innerWidth;
     //     if(width<1000){
