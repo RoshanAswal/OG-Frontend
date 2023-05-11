@@ -167,7 +167,7 @@ export const Profile=(props)=>{
                     ?
                     <div className='flipBtn'>
                         <img  src={flip} alt='img' onClick={()=>setShowOptions(!showOptions)}/>
-                        <h3>Edit</h3>
+                        <h3>More Options</h3>
                     </div>
                     :""
                 }
