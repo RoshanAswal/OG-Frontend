@@ -32,7 +32,6 @@ export const Community = () => {
   const [posts, setPosts] = useState([]);
   const [totalPostPages, setTotalPostPages] = useState();
   const [postPageNo, setPostPageNo] = useState(0);
-  const [postLen,setPostLen]=useState(0);
   // useEffect(()=>{
   //   let width=window.innerWidth;
   //   if(width<1000){
@@ -71,24 +70,22 @@ export const Community = () => {
   },[users]);
 
   // Fetching the post data
-  useEffect(() => {
-    const fetch = async (req, res) => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_CONNECTION}posts`);
-        if(filterAuthor==="" && filterTitle===""){
-          setPosts(response.data.reverse());
-          if(posts)setPostPage();
-        }
-      } catch (err) {
-        console.log(err);
+  const fetch = async (req, res) => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_CONNECTION}posts`);
+      if(filterAuthor==="" && filterTitle===""){
+        setPosts(response.data.reverse());
+        if(posts)setPostPage();
       }
-    };
-    fetch();
-  }, [postLen]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  useEffect(()=>{
-    if(posts && posts.length!==postLen)setPostLen(posts.length);
-  });
+  useEffect(() => {
+    fetch();
+  },[]);
+
   const filterPost=async (e)=>{
     e.preventDefault();
     try {
@@ -125,6 +122,7 @@ export const Community = () => {
             await axios.post(`${process.env.REACT_APP_CONNECTION}posts/newPost`,
             {userId,postData,title,headers:cookies.access_token});
             setShowForm(false);
+            fetch();
         }catch(err){
             console.log(err);
         }
