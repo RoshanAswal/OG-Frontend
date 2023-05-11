@@ -98,9 +98,9 @@ export const ProfileEdit=()=>{
                         />
                     </div>
                     <button type="submit">change</button>
-                    <h3>{editing?"Saving":""}</h3>
                 </form>
             </div>
+            {editing?<h3>Saving...</h3>:""}
         </div>
 
     )
