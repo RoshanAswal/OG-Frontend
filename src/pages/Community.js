@@ -84,7 +84,7 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [posts && posts.length]);
+  }, [posts]);
 
   const filterPost=async (e)=>{
     e.preventDefault();
