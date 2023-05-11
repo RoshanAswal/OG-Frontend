@@ -64,11 +64,11 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [users]);
+  }, [users && users.length]);
 
   useEffect(()=>{
     if(users)setPage();
-  },[users]);
+  },[users && users.length]);
 
   // Fetching the post data
   useEffect(() => {
@@ -84,7 +84,7 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [posts]);
+  }, [posts && posts.length]);
 
   const filterPost=async (e)=>{
     e.preventDefault();
