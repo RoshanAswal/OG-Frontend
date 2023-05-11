@@ -16,7 +16,7 @@ export const Contest=()=>{
     const [cookies,_]=useCookies();
     const [page,setPage]=useState(0);
     const [totalPages,setTotalPages]=useState(0);
-    const [capacity,setCapacity]=useState(6);
+    const [capacity,setCapacity]=useState(4);
     
     useEffect(()=>{
         const fetchContest=async ()=>{
@@ -29,7 +29,7 @@ export const Contest=()=>{
                 setTotalPages(Math.ceil(contest.length/capacity));
         }
         fetchContest();
-    },[]);
+    },[contest]);
     // useEffect(()=>{
     //     let width=window.innerWidth;
     //     if(width<1000){

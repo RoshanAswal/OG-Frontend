@@ -41,8 +41,9 @@ export const Post=()=>{
     },[]);
 
     useEffect(()=>{
-        setTotalPages(Math.ceil(post.comments.length / commentCapacity));
-    },[post]);
+        if(post)
+            setTotalPages(Math.ceil(post.comments.length / commentCapacity));
+    })
 
     const handleClick=(id)=>{
         navigate(`/profile/${id}`,{

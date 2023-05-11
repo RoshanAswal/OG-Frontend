@@ -21,7 +21,7 @@ export const Community = () => {
   const [filterTitle,setFilterTitle]=useState("");
 
   const [rankCapacity,setRankCapacity]=useState(18);
-  const [postCapacity,setPostCapacity]=useState(10);
+  const [postCapacity,setPostCapacity]=useState(8);
   const userId=window.localStorage.getItem("userId");
   const navigate=useNavigate();
 
@@ -64,11 +64,11 @@ export const Community = () => {
       }
     };
     fetch();
-  }, [users && users.length]);
+  }, [users]);
 
   useEffect(()=>{
     if(users)setPage();
-  },[users && users.length]);
+  },[users]);
 
   // Fetching the post data
   useEffect(() => {
