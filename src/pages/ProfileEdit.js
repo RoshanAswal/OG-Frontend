@@ -43,18 +43,20 @@ export const ProfileEdit=()=>{
 
     const handleSubmit=async (e)=>{
         e.preventDefault();
+        setEditing(true);
         try{
             await axios.post(`${process.env.REACT_APP_CONNECTION}profile/${userId}/edit`,
             {caption:caption,gender:gender,country:country,socialURL:socialURL,favAnime:favAnime,
                 favGame:favGame,favCharacter:favCharacter,img:img?img:null,headers:cookies.access_token}
             );
-            setEditing(true);
+
             navigate(`/profile/${userId}`,{
                 state:{userId:userId}
             });
         }catch(err){
             console.log(err);
         }
+        setEditing(false);
     }
     
     const setFileToBase = (e) => {
