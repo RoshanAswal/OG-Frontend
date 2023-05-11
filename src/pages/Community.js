@@ -21,7 +21,7 @@ export const Community = () => {
   const [filterTitle,setFilterTitle]=useState("");
 
   const [rankCapacity,setRankCapacity]=useState(18);
-  const [postCapacity,setPostCapacity]=useState(8);
+  const [postCapacity,setPostCapacity]=useState(10);
   const userId=window.localStorage.getItem("userId");
   const navigate=useNavigate();
 
@@ -33,14 +33,14 @@ export const Community = () => {
   const [totalPostPages, setTotalPostPages] = useState();
   const [postPageNo, setPostPageNo] = useState(0);
 
-  useEffect(()=>{
-    let width=window.innerWidth;
-    if(width<1000){
-      setPostCapacity(10);
-    }else{
-      setPostCapacity(8);
-    }
-  })
+  // useEffect(()=>{
+  //   let width=window.innerWidth;
+  //   if(width<1000){
+  //     setPostCapacity(10);
+  //   }else{
+  //     setPostCapacity(8);
+  //   }
+  // })
 
   const setPage=()=>{
     setTotalPages(Math.ceil(users.length / rankCapacity));

@@ -16,7 +16,7 @@ export const Contest=()=>{
     const [cookies,_]=useCookies();
     const [page,setPage]=useState(0);
     const [totalPages,setTotalPages]=useState(0);
-    const [capacity,setCapacity]=useState(4);
+    const [capacity,setCapacity]=useState(6);
     
     useEffect(()=>{
         const fetchContest=async ()=>{
@@ -30,12 +30,12 @@ export const Contest=()=>{
         }
         fetchContest();
     },[contest]);
-    useEffect(()=>{
-        let width=window.innerWidth;
-        if(width<1000){
-            setCapacity(6);
-        }
-    });
+    // useEffect(()=>{
+    //     let width=window.innerWidth;
+    //     if(width<1000){
+    //         setCapacity(6);
+    //     }
+    // });
 
     return (
         <div className="contest">
