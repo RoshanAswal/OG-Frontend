@@ -53,7 +53,7 @@ export const ContestPage=()=>{
     },[]);
 
     useEffect(()=>{
-        if(time.substring(7,9)==="10"){
+        if(time.substring(7,9)==="50"){
             GotoThanksPage();
         }
     });
