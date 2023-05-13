@@ -1805,8 +1805,8 @@ input::-webkit-inner-spin-button,
     height:15px;
   }
   .rank img{
-    width:30px;
-    height:30px;
+    width:35px;
+    height:35px;
   }
   .rank{
     grid-template-columns: repeat(4,1fr);
@@ -1816,12 +1816,12 @@ input::-webkit-inner-spin-button,
     font-size:8px;
   } 
   .rank-heading{
-    width:12rem;
+    width:15rem;
     height:3rem;
   }
 
   .rank .rank-sec1 h3{
-    font-size:8px;
+    font-size:10px;
     width:10px;
   }
 
