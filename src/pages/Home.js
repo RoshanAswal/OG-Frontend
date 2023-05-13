@@ -4,6 +4,7 @@ import connect from '../images/connect1.png';
 import compete from '../images/compete1.png';
 import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import { Footer } from '../components/Footer';
 
 export const Home=()=>{
     const navigate=useNavigate();       
@@ -31,6 +32,7 @@ export const Home=()=>{
                 <img id="second-img" src={connect} alt="" onClick={(event)=>handleClick(event,"img2")}/>
                 <img id="first-img" src={compete} alt="" onClick={(event)=>handleClick(event,"img1")}/>
             </div>
+            <Footer/>
         </div>
     )
 }
