@@ -95,7 +95,7 @@ export const ProfileEdit=()=>{
                         <input type="text" placeholder='Fav Game' name="favGame" value={favGame} onChange={(e)=>setfavGame(e.target.value)}/>
                         <input type="text" placeholder='Fav Character' name="favCharacter" value={favCharacter} onChange={(e)=>setfavCharacter(e.target.value)}/>
 
-                        <input id="file" type="file" 
+                        <input id="file" type="file" accept="image/*"
                             onChange={(e)=>setFileToBase(e)}
                         />
                     </div>
