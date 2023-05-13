@@ -3,10 +3,17 @@ import { Navbar } from '../components/Navbar';
 import connect from '../images/connect1.png';
 import compete from '../images/compete1.png';
 import { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 
 export const Home=()=>{
     const navigate=useNavigate();       
-
+    const [cookies,_]=useCookies(['access_token']);
+    useEffect(()=>{
+        if(cookies.access_token){}
+        else{
+            window.localStorage.removeItem("userId");
+        }
+    },[]);
     const handleClick=(event,value)=>{
         event.preventDefault();
         try{
