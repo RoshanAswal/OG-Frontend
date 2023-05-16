@@ -13,7 +13,7 @@ export const Footer=()=>{
     }
     const GoToDiscord=async (e)=>{
         e.preventDefault();
-        const win=window.open(`https://discord.com/invite/Px3E6KAr`,'_blank');
+        const win=window.open(`https://discord.gg/9Pb89MWm`,'_blank');
         if(win!=null){
             win.focus();
         }
