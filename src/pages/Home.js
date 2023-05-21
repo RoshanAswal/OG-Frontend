@@ -12,8 +12,10 @@ export const Home=()=>{
     useEffect(()=>{
         if(cookies.access_token){}
         else{
-            window.localStorage.removeItem("userId");
-            window.location.reload();
+            if(window.localStorage.getItem("userId")){
+                window.localStorage.removeItem("userId");
+                window.location.reload();
+            }
         }
     });
     const handleClick=(event,value)=>{

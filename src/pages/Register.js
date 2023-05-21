@@ -5,6 +5,7 @@ import { Navbar } from '../components/Navbar';
 import loginText from "../images/logintext.png";
 import registerText from "../images/registeryourself.png";
 import alreadyText from "../images/alreadygeek.png";
+import CryptoJs from 'crypto-js';
 
 export const Register=()=>{
     const navigate=useNavigate();
@@ -46,8 +47,12 @@ export const Register=()=>{
             // if(emailWarning || showError || usernameWarning || invalid || unique){
             //     return;
             // }
+            const trimmedPass=password.trim();
+            const trimmedUsername=username.trim();
+            const passwordEncrypt=CryptoJs.AES.encrypt(trimmedPass,process.env.SECRET);
+            const emailEncrypt=CryptoJs.AES.encrypt(email,process.env.REACT_APP_SECRET);
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
-            {username,password,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
+            {username:trimmedUsername,password:passwordEncrypt,email:emailEncrypt,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;
             setVerify(false);
             if(msg==="email"){

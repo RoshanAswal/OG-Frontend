@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Navbar } from '../components/Navbar';
 import welcomeText from "../images/welcomeback.png";
+import CryptoJS from 'crypto-js';
 
 // import {useDispatch} from 'react-redux';
 // import { addUserId } from '../store/UserSlice';
@@ -30,8 +31,10 @@ export const Login=()=>{
         e.preventDefault();
         setVerify(true);
         try{
+            const passwordEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
+            
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
-            {username,password});;
+            {username,password:passwordEncrypt});;
 
             if(response.data.userId){
                 setCookie("access_token",response.data.token);
@@ -75,7 +78,9 @@ export const Login=()=>{
             showInvalid(true);
             return;
         }else{
-            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password,email});
+            const PassEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
+            const emailEncrypt=CryptoJS.AES.encrypt(email,process.env.REACT_APP_SECRET);
+            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password:PassEncrypt,email:emailEncrypt});
             console.log("here");
             setForgot(false);
             setValid(true);

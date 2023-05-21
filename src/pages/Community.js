@@ -51,10 +51,12 @@ export const Community = () => {
   useEffect(()=>{
     if(cookies.access_token){}
     else{
+      if(window.localStorage.getItem("userId")){
         window.localStorage.removeItem("userId");
         window.location.reload();
     }
-  });
+    }
+  },);
 
   // Fetching the Users data
   useEffect(() => {
