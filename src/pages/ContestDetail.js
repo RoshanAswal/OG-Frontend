@@ -15,7 +15,7 @@ export const ContestDetail=(props)=>{
     const navigate=useNavigate();
     const data=location.state;
 
-    const limit=10;
+    const limit=50;
     const capacity=24;
 
     const [btn,setbtn]=useState("Register");
