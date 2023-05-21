@@ -48,7 +48,13 @@ export const Community = () => {
     setTotalPostPages(Math.ceil(posts.length / postCapacity));
   }
 
-
+  useEffect(()=>{
+    if(cookies.access_token){}
+    else{
+        window.localStorage.removeItem("userId");
+        window.location.reload();
+    }
+  });
 
   // Fetching the Users data
   useEffect(() => {

@@ -31,6 +31,13 @@ export const ContestDetail=(props)=>{
 
     const userId=window.localStorage.getItem("userId");
 
+    useEffect(()=>{
+        if(cookies.access_token){}
+        else{
+            window.localStorage.removeItem("userId");
+            window.location.reload();
+        }
+    });
     useEffect(() => {
         const getCurrentTime=async ()=>{
           const response = await axios.get(`${process.env.REACT_APP_CONNECTION}api/currentTime`);

@@ -18,7 +18,7 @@ export const ThanksPage=()=>{
                 <h1 id="thank">Thank you, Your submission is accepted</h1>
                 <h2>For all references check <span onClick={GoToYT}>Here</span> </h2>
                 <h2>Don't forget to share your thoughts on post section</h2>
-                <Link to="/">Go Back</Link>
+                <h2><Link to="/">Go Back</Link></h2>
             </div>
         </div>
     )

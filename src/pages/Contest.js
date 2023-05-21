@@ -13,11 +13,11 @@ import { useCookies } from 'react-cookie';
 export const Contest=()=>{
     const [contest,setContest]=useState([]);
     const [upContest,setUpContest]=useState([]);
-    const [cookies,_]=useCookies();
+    const [cookies,_]=useCookies(["access_token"]);
     const [page,setPage]=useState(0);
     const [totalPages,setTotalPages]=useState(0);
     const [capacity,setCapacity]=useState(4);
-    
+
     useEffect(()=>{
         const fetchContest=async ()=>{
             const response1=await axios.get(`${process.env.REACT_APP_CONNECTION}contest`);
@@ -30,12 +30,14 @@ export const Contest=()=>{
         }
         fetchContest();
     },[]);
-    // useEffect(()=>{
-    //     let width=window.innerWidth;
-    //     if(width<1000){
-    //         setCapacity(6);
-    //     }
-    // });
+    
+    useEffect(()=>{
+        if(cookies.access_token){}
+        else{
+            window.localStorage.removeItem("userId");
+            window.location.reload();
+        }
+    });
 
     return (
         <div className="contest">

@@ -644,7 +644,9 @@ body::-webkit-scrollbar{
   width:100px;
   height:100px;
 }
-
+#thanks span:hover{
+  cursor: pointer;
+}
 
 /* ================================================ Community Page ============================*/
 .community{

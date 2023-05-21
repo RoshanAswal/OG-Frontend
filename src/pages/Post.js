@@ -35,6 +35,14 @@ export const Post=()=>{
     }
 
     useEffect(()=>{
+        if(cookies.access_token){}
+        else{
+            window.localStorage.removeItem("userId");
+            window.location.reload();
+        }
+    });
+    
+    useEffect(()=>{
         fetchComments();
         if(post)
             setTotalPages(Math.ceil(post.comments.length / commentCapacity));

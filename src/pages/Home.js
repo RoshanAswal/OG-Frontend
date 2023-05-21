@@ -13,8 +13,9 @@ export const Home=()=>{
         if(cookies.access_token){}
         else{
             window.localStorage.removeItem("userId");
+            window.location.reload();
         }
-    },[]);
+    });
     const handleClick=(event,value)=>{
         event.preventDefault();
         try{
