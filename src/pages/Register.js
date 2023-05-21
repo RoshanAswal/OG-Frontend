@@ -49,10 +49,10 @@ export const Register=()=>{
             // }
             const trimmedPass=password.trim();
             const trimmedUsername=username.trim();
-            const passwordEncrypt=CryptoJs.AES.encrypt(trimmedPass,process.env.SECRET);
-            const emailEncrypt=CryptoJs.AES.encrypt(email,process.env.REACT_APP_SECRET);
+            // const passwordEncrypt=CryptoJs.AES.encrypt(trimmedPass,process.env.SECRET);
+            // const emailEncrypt=CryptoJs.AES.encrypt(email,process.env.REACT_APP_SECRET);
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/register`,
-            {username:trimmedUsername,password:passwordEncrypt,email:emailEncrypt,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
+            {username:trimmedUsername,password:trimmedPass,email,caption,gender,country,socialURL,favAnime,favGame,favCharacter});
             const msg=response.data.message;
             setVerify(false);
             if(msg==="email"){

@@ -31,10 +31,10 @@ export const Login=()=>{
         e.preventDefault();
         setVerify(true);
         try{
-            const passwordEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
+            // const passwordEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
             
             const response=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/login`,
-            {username,password:passwordEncrypt});;
+            {username,password});;
 
             if(response.data.userId){
                 setCookie("access_token",response.data.token);
@@ -78,9 +78,9 @@ export const Login=()=>{
             showInvalid(true);
             return;
         }else{
-            const PassEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
-            const emailEncrypt=CryptoJS.AES.encrypt(email,process.env.REACT_APP_SECRET);
-            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password:PassEncrypt,email:emailEncrypt});
+            // const PassEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET);
+            // const emailEncrypt=CryptoJS.AES.encrypt(email,process.env.REACT_APP_SECRET);
+            const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password,email});
             console.log("here");
             setForgot(false);
             setValid(true);
