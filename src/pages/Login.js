@@ -24,8 +24,9 @@ export const Login=()=>{
     const [found,setFound]=useState(true);
     const [forgot,setForgot]=useState(false);
     const [otpCheck,setOtpCheck]=useState(true);
-    const [invalid,showInvalid]=useState(true);
+    const [invalid,showInvalid]=useState(false);
     const [verify,setVerify]=useState(false);
+    const [showOTP,setShowOTP]=useState(false);
 
     const submission=async (e)=>{
         e.preventDefault();
@@ -43,8 +44,7 @@ export const Login=()=>{
                 navigate("/");
             }else{
                 setValid(false);
-            }
-            
+            }            
         }catch(err){
             console.log(err);
         }
@@ -53,12 +53,15 @@ export const Login=()=>{
 
     const getOtp=async (e)=>{
         e.preventDefault();
+        setOtpCheck(true);
         setValid(true);
         try{
             const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/forgotPassword`,{email});
             if(res.data==="none"){
+                setShowOTP(false);
                 setFound(false);return;
             }
+            setShowOTP(true);
             setFound(true);
             await axios.post(`${process.env.REACT_APP_CONNECTION}auth/getOtp`,{email,OTP,username});
         }catch(err){
@@ -68,12 +71,19 @@ export const Login=()=>{
     const checkOtp=async (e)=>{
         e.preventDefault();
         setVerify(true);
-        if(Number(otp)!==OTP){
-            setOtpCheck(false);
+        if(password.length<11){
+            setVerify(false);
             return;
         }
+
+        if(Number(otp)!==OTP){
+            setOtpCheck(false);
+            setVerify(false);
+            return;
+        }
+        setOtpCheck(true);
+        setShowOTP(false);
         if(invalid){
-            setOtpCheck(true);
             showInvalid(true);
             return;
         }else{
@@ -82,6 +92,7 @@ export const Login=()=>{
             const res=await axios.post(`${process.env.REACT_APP_CONNECTION}auth/setNewPassword`,{password:PassEncrypt,email:emailEncrypt});
             
             setForgot(false);
+            setShowOTP(false);
             setValid(true);
         }
         setVerify(false);
@@ -89,8 +100,12 @@ export const Login=()=>{
     const checkPassword=(e)=>{
         setpassword(e.target.value);
         // const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-        if(password.length>10)showInvalid(false);
-        else showInvalid(true);
+        if(password.length<11)showInvalid(true);
+        else showInvalid(false);
+    }
+    const OtpFun=(e)=>{
+        setShowOTP(false);
+        setOtp(e.target.value);
     }
 
     return (
@@ -103,15 +118,15 @@ export const Login=()=>{
                         forgot?
                         <div id='forgotPassword'>
                             <input type="email" placeholder='email' name="email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
-                            <input type="text" placeholder='Otp' name="Otp" value={otp} onChange={(e)=>setOtp(e.target.value)} required/>
+                            <input type="text" placeholder='Otp' name="Otp" value={otp} onChange={(e)=>OtpFun(e)} required/>
                             <button id='otp' onClick={(e)=>{getOtp(e)}}>Get Otp</button>
                             <input type="password" placeholder='New Password' name="password" value={password} onChange={(e)=>checkPassword(e)} required/>
-                            <button id='submit' type='submit' onClick={(e)=>{checkOtp(e)}}>Login</button>
+                            <button id='submit' onClick={(e)=>{checkOtp(e)}}>Login</button>
                         </div>
                         :
                         <div id='input-section'>
                             <input type="text" placeholder='Username' name="username" value={username} onChange={(e)=>setusername(e.target.value)} required/>
-                            <input type="password" placeholder='Password' name="password" value={password} onChange={(e)=>setpassword(e.target.value)} required/>
+                            <input type="password" placeholder='Password' name="password" value={password} onChange={(e)=>checkPassword(e)} required/>
                             <div>
                                 <button id='submit' type="submit">Login</button>
                                 <h4 onClick={()=>setForgot(true)}>Forgot Password</h4> 
@@ -122,10 +137,11 @@ export const Login=()=>{
                     {!valid?<h3>invalid username or password</h3>:""}
 
                     {found?"":<div>User not found</div>}
+                    {showOTP?<div>Otp Sent</div>:""}
                     {forgot?
                         <div>
                             {otpCheck?"":<div>Otp not correct</div>}
-                            {invalid && password.length?<div>Password length should be above 10</div>:""}
+                            {invalid || password.length<11?<div>Password length should be above 10</div>:""}
                         </div>
                         :""
                         // <div>

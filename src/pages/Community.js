@@ -183,7 +183,7 @@ export const Community = () => {
                 Posts
               </button>
             </div>
-
+            {users?"":"Loading"}
             {showrank ? (
               <div className="ranks-section">
                 <div>

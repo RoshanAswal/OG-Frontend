@@ -147,10 +147,10 @@ export const ContestDetail=(props)=>{
             return false;
         }
         return false;
-        // if(loading===false && contestDetail.type==="upcoming"
-        //     && day==="Sat" && hour==="07" && period==="pm"){ // Contest starting time
-        //     return true;
-        // }else return false;
+        if(loading===false && contestDetail.type==="upcoming"
+            && day==="Sat" && hour==="07" && period==="pm"){ // Contest starting time
+            return true;
+        }else return false;
     }
 
     const showButton=()=>{
