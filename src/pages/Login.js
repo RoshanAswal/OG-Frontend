@@ -30,6 +30,7 @@ export const Login=()=>{
 
     const submission=async (e)=>{
         e.preventDefault();
+        if(password.length<11)return;
         setVerify(true);
         try{
             const passwordEncrypt=CryptoJS.AES.encrypt(password,process.env.REACT_APP_SECRET).toString();
