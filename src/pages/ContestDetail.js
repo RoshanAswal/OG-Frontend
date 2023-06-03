@@ -289,6 +289,16 @@ export const ContestDetail=(props)=>{
             <div>
                 <h1 id="heading">Contest {contestDetail.contest_no}</h1>
             </div>
+            <br/>
+            <div>
+                {
+                    showButton()?(
+                        <button onClick={handleClick}>
+                            {btn}
+                        </button>
+                    ):<h3 id="reg">Registered</h3>
+                }
+            </div>
             <div className="details">
                 <div>
                     <h2 id="sub-head">Schedule</h2>
@@ -343,15 +353,7 @@ export const ContestDetail=(props)=>{
                     :""
                 }
 
-                <div>
-                    {
-                        showButton()?(
-                            <button onClick={handleClick}>
-                                {btn}
-                            </button>
-                        ):<h3 id="reg">Registered</h3>
-                    }
-                </div>
+
                 {/* <button onClick={()=>trial()}>trial Register</button> */}
             </div>
         </div>

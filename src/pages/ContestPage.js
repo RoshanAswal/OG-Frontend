@@ -111,13 +111,13 @@ export const ContestPage=()=>{
             </div>
             <div className="question-section">
                     <form>
-                        <label id='question'>{questions[ind].question}</label><br/>
+                        <label id='question'>{questions[ind].question}</label><br/><br/>
                         <input type="radio" id="q1a" name="q1" value="a" checked={selected==='a'} onChange={handleClick}></input>
-                        <label htmlFor="q1a">a. {questions[ind].options[0]}</label><br/>
+                        <label htmlFor="q1a">a. {questions[ind].options[0]}</label><br/><br/>
                         <input type="radio" id="q1b" name="q1" value="b" checked={selected==='b'} onChange={handleClick}></input>
-                        <label htmlFor="q1b">b. {questions[ind].options[1]}</label><br/>
+                        <label htmlFor="q1b">b. {questions[ind].options[1]}</label><br/><br/>
                         <input type="radio" id="q1c" name="q1" value="c" checked={selected==='c'} onChange={handleClick}></input>
-                        <label htmlFor="q1c">c. {questions[ind].options[2]}</label><br/>
+                        <label htmlFor="q1c">c. {questions[ind].options[2]}</label><br/><br/>
                         <input type="radio" id="q1d" name="q1" value="d" checked={selected==='d'} onChange={handleClick}></input>
                         <label htmlFor="q1d">d. {questions[ind].options[3]}</label><br/>
                     </form>
