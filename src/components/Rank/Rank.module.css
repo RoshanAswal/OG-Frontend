@@ -1,0 +1,172 @@
+.rankComponent{
+    min-width:100px;
+    min-height:100px;
+}
+
+.rankHeading{
+    max-width:100px;
+    height:auto;
+}
+
+/*---------- Rank section -----------*/
+.ranks{
+    height:100vh;
+    margin-top:30px;
+
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    overflow-y:scroll;
+    
+}
+.ranks::-webkit-scrollbar{
+    display: none;
+}
+.rankCard{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    width:100%;
+    margin:0 auto;
+ 
+}
+.rankUser{
+    display: flex;
+    max-width:100px;
+    height:100px;
+}
+
+.rankUser h3{
+    background-color:rgb(37, 132, 163);
+    font-size:20px;
+    padding:20px;
+}
+
+.rankUser img{
+    width:100%;
+    height:auto;
+}
+
+
+.contestInfo{
+    display: flex;
+    justify-content: space-between; 
+
+    position:relative;
+}
+
+.contestInfo div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+.contestInfo div img{
+    width:30px;
+    height:auto;
+}
+.contestInfo div span{
+    font-size: 20px;
+    font-family:'Roboto', sans-serif;
+}
+
+
+
+
+.rankBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width:200px;
+    margin-left:10%;
+}
+.rankBtn button{
+    background-color: rgb(234, 226, 226,0);
+    /* padding:20px; */
+    min-width:150px;min-height:40px;
+    background-color: black;
+    border:none;
+
+    font-family:'Roboto', sans-serif;
+    font-size:20px;
+}
+.rankBtn button:hover{
+    cursor: pointer;
+    animation:colorFade .5s ease forwards;
+}
+
+
+
+/*----------- Animation ----------*/
+@keyframes colorFade {
+    0%{
+        scale:1;
+    }
+    100%{
+        border:1px white solid;
+        background-color: rgb(37, 132, 163);
+        border:none;
+        scale:1.2;
+    }
+}
+
+
+@keyframes showName {
+    0%{
+        font-size: 10px;
+    }
+    100%{
+        font-size: 20px;
+    }
+}
+
+/*-------------------- Media Query (900)----------------*/
+@media screen and (max-width:900px){
+    .contestInfo{
+        width:70%;
+        margin:0 auto;
+    }
+    .contestInfo div{
+        gap:10px;
+    }
+    .contestInfo div img{
+        width:20px;
+        height:auto;
+    }
+}
+
+
+/*------------------ Media query (700) -------------*/
+
+@media screen and (max-width:700px){
+    .contestInfo{
+        display: none;
+    }
+    .rankCard{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rankUser{
+        text-align: center;
+        flex-direction: column-reverse;
+        height:auto;
+
+        margin-top: 20px;
+    }
+    
+    .rankUser h3{
+        background-color:rgb(37, 132, 163);
+        font-size:20px;
+        padding:2px;
+    }
+    
+    .rankBtn{
+        text-align: center;
+        margin: 10% auto;
+    }
+    .rankBtn button{
+        font-size: 15px;
+    }
+}

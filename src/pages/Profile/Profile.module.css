@@ -1,0 +1,100 @@
+.ProPage{
+    background-image:linear-gradient(to bottom,
+    rgb(17, 77, 97),rgb(6, 5, 5),rgb(6, 5, 5));
+}
+.profileCols{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+/*------------ User Main infor -------------*/
+
+.Profile{
+    background-color: rgb(6, 63, 83);
+    width:50%;
+    margin:200px auto;
+    padding:3%;
+}
+
+.Profile hr{
+    margin-top:30px;
+}
+.nameSection img{
+    max-width: 300px;
+    height: auto;
+}
+.nameSection #name{
+    font-size:30px;
+}
+.nameSection #caption{
+    font-size:20px;
+}
+
+/*----------------------- More Formal info------------------------*/
+
+.detailSection{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 5%;
+}
+.detailSection div{
+    display: flex;
+    justify-content: space-between;
+
+    width:70%;
+    margin:10px auto;
+}
+.detailSection div img{
+    max-width:20px;
+    height:auto;
+}
+.detailSection div img:hover{
+    cursor: pointer;
+}
+.detailSection div #label,.rankSection div #label{
+    font-family:'Noto Sans', sans-serif;
+    text-align: left !important;
+}
+.detailSection div #data,.rankSection div #data{
+    font-family:'Montserrat', sans-serif;
+    text-align: right !important;
+}
+.rankSection{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 5%;
+}
+.rankSection div{
+    display: flex;
+    justify-content: space-between;
+
+    width:70%;
+    margin:10px auto;
+}
+
+/*-------------------- Media query (700px) -----------*/
+
+@media screen and (max-width:700px){
+    .Profile{
+        width:80%;
+    }
+    .detailSection div h3{
+        font-size:15px;
+    }
+}
+
+/*-------------------- Media query (400px) -----------*/
+
+@media screen and (max-width:400px){
+    .Profile{
+        width:90%;
+    }
+    .detailSection div h3{
+        font-size:15px;
+    }
+}

@@ -1,0 +1,40 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+
+    position: absolute;
+    top:10px;
+    padding:2px 2%;
+
+}
+
+#OG_logo{
+    max-width:70px;
+    height:auto;
+}
+#user_logo{
+    max-width:50px;
+    height:auto;
+}
+#profile_logo h3{
+    font-size:15px;
+}
+#profile_logo img:hover{
+    cursor: pointer;
+}
+
+/*----------- Media query (700) -------------*/
+@media screen and (max-width:700px) {
+    #OG_logo{
+        max-width:50px;
+        height:auto;
+    }
+    #user_logo{
+        max-width:30px;
+        height:auto;
+    }
+    #profile_logo h3{
+        font-size:12px;
+    }
+}

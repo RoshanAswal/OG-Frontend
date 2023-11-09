@@ -1,19 +1,19 @@
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import {Home} from './pages/Home';
-import {Community} from './pages/Community';
-import {Contest} from './pages/Contest';
-import {Register} from './pages/Register';
-import {Login} from './pages/Login';
-import {Profile} from './pages/Profile';
-import {ContestDetail} from './pages/ContestDetail';
-import { ContestPage } from './pages/ContestPage';
-import { ThanksPage } from './pages/ThanksPage';
-import { ProfileEdit } from './pages/ProfileEdit';
-import { PaymentFailed } from './pages/PaymetFailed';
-import { PaymentSuccess } from './pages/paymentSuccess';
-import { Post } from './pages/Post';
-import { WinnerList } from './pages/WinnerList';
+import {Home} from './pages/Home/Home';
+import {Community} from './pages/Community/Community';
+import {Contest} from './pages/Contest/Contest';
+import {Register} from './pages/Register/Register';
+import {Login} from './pages/Login/Login';
+import {Profile} from './pages/Profile/Profile';
+import {ContestDetail} from './pages/ContestDetail/ContestDetail';
+import { ContestPage } from './pages/ContestPage/ContestPage';
+import { ThanksPage } from './pages/ThanksPage/ThanksPage';
+import { ProfileEdit } from './pages/ProfileEdit/ProfileEdit';
+import { PaymentFailed } from './pages/PaymentFailed/PaymetFailed';
+import { PaymentSuccess } from './pages/PaymentSuccess/paymentSuccess';
+import { Post } from './pages/Post/Post';
+import { WinnerList } from './pages/WinnerList/WinnerList';
 
 function App() {
   return (

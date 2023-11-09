@@ -1,0 +1,48 @@
+.mainCard{
+    display: flex;
+    justify-content: space-between;
+
+    background-image: linear-gradient(to top,
+    black 1%,rgb(34, 32, 32,0) 33%,rgb(34, 32, 32,0) 33%,rgb(34, 32, 32,0) 33%);
+
+    width:100%;
+    height:auto;
+
+    margin-top:40px;
+}
+.mainCard:hover{
+    cursor: pointer;
+}
+.frontCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.frontCard h2{
+    font-family:'Montserrat', sans-serif !important;
+    font-size:20px !important;
+
+    top:50%;
+}
+
+.mainCard img{
+    height:100px;
+    width:100px;
+}
+
+/*-------------------- Media query (900) -------------*/
+
+@media screen and (max-width:900px) {
+    .mainCard{
+        margin-top:25px;
+    }
+    .mainCard img{
+        height:70px;
+        width:70px;
+    }
+    .frontCard h2{
+        font-size:15px !important;
+    }
+
+    
+}

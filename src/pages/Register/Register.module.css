@@ -1,0 +1,120 @@
+.CenterDiv{
+    background-image:linear-gradient(to bottom,
+    rgb(17, 77, 97),rgb(6, 5, 5),rgb(6, 5, 5));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+
+    position: relative;
+}
+
+.CenterDiv #ramImg img,.CenterDiv #remImg img{
+    width:100%;
+    height:auto;
+}
+.Register{
+    background-color: rgb(6, 63, 83);
+    width:50%;
+}
+
+.Register form{
+    text-align: center;
+    padding:1%;
+}
+.Register form h1{
+    font-family:'Montserrat', sans-serif;
+}
+#inputSection{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+    margin:40px 0;
+}
+#inputSection input{
+    width:70%;
+    margin:0 auto;
+    font-family:'Roboto', sans-serif;
+    padding:10px;
+    color:black;
+    font-weight: bold;
+}
+#inputSection button,#inputSection select,.Register button{
+    width:30%;
+    margin:20px auto;
+
+    background-color: white;
+    color:black;
+    border:none;
+
+    font-family:'Roboto', sans-serif;
+    font-size:20px;
+}
+#inputSection select option{
+    color:black;
+    font-family:'Roboto', sans-serif;
+}
+#inputSection button:hover{
+    cursor: pointer;
+    animation:colorFade .4s ease forwards;
+}
+.Register #registerBtn{
+    margin-top:0px
+}
+.Register button:hover{
+    cursor: pointer;
+    animation:colorFade2 .4s ease forwards;
+}
+
+.verifyDiv{
+    position: absolute;
+    bottom:20px;
+}
+
+/*------------------ Media query (900px) -------------*/
+
+@media screen and (max-width:900px) {
+    .Register{
+        width:80%;
+        margin:0 30px;
+    }
+    .CenterDiv #remImg,.CenterDiv #ramImg{
+        display: none;
+    }
+    .Register form h1{
+        font-size: 20px;
+    }
+    #inputSection input{
+        padding:5px;
+    }
+    #inputSection button,#inputSection select,.Register button{
+        margin:15px auto;
+        font-size:15px;
+    }
+}
+
+/*----------- Animation ----------*/
+@keyframes colorFade {
+    0%{
+        scale:1;
+    }
+    100%{
+        border:1px white solid;
+        background-color: rgb(37, 132, 163);
+        border:none;
+        scale:1.15;
+    }
+}
+@keyframes colorFade2 {
+    0%{
+        scale:1;
+    }
+    100%{
+        border:1px white solid;
+        background-color: rgb(37, 163, 79);
+        border:none;
+        scale:1.15;
+    }
+}

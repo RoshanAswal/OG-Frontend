@@ -1,0 +1,8 @@
+font-family='Merriweather', serif;
+font-family='Montserrat', sans-serif;
+font-family='Noto Sans', sans-serif;
+font-family='Roboto', sans-serif;
+font-family='Signika Negative', sans-serif;
+
+background-image:linear-gradient(to bottom,
+rgb(17, 77, 97),rgb(6, 5, 5),rgb(6, 5, 5));

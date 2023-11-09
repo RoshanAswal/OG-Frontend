@@ -5,28 +5,33 @@
   padding:0;
   box-sizing: border-box;
   color:rgb(255, 255, 255);
-  font-family: 'Signika Negative', sans-serif;
+  font-family:'Signika Negative', sans-serif;
 }
+
+html{
+  position:relative;
+}
+
 body::-webkit-scrollbar{
   display: none;
 }
 /* body{
   padding-bottom:100px;
 } */
-.App{
+/* .App{
   display: flex;
   flex-direction: column;
-}
+} */
 
 /*====================================== HOME PAGE ===================================*/
 
-.home{
+/* .home{
   z-index:1;
   overflow: hidden;
   color: black;
-}
+} */
 
-.home{
+/* .home{
   content: "";
   position: fixed;
   top: 0;
@@ -39,8 +44,8 @@ body::-webkit-scrollbar{
   box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
   text-align: center;
   overflow-y: scroll;
-}
-.home::-webkit-scrollbar,.RegPage::-webkit-scrollbar
+} */
+/* .home::-webkit-scrollbar,.RegPage::-webkit-scrollbar
 ,.LogPage::-webkit-scrollbar,.ProPage::-webkit-scrollbar,
 .confirm::-webkit-scrollbar,.contest::-webkit-scrollbar,
 .contestDetail::-webkit-scrollbar,.ContestPage::-webkit-scrollbar,
@@ -49,9 +54,9 @@ body::-webkit-scrollbar{
 .failedPay::-webkit-scrollbar,.successPay::-webkit-scrollbar,
 .winnersList::-webkit-scrollbar{
   display: none;
-}
+} */
 
-.home .choose-section{
+/* .home .choose-section{
   display: grid;
   grid-template-columns: 1fr 1fr;
   width:90%;
@@ -68,21 +73,21 @@ body::-webkit-scrollbar{
 .home #first-img:hover,#second-img:hover{
   cursor: pointer;
   transform:scale(1.25);
-}
+} */
 
 
 /*=============================== Navbar ===============================*/
 
-.navbar{
+/* .navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index:1;
   width:95%;
   margin:3% 0 0 3%;
-}
+} */
 
-.navbar #nav-img1{
+/* .navbar #nav-img1{
   height:100px;
   width: 80px;
 }
@@ -91,11 +96,11 @@ body::-webkit-scrollbar{
   height:50px;
   width: 50px;
   cursor: pointer;
-}
+} */
 
 /*========================== Register Page ===================*/
 
-.RegPage,.LogPage{
+/* .RegPage,.LogPage{
   content: "";
   position: fixed;
   top: 0;
@@ -109,12 +114,12 @@ body::-webkit-scrollbar{
   text-align: center;
   overflow-y: scroll;
   padding-bottom: 100px;
-}
+} */
 
-.Register,.Login{
+/* .Register,.Login{
   text-align: center;
   margin:auto;
-  /* margin-top:3vh; */
+  margin-top:3vh;
   width:40%;
   padding:2%;
   background:        
@@ -124,9 +129,9 @@ body::-webkit-scrollbar{
     ),url("./images/redBG.webp");
     box-shadow:10px 50px 100px rgb(37, 36, 36);
   align-items: center;
-}
+} */
 
-.Register #input-section,.ProfileEdit #input-section{
+/* .Register #input-section,.ProfileEdit #input-section{
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
@@ -180,18 +185,18 @@ body::-webkit-scrollbar{
 .Register button:hover{
   box-shadow: 2px 3px rgb(26, 27, 28);
   cursor: pointer;
-}
+} */
 
 /*========================== Login Page ===================*/
 
-.Login{
+/* .Login{
   margin-top:10vh;
 }
 
 .Login #input-section,#forgotPassword{
   display: grid;
   grid-template-columns: 1fr;
-  /* column-gap: 30px; */
+  column-gap: 30px;
   row-gap: 10px;
   width:60%;
   margin:auto;
@@ -230,11 +235,11 @@ body::-webkit-scrollbar{
   color:rgb(33, 136, 225);
   margin-top:10px;
   cursor: pointer;
-}
+} */
 
 /*================================== Profile ===================*/
 
-.ProPage,.confirm{
+/* .ProPage,.confirm{
   content: "";
   position: fixed;
   top: 0;
@@ -388,12 +393,12 @@ body::-webkit-scrollbar{
 
 .Options h3{
   margin:0 auto;
-}
+} */
 
 
 /*================================= Contest Page ================================*/
 
-.contest{
+/* .contest{
   content: "";
   position: fixed;
   top: 0;
@@ -455,11 +460,11 @@ body::-webkit-scrollbar{
   width:20px;
   color:black;
   text-align: center;
-}
+} */
 
 /*============================================ Contest Card ============================*/
 
-.contestCard{
+/* .contestCard{
   width:180px;
   height:150px;
   margin:50px auto;
@@ -482,11 +487,11 @@ body::-webkit-scrollbar{
 .contestCard img{
   width:30px;
   height:30px;
-}
+} */
 
 /*================ Contest Detail =======================*/
 
-.contestDetail{
+/* .contestDetail{
   content: "";
   position: fixed;
   top: 0;
@@ -561,11 +566,11 @@ body::-webkit-scrollbar{
 .contestDetail button:hover{
   cursor: pointer;
   box-shadow: 3px 3px 3px black;
-}
+} */
 
 /*=================================== Contest Page ===============================*/
 
-.ContestPage{
+/* .ContestPage{
   content: "";
   position: fixed;
   top: 0;
@@ -615,11 +620,11 @@ body::-webkit-scrollbar{
 }
 .ContestPage .saving-section{
   text-align: center;
-}
+} */
 
 /* =================================== Thanks Page =================================*/
 
-.thanksPage{
+/* .thanksPage{
   content: "";
   position: fixed;
   z-index: -1;
@@ -646,10 +651,10 @@ body::-webkit-scrollbar{
 }
 #thanks span:hover{
   cursor: pointer;
-}
+} */
 
 /* ================================================ Community Page ============================*/
-.community{
+/* .community{
   content: "";
   position: fixed;
   top: 0;
@@ -789,10 +794,10 @@ body::-webkit-scrollbar{
 .lastSection input{
   border:0;
   border-radius: 10%;
-}
+} */
 /*============================= Rank Page ===================*/
 
-.rank{
+/* .rank{
   display: grid;
   grid-template-columns: repeat(6,1fr);
   gap:20px;
@@ -832,14 +837,14 @@ body::-webkit-scrollbar{
 
 .rank .rank-btn:hover{
   color:rgb(216, 63, 63);
-}
+} */
 
 
 /*================================== Post Page ==========================*/
 
 
 
-.post{
+/* .post{
   display: grid;
   grid-template-columns:1fr;
   width:70%;
@@ -879,11 +884,11 @@ body::-webkit-scrollbar{
 }
 .post .postCard:nth-child(odd){
   background-color: #808daa;
-}
+} */
 
 /*======================================= Profile Edit ====================================*/
 
-.ProEditPage{
+/* .ProEditPage{
   content: "";
   position: fixed;
   top: 0;
@@ -926,11 +931,11 @@ body::-webkit-scrollbar{
 .ProfileEdit #file{
   all:unset;
   width:100px;
-}
+} */
 
 /* =========================  Create Post Form ========================*/
 
-.create-section{
+/* .create-section{
   width:50%;
   height:80%;
   margin:10vh auto;
@@ -974,11 +979,11 @@ body::-webkit-scrollbar{
 }
 .create-section textarea::placeholder{
   padding:10px 0 0 10px;
-}
+} */
 /* .create-section #post{
   height:300px;
 } */
-.create-section input::placeholder,textarea::placeholder{
+/* .create-section input::placeholder,textarea::placeholder{
   color:black;
   position:absolute;
   top:0;
@@ -1010,11 +1015,11 @@ body::-webkit-scrollbar{
 }
 .create-section #exit:hover{
   transform: scale(1.25);
-}
+} */
 
 /* ======================== Post Detail Page ===========================*/
 
-.postDetailPage{
+/* .postDetailPage{
   content: "";
   position: fixed;
   top: 0;
@@ -1158,11 +1163,11 @@ body::-webkit-scrollbar{
   background:none;
   font-size:30px;
   width:70px;
-}
+} */
 
 /* ============================ Payment =====================*/
 
-.failedPay,.successPay,.winnersList{
+/* .failedPay,.successPay,.winnersList{
   content: "";
   position: fixed;
   top: 0;
@@ -1185,10 +1190,10 @@ body::-webkit-scrollbar{
 .failedPay img,.successPay img{
   height:100px;
   width:100px;
-}
+} */
 
 /* ======================== Winners Card ===================*/
-.winnersList .winnerHeading{
+/* .winnersList .winnerHeading{
   width:150px;height:40px;
   margin-top:10px;
 }
@@ -1245,10 +1250,10 @@ input::-webkit-inner-spin-button,
 }
 .winnersCard img:hover{
   cursor: pointer;
-}
+} */
 
 /*==================================== Footer ========================*/
-.footer{
+/* .footer{
   background-color: rgb(53, 50, 50);
   width: 100%;
   height: 12%;
@@ -1270,17 +1275,17 @@ input::-webkit-inner-spin-button,
 }
 .footer img:hover{
   cursor: pointer;
-}
+} */
 
 /*=====================================================================*/
 /*======================= Media query ==================================*/
 /*=====================================================================*/
 
-@media (max-width:800px){
+/* @media (max-width:800px){ */
   
   /*========================== home ======================*/
 
-  .home{
+  /* .home{
     content: "";
     position: fixed;
     top: 0;
@@ -1293,10 +1298,10 @@ input::-webkit-inner-spin-button,
     box-shadow: inset 0px 30px 100px rgb(0, 0, 0),inset 0px 30px 100px rgb(0, 0, 0);
     text-align: center;
     overflow-y: scroll;
-    /* padding-bottom: 100px; */
-  }
+    padding-bottom: 100px;
+  } */
 
-  .home .choose-section{
+  /* .home .choose-section{
     margin:20vh 0 0 5%;
   }
   .home #first-img{
@@ -1306,10 +1311,10 @@ input::-webkit-inner-spin-button,
   .home #second-img{
     width: 150px;
     height: 25px;
-  }
+  } */
 
   /*======================== Navbar ====================*/
-  .navbar #nav-img1{
+  /* .navbar #nav-img1{
     height:80px;
     width: 60px;
   }
@@ -1318,44 +1323,44 @@ input::-webkit-inner-spin-button,
     height:35px;
     width: 35px;
     cursor: pointer;
-  }
+  } */
 
   /*====================== Register =====================*/
-  .Register,.Login,.ProfileEdit{
+  /* .Register,.Login,.ProfileEdit{
     width:60%;
-    /* padding:5%; */
+    padding:5%;
     margin-top:2vh;
   }
   
   .Login input,button{
     width:100%;
     height:30px;
-  }
+  } */
   /* .Login #forgetPassword,#input-section{
     width:70%;
     margin:0 auto;
   } */
 
-  .Register #input-section,.ProfileEdit #input-section{
+  /* .Register #input-section,.ProfileEdit #input-section{
     display: grid;
     grid-template-columns: 1fr;
-    /* column-gap: 10px; */
+    column-gap: 10px;
     row-gap: 10px;
   }
   .Register .img1{
     width:90%;
     height:90%;
     margin-bottom: 5%;
-  }
+  } */
   
-  .Register .img2{
+  /* .Register .img2{
     width:50%;
     height:50%;
     margin-top: 5%;
-  }
+  } */
 
   /*================= Profile =======================*/
-  .Profile{
+  /* .Profile{
     width:70%;
   }
   .profileCols{
@@ -1394,11 +1399,11 @@ input::-webkit-inner-spin-button,
   }
   .confirm form{
     width:50%;
-  }
+  } */
 
   /*========================== Contest Page ==============*/
 
-  .contest{
+  /* .contest{
     font-size:12px;
   }
   .contest .contestZone{
@@ -1410,17 +1415,17 @@ input::-webkit-inner-spin-button,
   }
   .contest .previous{
     grid-template-columns: repeat(2,1fr);
-  }
+  } */
 
   /* ======================= Contest Card ===================*/
-  .contestCard{
+  /* .contestCard{
     width:120px;
     height:120px;
-  }
+  } */
 
   /* ======================= Contest Detail ============================*/
 
-  .contestDetail .details{
+  /* .contestDetail .details{
     width:80%;
     margin:0 auto;
   }
@@ -1438,10 +1443,10 @@ input::-webkit-inner-spin-button,
   .contestDetail p,li{
     font-size:15px;
     color:#e9e9ef
-  }
+  } */
 
   /*========================= Contest page ================*/
-  .ContestPage #timer{
+  /* .ContestPage #timer{
     margin-top:15px;
     font-size: 15px;
     text-align: center;
@@ -1461,24 +1466,24 @@ input::-webkit-inner-spin-button,
   .ContestPage .question-section label{
     padding-top:5px;
     font-size:15px
-  }
+  } */
 
   /*=================== Profile Edit Page ========================*/  
-  .ProfileEdit {
+  /* .ProfileEdit {
     margin-top:10vh !important;
-  }
+  } */
 
   /* ====================== Community Page =========================*/
-  .community .switch-section{
+  /* .community .switch-section{
     margin-top:6vh;
-  }
+  } */
 
-  .community .switch-section #postBtn{
+  /* .community .switch-section #postBtn{
     border:0;
-  }
+  } */
   /* ================= Rank Card =======================*/
   
-  .rankPage .rank-heading{
+  /* .rankPage .rank-heading{
     margin-top:4vh;
     width: 100px;
     height:25px;
@@ -1502,11 +1507,11 @@ input::-webkit-inner-spin-button,
   .rank .rank-sec1 h3{
     font-size:15px;
     width:50%;
-  }
+  } */
 
   /*=========================== Community Page =====================*/
   
-  .post-section .filter-section{
+  /* .post-section .filter-section{
     width:70%;
     margin:30px auto 30px;
   }
@@ -1578,16 +1583,16 @@ input::-webkit-inner-spin-button,
   .commentForm button{
     width:30%;
     font-size:13px;
-  }
+  } */
 
   /*========================== Create Form ====================*/
-  .create-section{
+  /* .create-section{
     width:70%;
     height:80%;
-  }
+  } */
 
   /* =============================== Post Detail Page ============*/
-  .postDetailPage .header h2{
+  /* .postDetailPage .header h2{
     font-size:25px;
     margin-left:20px;
   }
@@ -1598,10 +1603,10 @@ input::-webkit-inner-spin-button,
   }
   .post .header div #likeBtn{
     padding-left:11px;
-  }
+  } */
 
   /* =========================== Winners Card =================*/
-  .winnersCard{
+  /* .winnersCard{
     grid-template-columns: repeat(4,1fr);
   }
   .winnersList #userImg{
@@ -1611,10 +1616,10 @@ input::-webkit-inner-spin-button,
   }
   .winnersCard h2{
     font-size:15px;
-  }
+  } */
 
   /*========================== Footer ===================*/
-  .footer{
+  /* .footer{
     padding-top:5%;
   }
   .footer img{
@@ -1625,7 +1630,7 @@ input::-webkit-inner-spin-button,
     column-gap: 20px;
     padding-right:120px;
   }
-}
+} */
 
 
 /*
@@ -1639,7 +1644,7 @@ input::-webkit-inner-spin-button,
   
   /*========================== home ======================*/
 
-  .home{
+  /* .home{
     content: "";
     position: fixed;
     top: 0;
@@ -1653,9 +1658,9 @@ input::-webkit-inner-spin-button,
     text-align: center;
     overflow-y: scroll;
     padding-bottom: 100px;
-  }
+  } */
 
-  .home .choose-section{
+  /* .home .choose-section{
     width:90%;
     margin-top:20vh;
     column-gap: 20px;
@@ -1667,10 +1672,10 @@ input::-webkit-inner-spin-button,
   .home #second-img{
     width: 100px;
     height: 15px;
-  }
+  } */
 
   /*======================== Navbar ====================*/
-  .navbar #nav-img1{
+  /* .navbar #nav-img1{
     height:70px;
     width: 50px;
   }
@@ -1679,28 +1684,28 @@ input::-webkit-inner-spin-button,
     height:25px;
     width: 25px;
     cursor: pointer;
-  }
+  } */
 
   /*====================== Register =====================*/
-  .Register,.Login,.ProfileEdit{
+  /* .Register,.Login,.ProfileEdit{
     width:60%;
-    /* padding:5%; */
+    padding:5%;
     margin-top:2vh;
   }
   
   .Login input,button{
     width:100%;
     height:20px;
-  }
+  } */
   /* .Login #forgetPassword,#input-section{
     width:70%;
     margin:0 auto;
   } */
 
-  .Register #input-section,.ProfileEdit #input-section{
+  /* .Register #input-section,.ProfileEdit #input-section{
     display: grid;
     grid-template-columns: 1fr;
-    /* column-gap: 10px; */
+    column-gap: 10px;
     row-gap: 8px;
   }
   .Register .img1{
@@ -1713,10 +1718,10 @@ input::-webkit-inner-spin-button,
     width:50%;
     height:50%;
     margin-top: 5%;
-  }
+  } */
 
   /*================= Profile =======================*/
-  .Profile{
+  /* .Profile{
     width:70%;
   }
   .profileCols{
@@ -1755,10 +1760,10 @@ input::-webkit-inner-spin-button,
   }
   .confirm form{
     width:50%;
-  }
+  } */
 
   /*========================== Contest Page ==============*/
-
+/* 
   .contest{
     font-size:8px;
   }
@@ -1771,17 +1776,17 @@ input::-webkit-inner-spin-button,
   }
   .contest .previous{
     grid-template-columns: repeat(2,1fr);
-  }
+  } */
 
   /* ======================= Contest Card ===================*/
-  .contestCard{
+  /* .contestCard{
     width:100px;
     height:100px;
-  }
+  } */
 
   /* ======================= Contest Detail ============================*/
 
-  .contestDetail .details{
+  /* .contestDetail .details{
     width:80%;
     margin:0 auto;
   }
@@ -1799,10 +1804,10 @@ input::-webkit-inner-spin-button,
   .contestDetail p,li{
     font-size:8px;
     color:#e9e9ef
-  }
+  } */
 
   /*========================= Contest page ================*/
-  .ContestPage #timer{
+  /* .ContestPage #timer{
     margin-top:10px;
     font-size: 10px;
     text-align: center;
@@ -1822,24 +1827,24 @@ input::-webkit-inner-spin-button,
   .ContestPage .question-section label{
     padding-top:5px;
     font-size:10px
-  }
+  } */
 
   /*=================== Profile Edit Page ========================*/  
-  .ProfileEdit {
+  /* .ProfileEdit {
     margin-top:10vh !important;
-  }
+  } */
 
   /* ====================== Community Page =========================*/
-  .community .switch-section{
+  /* .community .switch-section{
     margin-top:6vh;
-  }
+  } */
 
-  .community .switch-section #postBtn{
+  /* .community .switch-section #postBtn{
     border:0;
-  }
+  } */
   /* ================= Rank Card =======================*/
   
-  .rankPage .rank-heading{
+  /* .rankPage .rank-heading{
     margin-top:4vh;
     width: 80px;
     height:15px;
@@ -1863,11 +1868,11 @@ input::-webkit-inner-spin-button,
   .rank .rank-sec1 h3{
     font-size:10px;
     width:50%;
-  }
+  } */
 
   /*=========================== Community Page =====================*/
   
-  .post-section .filter-section{
+  /* .post-section .filter-section{
     width:70%;
     margin:30px auto 30px;
   }
@@ -1942,16 +1947,16 @@ input::-webkit-inner-spin-button,
   .commentForm button{
     width:30%;
     font-size:13px;
-  }
+  } */
 
   /*========================== Create Form ====================*/
-  .create-section{
+  /* .create-section{
     width:70%;
     height:100%;
-  }
+  } */
 
   /* =============================== Post Detail Page ============*/
-  .postDetailPage .header h2{
+  /* .postDetailPage .header h2{
     font-size:15px;
     margin-left:10px;
   }
@@ -1962,10 +1967,10 @@ input::-webkit-inner-spin-button,
   }
   .post .header div #likeBtn{
     padding-left:8px;
-  }
+  } */
 
   /* =========================== Winners Card =================*/
-  .winnersCard{
+  /* .winnersCard{
     grid-template-columns: repeat(4,1fr);
   }
   .winnersList #userImg{
@@ -1975,7 +1980,7 @@ input::-webkit-inner-spin-button,
   }
   .winnersCard h2{
     font-size:10px;
-  }
+  } */
 }
 
 

@@ -1,0 +1,164 @@
+.winnersList,.contestDetail{
+    background-image:linear-gradient(to bottom,
+    rgb(17, 77, 97),rgb(6, 5, 5),rgb(6, 5, 5));
+    text-align: center;
+}
+
+.heading h1{
+    font-size:40px;
+    font-family:'Noto Sans', sans-serif;
+    /* padding-top: 100px; */
+}
+
+.headBtn button,.WinnerBtn div button{
+    background-color: rgb(234, 226, 226,0);
+    min-width:150px;min-height:40px;
+    background-color: black;
+    border:none;
+
+    font-family:'Roboto', sans-serif;
+    font-size:20px;
+}
+.WinnerBtn div button{
+    margin-top:30px;
+}
+.headBtn button:hover,.WinnerBtn div button:hover{
+    cursor: pointer;
+    animation:colorFade .5s ease forwards;
+}
+
+/*------------------- Detail section -------------*/
+
+.details{
+    width:80%;
+    height:fit-content;
+    margin:50px auto 100px;
+
+    background-color: rgb(17, 77, 97);
+
+    padding:5% 2%;
+}
+
+.details div{
+    margin-bottom:30px;
+}
+.details div h2{
+    font-size:30px;
+    font-family:'Noto Sans', sans-serif;
+    color:black;
+}
+.details div ul{
+    list-style-type: none;
+}
+.details div p,.details div li{
+    font-family:'Montserrat', sans-serif;
+    font-weight: bold;
+
+    line-height: 30px;
+    background-color: rgb(6, 63, 83);
+    padding:1%;
+}
+
+/*---------------------- Winner List -----------------*/
+
+.winnerHeaderDiv{
+    text-align: center;
+}
+.winnerHeaderDiv h1{
+    font-family:'Noto Sans', sans-serif;
+    font-size: 40px;
+    padding-top: 10%;
+}
+
+.winnersList .btnControl{
+    text-align: center;
+} 
+
+.btnControl{
+    margin:50px 0; 
+    display: flex;
+    justify-content: center;
+}
+.btnControl div img{
+    max-width:30px;
+    height:auto;
+    background-color: white;
+
+    /* margin-left:30px; */
+}
+.btnControl div img:hover{
+    cursor: pointer;
+}
+#backBtn{
+    background-color: white;
+    color:black;
+    min-width:150px;min-height:40px;
+    border:none;
+
+    font-family:'Roboto', sans-serif;
+    font-size:20px;
+}
+#backBtn:hover{
+    cursor: pointer;
+    animation:colorFade .5s ease forwards;
+}
+
+/*----------------- Media query (700px) -----------------*/
+ @media screen and (max-width:700px){
+    .headerDiv{
+        padding-top:35%;
+    }
+    .heading h1{
+        font-size:30px;
+    }
+    .details div h2{
+        font-size:20px;
+    }
+    .details div p,.details div li{   
+        line-height: 20px;
+        font-size:12px;
+    }
+    .headBtn button,.WinnerBtn div button{
+        min-width:100px;min-height:30px;
+        font-size:15px;
+    }
+    .WinnerBtn div button{
+        margin-top:30px;
+    }
+
+    .winnerHeaderDiv h1{
+        font-size: 30px;
+        padding-top: 20%;
+    }
+    #backBtn{
+        font-size:15px;
+        min-width:100px;min-height:30px;
+    }
+
+ }
+
+/*----------- Animation ----------*/
+@keyframes colorFade {
+    0%{
+        scale:1;
+    }
+    100%{
+        border:1px white solid;
+        background-color: rgb(37, 132, 163);
+        border:none;
+        scale:1.15;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 9756591118 */

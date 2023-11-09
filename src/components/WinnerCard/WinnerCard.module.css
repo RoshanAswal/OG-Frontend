@@ -1,0 +1,37 @@
+.winnersCard{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:30px;
+    
+    width:80%;
+    margin:100px auto;
+}
+
+.winnersCard div{
+    background-color: rgb(20, 64, 79);
+}
+.winnersCard div img{
+    width:70%;
+    height:auto;
+}
+
+.winnersCard div img:hover{
+    cursor: pointer;
+}
+ 
+/*------------------ Media query (850px) -----------*/
+
+@media screen and (max-width:850px) {
+    .winnersCard{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+/*------------------ Media query (400px) -----------*/
+
+/* @media screen and (max-width:400px){
+    .winnersCard{
+        display: flex;
+        flex-wrap: wrap;
+    }
+} */

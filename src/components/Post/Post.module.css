@@ -1,0 +1,110 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+}
+.post::-webkit-scrollbar{
+    display: none;
+}
+.postCard{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    width:100%;
+    height:auto;
+    margin:3% auto;
+    background-color: rgb(6, 63, 83);
+}
+
+.userImg{
+    text-align: center;
+}
+.postCard .userImg{
+    max-width:100px;
+    height:auto;
+}
+.postCard .userImg img{
+    width:100%;
+    height: 100%;
+}
+.postCard .userImg img:hover{
+    cursor: pointer;
+}
+.postCard .detail{
+    text-align: center;
+    margin:auto 0;
+}
+.postCard .detail img{
+    max-width:40px;
+    height:auto;
+}
+.postCard .detail span{
+    font-size:35px;
+    margin:auto 20px;
+    font-family:'Roboto', sans-serif;
+
+}
+
+.postHeading{
+    position:relative;
+    text-align: center;
+}
+.postHeading h3{
+    position: absolute;
+    top:50%;left:50%;
+    transform: translate(-50%,-50%);
+
+    font-size:30px;
+    font-family:'Roboto', sans-serif;
+}
+.postCard:hover{
+    cursor: pointer;
+    animation: slideUpcolor .5s ease forwards;
+}
+
+/*--------------- Media Query (900) -------------*/
+
+@media screen and (max-width:900px){
+    .postCard{
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+        width:100%;
+        height:auto;
+        margin:3% auto;
+        background-color: rgb(6, 63, 83);
+    }
+    
+    .postHeading h3{
+        font-size:20px;
+    }
+    .postCard .detail img{
+        max-width:25px;
+        height:auto;
+    }
+    .postCard .detail span{
+        font-size:20px;
+    }
+}
+
+
+/*--------------- Media Query (500) -------------*/
+
+@media screen and (max-width:500px){
+    .postHeading h3{
+        font-size:10px;
+    }
+    .postCard .userImg{
+        width:50px;
+        height:auto;
+    }
+}
+
+/*------------------ Animation ------------------*/
+
+@keyframes slideUpcolor {
+    0%{
+        background-color: rgb(6, 63, 83);
+    }
+    100%{
+        background-color: rgb(3, 46, 62);
+    }
+}

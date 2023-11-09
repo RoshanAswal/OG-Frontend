@@ -1,0 +1,99 @@
+.contest{
+    background-image:linear-gradient(to bottom,
+    rgb(17, 77, 97),rgb(6, 5, 5),rgb(6, 5, 5));
+}
+
+.contestZone{
+    display: flex;
+    flex-direction: column;
+
+    padding-top:13%;
+    width:100%;
+}
+
+.cardsDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.previousContest,.upcoming{
+    gap:100px;   
+}
+.contestImg,.upcomingImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*------------- Upcoming Contest-----------------*/
+
+.upcoming{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:300px 0;
+}
+.cards h2{
+    font-family:'Noto Sans', sans-serif;
+    font-size:40px;
+    text-align: center;
+}
+.contest .notFound{
+    text-align: center;
+}
+.contest .notFound img{
+    max-width:100px;
+    height: auto;
+    margin-top:20%;
+}
+.contest .notFound h3{
+    font-family:'Montserrat', sans-serif;
+}
+.upcomingImg{
+    position: relative;
+}
+
+
+/*------------- Previous Contest-----------------*/
+
+.previousContest{
+    display: flex;
+    justify-content: center;
+    /* gap:25%; */
+}
+
+
+/*---------------------- Media Query (900) ------------*/
+
+@media screen and (max-width:900px) {
+    .contestZone{
+        padding-top:15%;
+    }
+    .previousContest,.upcoming{
+        gap:0px;   
+    }
+    
+    .contestImg img,.upcomingImg img{
+        width:70%;
+        height:auto;
+    }
+    .upcoming{
+        margin:200px 0;
+    }
+    .cards h2{
+        font-size:25px;
+    }
+}
+
+/*----------------------- Media Query (500) ----------*/
+@media screen and (max-width:500px) {
+    .contestZone{
+        padding-top:40%;
+    }
+    .cards h2{
+        font-size:20px;
+    }
+    .upcoming{
+        margin:100px 0;
+    }
+}

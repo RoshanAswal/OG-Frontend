@@ -1,0 +1,222 @@
+.postDetailPage{
+    height: fit-content;
+    background-image:linear-gradient(to bottom,
+    rgb(17, 77, 97),rgb(7, 7, 7),rgb(0, 0, 0));
+
+    text-align: center;
+}
+
+/*-------------- Header ---------------*/
+
+.post{
+    display: flex;
+    flex-direction: column;
+    
+    width:70%;
+    margin:0 auto;
+    padding-top:10%;
+}
+
+.post .postTitle{
+    font-size:30px;
+}
+.postTitle h2{
+    font-family:'Merriweather', serif;
+}
+.post .header{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    margin-top:30px;
+}
+.header #userImg{
+    border-radius: 50%;
+    max-width:50px;height:auto;
+}
+
+.header #likeImg{
+    max-width:30px;height:auto;
+}
+.header #likeBtn{
+    min-width:50px;height:auto;
+    background-color: rgb(240, 221, 221,0);
+    border:none;
+    font-size:20px;
+}
+.header #likeImg:hover,.header #userImg:hover{
+    cursor: pointer;
+}
+.header #likeImg,.header #likeBtn{
+    margin-top:50%;
+}
+
+/* ---------------------- Body --------------*/
+
+.body{
+    margin-top:40px;
+    min-height:500px;
+
+    background: rgb(37, 132, 163,0.5);
+
+    font-size:20px;
+    padding:3% 2%;
+
+    text-align: left;
+    line-height: 30px;
+}
+.body p{
+    font-family:'Montserrat', sans-serif;
+    font-weight:bold;
+}
+
+/*----------------- Comment Section ----------*/
+.commmentHeading{
+    margin:40px 0;
+    font-size:30px;
+    font-family:'Merriweather', serif;
+}
+.commentSection{
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+
+.userDetail{
+    display: flex;
+    gap:30px;
+}
+.userDetail h3{
+    padding:10px;
+}
+.userDetail .userImg{
+    border-radius: 50%;
+    max-width:50px;height:auto;
+}
+.userDetail .userImg:hover{
+    cursor: pointer;
+}
+
+.comment p{
+    margin-top:20px;
+    font-size:17px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.commentOptions{
+    margin:20px 0;
+    display: flex;
+    gap:20px;
+}
+.commentOptions .likeDiv{
+    display: flex;
+}
+.commentOptions .likeDiv h3{
+    padding:5px;
+    font-size: 20px;
+}
+.commentOptions .likeDiv img{
+    max-width:30px;max-height:auto;
+}
+
+.commentOptions .likeDiv img:hover{
+    cursor: pointer;
+}
+
+.commentOptions .replyBtn,.commentOptions .delete{
+    border:none;
+    text-decoration: underline;
+    background-color: rgb(26, 25, 25,0);
+    padding:10px;
+    font-size:15px;
+}
+.commentOptions .replyBtn:hover,.commentOptions .delete:hover{
+    cursor: pointer;
+    animation: colorFade .3s ease forwards;
+}
+
+/*----------- Reply section ----------*/
+.commentForm textarea{
+    font-size:15px;
+    margin-bottom:30px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: bold;
+    padding:1%;
+    min-width:200px;
+    min-height:100px;
+    resize: none;    
+}
+
+.commentForm button{
+    font-size:20px;
+    font-family:'Roboto', sans-serif;
+    
+    padding: 10px;
+    color:white;
+    background-color: black;
+
+    border:none;
+    margin-bottom:30px;
+}
+
+.commentForm button:hover{
+    cursor: pointer;
+    animation: colorFade .3s ease forwards;
+}
+
+/*----------------- Media query (900px) -----------------*/
+
+@media screen and (max-width:900px) {
+    .post{
+        padding-top:20%;
+    }
+    .post .postTitle{
+        font-size:30px;
+    }
+}
+
+/*----------------- Media query (600px) -----------------*/
+
+@media screen and (max-width:600px) {
+    .post{
+        padding-top:35%;
+    }
+    .post .postTitle{
+        font-size:30px;
+    }
+    .header{
+        margin-top:20px;
+    }
+    .body{
+        margin-top:30px;
+    }
+    .body p{
+        font-size:15px;
+        line-height: 25px;
+    }
+    .commmentHeading{
+        font-size:15px;
+    }
+    .userDetail h3{
+        font-size:15px;
+    }
+    .comment p{
+        font-size:15px;
+    }
+}
+
+
+/*---------------- Animation -----------*/
+
+@keyframes colorFade {
+    0%{
+        scale:1;
+    }
+    100%{
+        border:1px white solid;
+        background-color: rgb(3, 46, 62);
+        border:none;
+    }
+}
